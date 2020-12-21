@@ -89,15 +89,15 @@ ul li {
     border:1px solid #e7e3e5;
     width: 100%;
     height: 46px;
-    margin: 0%; /*Görevlerin arasındaki boşluğu ayarlar*/
+    margin: 0%; 
     display: inline-block;
-    cursor: pointer; /*Görevlerin üzerine gelince imleç pointer olur*/
+    cursor: pointer; 
     transition: all 0.7s ease;	
 }
 
 ul li label {
     color: #fff;
-	text-align: center; /* Kutu içindeki görevlere girinti verir */
+	text-align: center; 
     cursor: pointer;
     user-select: none;
 }
