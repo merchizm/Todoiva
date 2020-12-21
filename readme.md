@@ -12,5 +12,5 @@ Bu kavramlara ve dillere acemi iki öğrenci tarafından hazırlanmıştır. Kom
 
 sqlite3 database.db > .read db.sql
 
-### How to instal sqlite3 
+### How to install sqlite3 
 [Click Here](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)
