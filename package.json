@@ -1,0 +1,23 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": "basic to-do app",
+  "main": "./main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "authors": [
+    "Enes Kayalar",
+    "Zeynep Kambur"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^11.1.0",
+    "knex": "^0.21.13",
+    "sqlite3": "^5.0.0",
+    "sweetalert2": "^10.12.5"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
+}
