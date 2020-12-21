@@ -6,7 +6,7 @@ This application was developed with SqLite3 and Electron.js. The application was
 
 Bu kavramlara ve dillere acemi iki öğrenci tarafından hazırlanmıştır. Komik ve saçma hatalar içerebilir. Kodları istediğiniz gibi değiştirebilir ve kullanabilirsiniz.
 
-![App Preview](url)
+![App Preview](https://i.imgur.com/dPTEYZe.png)
 
 ## Create New Database
 
