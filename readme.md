@@ -1,25 +1,30 @@
-# Basic To-do App with SqLite3, Electron.js
+<img src="icon_128x128@2x.png" align="right" />
 
-This application was developed with SqLite3 and Electron.js. The application was made entirely by beginners, so there may be simple and absurd errors. You can use it as you wish.
+# Todoiva ![Version](https://img.shields.io/badge/1.2%20B-brightgreen) 
+> Sadık, şık yardımcınız
 
-## Türkçe
+Todoiva, yarışma amacı gütmeyen kendi çizgisinden usulca ilerleyen şık bir electron uygulamasıdır. Uygulama kodlayan kişilerin pratik bir şekilde kodlarken öğrenmesi için geliştirilmiştir. 
 
-Bu kavramlara ve dillere acemi iki öğrenci tarafından hazırlanmıştır. Komik ve saçma hatalar içerebilir. Kodları istediğiniz gibi değiştirebilir ve kullanabilirsiniz.
+---
 
-![App Preview](https://i.imgur.com/dPTEYZe.png)
+Uygulamanın Görüntüleri bitirildiğinde eklenecek :)
 
-## Create New Database
-
-sqlite3 database.db > .read db.sql
-
-### How to install sqlite3 
-[Click Here](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)
+---
 
 
-## Roadmap
+## Yol Haritası
 
-- The design will be changed.
+- [x] Yeni versiyon için yeni branch oluşturuldu.
 
-- To-Do list can be created.
+- [x] Yeni tasarım geliştirildi.
 
-- Items will not be deleted, they will be added to the completed to-do list.
+- [ ] Veritabanı için sınıf veya fonksiyonlar yazıldı.
+
+- [ ] To-Do Listeleri oluşturulabilir hale geldi.
+
+- [ ] To-Do itemleri tamamen silinmek yerine tamamlanacak hale, silinmesi istenilen de silinecek hale geldi.
+
+## Katkı Sağlayanlar
+[![Contributors](https://contrib.rocks/image?repo=merchizm/todo-app-with-electronjs-sqlite3)](https://github.com/merchizm/todo-app-with-electronjs-sqlite3/graphs/contributors)
+
+Resim tarafından [contributors-img](https://contrib.rocks) oluşturuldu.
