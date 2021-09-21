@@ -14,12 +14,3 @@ sqlite3 database.db > .read db.sql
 
 ### How to install sqlite3 
 [Click Here](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)
-
-
-## Roadmap
-
-- The design will be changed.
-
-- To-Do list can be created.
-
-- Items will not be deleted, they will be added to the completed to-do list.
