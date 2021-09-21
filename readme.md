@@ -25,6 +25,6 @@ Uygulamanın Görüntüleri bitirildiğinde eklenecek :)
 - [ ] To-Do itemleri tamamen silinmek yerine tamamlanacak hale, silinmesi istenilen de silinecek hale geldi.
 
 ## Katkı Sağlayanlar
-[![Contributors](https://contrib.rocks/image?repo=merchizm/todo-app-with-electronjs-sqlite3)](https://github.com/merchizm/todo-app-with-electronjs-sqlite3/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=merchizm/Todoiva)](https://github.com/merchizm/Todoiva/graphs/contributors)
 
 Resim tarafından [contributors-img](https://contrib.rocks) oluşturuldu.
