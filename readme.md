@@ -1,4 +1,4 @@
-<img src="icon_128x128@2x.png" align="right" />
+<img src="todoiva-logo.png" align="right" />
 
 # Todoiva ![Version](https://img.shields.io/badge/1.2%20B-brightgreen) 
 > Sadık, şık yardımcınız
@@ -18,7 +18,9 @@ Uygulamanın Görüntüleri bitirildiğinde eklenecek :)
 
 - [x] Yeni tasarım geliştirildi.
 
-- [ ] Veritabanı için sınıf veya fonksiyonlar yazıldı.
+- [ ] Veritabanı için sınıf ve fonksiyonlar yazıldı.
+
+- [ ] Dil sistemi entegre edildi.
 
 - [ ] To-Do Listeleri oluşturulabilir hale geldi.
 

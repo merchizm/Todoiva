@@ -1,6 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap');
 
+$menu-bg: #fafafa;
+$input-bg: #fff;
+$border-color: #ebebeb;
+$shadow-color: rgba(0,0,0,0.03);
+$menu-text: #686868;
+$circle-color: #d1d7dc;
+$icon: #000;
+
+$purple: #a872ff;
+$red: #ff9797;
+$blue: #75b1ff;
+$green: #49d657;
+$orange: #ffaf53;
+$pink: #f781ed;
+
+$red2: rgba($red, .2);
+$purple2: rgba($purple, .2);
+$blue2: rgba($blue, .2);
+$green2: rgba($green, .2);
+$orange2: rgba($orange, .2);
+$pink2: rgba($pink, .2);
+
+$red12: rgba($red, .12);
+$purple12: rgba($purple, .12);
+$blue12: rgba($blue, .12);
+$green12: rgba($green, .12);
+$orange12: rgba($orange, .12);
+$pink12: rgba($pink, .12);
+
+
+$text: #9195a1;
+$check: #404040;
+$disabled: #404040;
+
 
 *{  
     box-sizing: border-box;
@@ -515,7 +549,7 @@ main{
   $orange: #fc9b2d;
   $pink: #ff5df1;
 
-  $red2: rgba($red, );
+  $red2: rgba($red, .6);
   $purple2: rgba($purple, .6);
   $blue2: rgba($blue, .6);
   $green2: rgba($green, .55);

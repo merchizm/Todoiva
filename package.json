@@ -1,0 +1,118 @@
+{
+    "name": "todoiva",
+    "version": "1.2.0",
+    "description": "Stylish, simple, loyal to-do app.",
+    "main": "./app/src/index.js",
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development electron .",
+        "prod": "cross-env NODE_ENV=production electron .",
+        "pack": "electron-builder --dir",
+        "dist-mac": "npm run test && cross-env NODE_ENV=production electron-builder --mac",
+        "dist-linux": "npm run test && cross-env NODE_ENV=production electron-builder --linux",
+        "dist-windows": "npm run test && cross-env NODE_ENV=production electron-builder --windows",
+        "dist-all": "npm run test && cross-env NODE_ENV=production electron-builder --mac --linux --windows",
+        "test": "mocha"
+    },
+    "build": {
+        "productName": "Todoiva",
+        "appId": "com.todoivateam|electron.todoiva",
+        "directories": {
+            "buildResources": "resources"
+        },
+        "files": [
+            "app/dist/**/*",
+            "app/electron/**/*",
+            "app/localization/!(locales)",
+            "LICENSE"
+        ],
+        "extraFiles": [
+            "app/localization/locales/**/*",
+            "license.data",
+            "public.key"
+        ],
+        "publish": {
+            "provider": "github",
+            "host": "github.com",
+            "protocol": "https",
+            "releaseType": "release"
+        },
+        "win": {
+            "target": [
+                "nsis",
+                "msi"
+            ],
+            "icon": "resources/todoiva.ico"
+        },
+        "nsis": {
+            "installerIcon": "resources/win/installer.ico",
+            "uninstallerIcon": "resources/win/uninstaller.ico",
+            "installerSidebar": "resources/win/sidebar.bmp",
+            "uninstallerSidebar": "resources/win/u_sidebar.bmp",
+            "license": "LICENSE",
+            "installerLanguages": [
+                "en_US",
+                "en_GB",
+                "tr_TR"
+            ],
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true,
+            "menuCategory": false,
+            "shortcutName": "Todoiva"
+        },
+        "linux": {
+            "target": [
+                "deb",
+                "rpm",
+                "snap",
+                "AppImage"
+            ],
+            "icon": "todoiva.iconset",
+            "category": "Office"
+        },
+        "mac": {
+            "category": "public.app-category.productivity",
+            "target": [
+                "dmg",
+                "zip"
+            ],
+            "icon": "resources/todoiva.icns",
+            "darkModeSupport": true,
+            "type": "distribution"
+        },
+        "dmg": {
+            "background": "resources/bg.png",
+            "backgroundColor": "#726AE3",
+            "icon": "resources/todoiva.icns"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/merchizm/Todoiva.git"
+    },
+    "keywords": [
+        "electron",
+        "to-do app",
+        "todo app",
+        "todo list"
+    ],
+    "author": "merchizm & zeyish",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/merchizm/Todoiva/issues"
+    },
+    "homepage": "https://github.com/merchizm/Todoiva#readme",
+    "devDependencies": {
+        "@electron/remote": "^2.0.1",
+        "cross-env": "^7.0.3",
+        "electron": "^15.0.0",
+        "electron-builder": "^22.11.7",
+        "electron-updater": "^4.3.9",
+        "eslint": "^8.2.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "prettier": "^2.4.1"
+    },
+    "dependencies": {
+        "stormdb": "^0.5.2"
+    }
+}
