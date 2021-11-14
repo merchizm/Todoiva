@@ -1,5 +1,9 @@
 {
     "search":"Search",
     "my_lists":"Lists",
-    "settings":"Settings"
+    "settings":"Settings",
+    "settings-language": "Language",
+    "settings-theme": "Görünüş Ayarı",
+    "settings-lang-l": "Change Language :",
+    "settings-theme-p": "Görünüş"
 }

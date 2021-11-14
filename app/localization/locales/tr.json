@@ -1,5 +1,9 @@
 {
     "search":"Ara",
     "my_lists":"Listelerim",
-    "settings":"Ayarlar"
+    "settings":"Ayarlar",
+    "settings-language": "Dil Ayarı",
+    "settings-theme": "Görünüş Ayarı",
+    "settings-lang-l": "Bu arayüzün dilini değiştirin :",
+    "settings-theme-p": "Görünüş"
 }
