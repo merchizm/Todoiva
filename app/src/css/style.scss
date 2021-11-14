@@ -7,9 +7,10 @@
 }
 
 html, body {
-    height: 100%;
+    margin: 0;
+    height: 100vw;
     overflow-x: hidden;
-    
+    overflow: hidden;
 }
 
 h1, h3, li{
@@ -20,24 +21,41 @@ h1, h3, li{
     font-family: 'Raleway', sans-serif;
 }
 
-$purple: #a872ff;
-$red: #ff9797;
-$blue: #75b1ff;
-$green: #49d657;
-$orange: #ffaf53;
-$pink: #f781ed;
+.title{
+  top:0;
+  left: 0;
+  z-index: 100;
+  max-width: 100vw;
+  user-select: none;
+  .macos-titlebar{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden; 
+    height: 35px;
+    padding-left: 2vw; 
+    padding-right: 10px;
+    -webkit-app-region: drag;
+    .task-button{
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      height: 35px;
+      padding-left: 74px; 
+      padding-right: 10px;
+    }
+  }
+}
 
 .menu{
   height: 100%;
   position: fixed;
   width: 250px;
   z-index: 1;
-  top: 0;
+  top: 35px;
   left: 0;
   overflow-x: hidden;
   padding: 25px 10px;
-  background-color: #fafafa;
-
   .Search { 
     position: relative;
     width: 100%;
@@ -51,11 +69,7 @@ $pink: #f781ed;
       padding: 10px 15px;  
       width: 100%;
       border-radius: 5px; 
-      border: 1px solid #ebebeb; 
-
-      &:focus{ 
-        box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.03);
-      }
+      text-transform: capitalize;
 
       &:valid + .reset + .submit{display: none;} 
 
@@ -73,14 +87,13 @@ $pink: #f781ed;
       text-transform: uppercase; 
       border: 0;
       background-color: transparent;
-      position: absolute; 
-      right: 12px; 
+      position: absolute;
       top: 10px;
+      right: 10px;
 
-      img{
+      svg{
         width: 13px;
         opacity: .5;
-        margin-top: 5px;
       }
     }
 
@@ -93,12 +106,11 @@ $pink: #f781ed;
       display: none;
       position: absolute; 
       right: 1px; 
-      top: 9px;
+      top: 12px;
 
-      img{
-        width: 11px;
+      svg{
+        width: 13px;
         opacity: .5;
-        margin-top: 5px;
       }
     }
   }
@@ -110,7 +122,7 @@ $pink: #f781ed;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #686868;
+      color: $menu-text;
       
       h3{
         font-weight: 400;
@@ -122,6 +134,7 @@ $pink: #f781ed;
         font-size: 1.5rem;
         margin-right: 5px;
         cursor: pointer;
+        color: $menu-text;
       }
     }
 
@@ -141,18 +154,21 @@ $pink: #f781ed;
           text-overflow: ellipsis;
           display: flex;
           align-items: center;
-          color: #696969;
+          color: $menu-text;
           
           span{
-            width: 13px;
-            height: 13px;
-            mask: url(/img/list-text.svg);
-            margin-left: -7px;
-            margin-right: 10px;
+            margin-right: 5px;
+            padding: 2px 5px;
+            border-radius: 50%;
+            svg{
+              fill: #fff;
+              width: 13px;   
+              margin-top: 3px;          
+           }
           }
 
           .color-red{
-              background: $red;
+              background-color: $red;
           }
 
           .color-blue{
@@ -181,31 +197,74 @@ $pink: #f781ed;
 
         }
 
+
         .color-red{
-            background: rgba($red, .2);
+            background: $red2;
         }
 
         .color-blue{
-            background: rgba($blue, .2);
+            background: $blue2;
         }
         .color-green{
-            background: rgba($green, .2);
+            background: $green2;
         }
         .color-purple{
-            background: rgba($purple, .2);
+            background: $purple2;
         }
 
         .color-orange{
-            background: rgba($orange, .2);
+            background: $orange2;
         }
 
         .color-pink{
-            background: rgba($pink, .2);
+            background: $pink2;
         }
       }
     }
   }
+
+  .settings{
+    position: absolute;
+    bottom: 35px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    svg{
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+    }
+
+  }
+
+  .language, .theme{
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    img{
+      width: 23px;
+      margin-right: 7px;
+    }
+  }
+
 }
+
+.setting-menu{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  div{
+    margin: 10px 0;
+
+    svg{
+      width: 20px;
+      margin-right: 7px;
+    }
+  }
+}
+
 
 main{
   margin-left: 242px;
@@ -230,24 +289,17 @@ main{
     }
   }
 
+
   .task-add{
-    padding-bottom: 20px;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-
-    .circle{
-      width: 17px;
-      height: 17px;
-      border:2px solid #d1d7dc;
-      border-radius:50%;
-      -webkit-border-radius:50%;
-      -moz-border-radius:50%;
-      -ms-border-radius:50%;
-      -o-border-radius:50%;
-      margin-right: 10px;
+    margin: 20px 0 0 5px;
+    span{
+      display: inline-block;
+      height: 2px;
+      width: 8px;
+      border-radius: 2px;
+      margin: 0 15px 3px 0;
+      
     }
-
     .task-input{
       border: 0;
       outline: 0;
@@ -255,15 +307,15 @@ main{
       font-size: 1rem;
       width: 50%;
       background-color: transparent;
+      position: relative;
+  
     }
   }
+  
+  
 
   .container{
     #checklist {
-      $text: #414856;
-      $check: #4F29F0;
-      $disabled: #9195a1;
-
       position: relative;
       display: grid;
       grid-template-columns: 30px auto;
@@ -288,7 +340,6 @@ main{
           height: 2px;
           width: 8px;
           left: -27px;
-          background: $check;
           border-radius: 2px;
           transition: background .3s ease; 
         }
@@ -421,15 +472,240 @@ main{
       @keyframes firework {
         0% {
           opacity: 1;
-          box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+          box-shadow: 0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check;
         }
         30% {
           opacity: 1;
         }
         100% {
           opacity: 0;
-          box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+          box-shadow: 0 -15px 0 0px $check, 14px -8px 0 0px $check, 14px 8px 0 0px $check, 0 15px 0 0px $check, -14px 8px 0 0px $check, -14px -8px 0 0px $check;
         }
     }
   }
+
+  section[class$="content"]{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+
+    label{
+      margin-right: 10px;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  $menu-bg: #191919;
+  $main-bg: #202020;
+  $input-bg: #333333;
+  $border-color: #3d3d3d;
+  $shadow-color: rgba(224, 224, 224, 0.295);
+  $menu-text: #e7e7e7;
+  $circle-color: #d1d7dc;
+  $icon: #fff;
+
+
+  $purple: #a766d3;
+  $red: #e25757;
+  $blue: #5fa4ff;
+  $green: #2fc43e;
+  $orange: #fc9b2d;
+  $pink: #ff5df1;
+
+  $red2: rgba($red, );
+  $purple2: rgba($purple, .6);
+  $blue2: rgba($blue, .6);
+  $green2: rgba($green, .55);
+  $orange2: rgba($orange, .55);
+  $pink2: rgba($pink, .5);
+
+  $text: #eeeeee;
+  $check: #e7e7e7;
+  $disabled: #a8a8a8;
+
+  .title{
+    background-color: $purple;
+  }
+
+  .menu{
+    background-color: $menu-bg;
+    input{
+      background-color: $input-bg;
+      color: $menu-text;
+      border: 1px solid $border-color; 
+      &:focus{ 
+        box-shadow: 0px 0px 0px 1px $shadow-color;
+      }
+    }
+    .Search{
+      .submit{ 
+        svg{
+          fill: $icon;
+        }
+      }
+      button[type='reset']{ 
+        svg{
+          fill: $icon;
+        }
+      }
+    }
+  }
+
+  .setting-menu{
+    color: $menu-text;
+    div{
+      svg{
+        fill: $icon;
+      }
+    }
+  }
+
+  main{
+      background-color: $main-bg;
+      color: $icon;
+
+      header{
+          button{
+              color: $icon;
+          }
+      }
+
+    .task-add{
+      span{
+          background-color: $check;
+      }
+      input{
+              color: $icon;
+      }
+    }
+      
+  }
+
+  .container{
+    #checklist{
+      label{
+        color: $text;
+        &::before {
+          background: $check;
+        }
+      }
+    }
+  }
+
+  .settings{
+    color: $menu-text;
+    svg{
+      fill: $icon;
+    }
+  }
+  
+}
+
+@media (prefers-color-scheme: light) {
+  $menu-bg: #fafafa;
+  $main-bg: #fdfdfd;
+  $input-bg: #fff;
+  $border-color: #ebebeb;
+  $shadow-color: rgba(0,0,0,0.03);
+  $menu-text: #686868;
+  $circle-color: #d1d7dc;
+  $icon: #000;
+
+  $purple: #a872ff;
+  $red: #ff9797;
+  $blue: #75b1ff;
+  $green: #49d657;
+  $orange: #ffaf53;
+  $pink: #f781ed;
+
+  $red2: rgba($red, .2);
+  $purple2: rgba($purple, .2);
+  $blue2: rgba($blue, .2);
+  $green2: rgba($green, .2);
+  $orange2: rgba($orange, .2);
+  $pink2: rgba($pink, .2);
+
+  $text: #9195a1;
+  $check: #404040;
+  $disabled: #404040;
+
+  .title{
+    background-color: $purple;
+  }
+
+  .menu{
+    background-color: $menu-bg;
+    input{
+      background-color: $input-bg;
+      color: $menu-text;
+      border: 1px solid $border-color; 
+      &:focus{ 
+        box-shadow: 0px 0px 0px 1px $shadow-color;
+      }
+    }
+    .Search{
+      .submit{ 
+        svg{
+          fill: $icon;
+        }
+      }
+      button[type='reset']{ 
+        svg{
+          fill: $icon;
+        }
+      }
+    }
+  }
+
+  .setting-menu{
+    color: $menu-text;
+    div{
+      svg{
+        fill: $icon;
+      }
+    }
+  }
+
+  main{
+      background-color: $main-bg;
+      color: $icon;
+
+      header{
+          button{
+              color: $icon;
+          }
+      }
+
+    .task-add{
+      span{
+          background-color: $check;
+      }
+      input{
+              color: $icon;
+      }
+    }
+      
+  }
+
+  .container{
+    #checklist{
+      label{
+        color: $text;
+        &::before {
+          background: $check;
+        }
+      }
+    }
+  }
+
+  .settings{
+    color: $menu-text;
+    svg{
+      fill: $icon;
+    }
+  }
+  
 }
