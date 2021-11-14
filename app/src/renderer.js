@@ -1,4 +1,7 @@
 /* eslint-disable no-undef */ // for window and document
+
+const { TouchBarSlider } = require("@electron/remote");
+
 // macOS Events
 if (process.platform === "darwin") {
   const { ipcRenderer } = require("electron");
@@ -59,10 +62,36 @@ window.localization = window.localization || {};
       document.getElementById("settings").innerText =
         window.i18n.__("settings");
     },
+    settingsLanguage: function () {
+      document.getElementById("settings-language").innerText =
+        window.i18n.__("settings-language");
+    },
+    settingsTheme: function () {
+      document.getElementById("settings-theme").innerText =
+        window.i18n.__("settings-theme");
+    },
+    settingsLangLabel: function () {
+      document.getElementById("settings-lang-l").innerText =
+        window.i18n.__("settings-lang-l");
+    },
+    settingsThemeP: function () {
+      document.getElementById("settings-theme-p").innerText =
+        window.i18n.__("settings-theme-p");
+    },
     init: function () {
-      this.searchText();
-      this.listsText();
-      this.settingsText();
+      if (
+        document.body.dataset.page === undefined ||
+        document.body.dataset.page === "default"
+      ) {
+        this.searchText();
+        this.listsText();
+        this.settingsText();
+      } else if (document.body.dataset.page === "settings") {
+        this.settingsLanguage();
+        this.settingsTheme();
+        this.settingsLangLabel();
+        this.settingsThemeP();
+      }
     },
   };
 
@@ -75,6 +104,8 @@ function showSettings() {
     .then((response) => response.text())
     .then((html) => {
       document.body.innerHTML = html;
+      document.body.dataset.page = "settings";
+      localization.translate.init(); // load localization for settings
       languageSelectPrep();
     })
     .catch((error) => {
