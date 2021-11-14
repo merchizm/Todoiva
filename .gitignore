@@ -3,3 +3,4 @@ node_modules/
 out/
 .idea/
 .vscode/
+app/database/dev_db.json
