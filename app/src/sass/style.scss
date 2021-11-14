@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap');
 
+
+$menu-text: #686868;
+$text: #9195a1;
+$check: #404040;
+$disabled: #404040;
+
+
 *{  
     box-sizing: border-box;
 }
@@ -35,13 +42,39 @@ h1, h3, li{
     padding-left: 2vw; 
     padding-right: 10px;
     -webkit-app-region: drag;
-    .task-button{
+    .button-container{
       display: flex; 
       justify-content: space-between; 
       align-items: center;
       height: 35px;
       padding-left: 74px; 
       padding-right: 10px;
+      color: #fff;
+      cursor: pointer;
+
+      .back-button{
+        display: flex;
+        align-items: center;
+        margin-top: 3px;
+        padding:3px;
+        border-radius: 3px;
+        cursor: pointer;
+
+        &:hover{
+          background-color: rgba(0, 0, 0, .1);
+        }
+
+        svg{
+          width: 15px;
+          height: 15px;
+          fill: #fff;
+          margin-right: 7px;
+        }
+        p{
+          font-size: .8rem;
+          margin: 0;
+        }
+      }
     }
   }
 }
@@ -136,115 +169,40 @@ h1, h3, li{
         color: $menu-text;
       }
     }
-
-    .list{
-      ul{
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        font-weight: 200;
-
-        li{
-          padding: 10px 15px;
-          margin: 5px 0;
-          cursor: pointer;
-          overflow:hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          display: flex;
-          align-items: center;
-          color: $menu-text;
-          
-          span{
-            margin-right: 5px;
-            padding: 2px 5px;
-            border-radius: 50%;
-            svg{
-              fill: #fff;
-              width: 13px;   
-              margin-top: 3px;          
-           }
-          }
-
-          .color-red{
-              background-color: $red;
-          }
-
-          .color-blue{
-              background: $blue;
-          }
-
-          .color-green{
-              background: $green;
-          }
-
-          .color-purple{
-              background: $purple;
-          }
-
-          .color-orange{
-              background: $orange;
-          }
-
-          .color-pink{
-              background: $pink;
-          }
-
-          &:hover{
-              opacity: .85;
-          }
-
-        }
-
-
-        .color-red{
-            background: $red2;
-        }
-
-        .color-blue{
-            background: $blue2;
-        }
-        .color-green{
-            background: $green2;
-        }
-        .color-purple{
-            background: $purple2;
-        }
-
-        .color-orange{
-            background: $orange2;
-        }
-
-        .color-pink{
-            background: $pink2;
-        }
-      }
-    }
   }
 
   .settings{
     position: absolute;
-    bottom: 35px;
+    bottom: 45px;
     display: flex;
     align-items: center;
     text-decoration: none;
+    transition: all .5s;
+    p{
+      margin: 0;
+    }
 
     svg{
       width: 15px;
       height: 15px;
       margin-right: 5px;
+      transition: all .5s;
     }
 
+    &:hover{
+      font-size: 1.1rem;
+      transition: all .5s;
+      svg{
+        width: 18px;
+        height: 18px;
+      }
+    }
   }
 
   .language, .theme{
     display: flex;
     align-items: center;
     font-size: 1.3rem;
-    img{
-      width: 23px;
-      margin-right: 7px;
-    }
   }
 
 }
@@ -483,12 +441,17 @@ main{
     }
   }
 
+}
+
+.setting-main{
+  height: 100%;
+
   section[class$="content"]{
-    height: 100%;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    height: 100vh;
 
     label{
       margin-right: 10px;
@@ -514,12 +477,12 @@ main{
   $orange: #fc9b2d;
   $pink: #ff5df1;
 
-  $red2: rgba($red, .6);
-  $purple2: rgba($purple, .6);
-  $blue2: rgba($blue, .6);
-  $green2: rgba($green, .55);
-  $orange2: rgba($orange, .55);
-  $pink2: rgba($pink, .5);
+  $red2: rgba($red, .4);
+  $purple2: rgba($purple, .4);
+  $blue2: rgba($blue, .4);
+  $green2: rgba($green, .4);
+  $orange2: rgba($orange, .4);
+  $pink2: rgba($pink, .4);
 
   $text: #eeeeee;
   $check: #e7e7e7;
@@ -548,6 +511,92 @@ main{
       button[type='reset']{ 
         svg{
           fill: $icon;
+        }
+      }
+    }
+
+    .my-lists{
+      .list{
+        ul{
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          font-weight: 200;
+  
+          li{
+            padding: 10px 15px;
+            margin: 5px 0;
+            cursor: pointer;
+            overflow:hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: flex;
+            align-items: center;
+            color: $menu-text;
+            
+            span{
+              margin-right: 5px;
+              padding: 2px 5px;
+              border-radius: 50%;
+              svg{
+                fill: #fff;
+                width: 13px;   
+                margin-top: 3px;          
+             }
+            }
+  
+            .color-red{
+                background-color: $red;
+            }
+  
+            .color-blue{
+                background: $blue;
+            }
+  
+            .color-green{
+                background: $green;
+            }
+  
+            .color-purple{
+                background: $purple;
+            }
+  
+            .color-orange{
+                background: $orange;
+            }
+  
+            .color-pink{
+                background: $pink;
+            }
+  
+            &:hover{
+                opacity: .85;
+            }
+  
+          }
+  
+  
+          .color-red{
+              background: $red2;
+          }
+  
+          .color-blue{
+              background: $blue2;
+          }
+          .color-green{
+              background: $green2;
+          }
+          .color-purple{
+              background: $purple2;
+          }
+  
+          .color-orange{
+              background: $orange2;
+          }
+  
+          .color-pink{
+              background: $pink2;
+          }
         }
       }
     }
@@ -654,6 +703,92 @@ main{
       button[type='reset']{ 
         svg{
           fill: $icon;
+        }
+      }
+    }
+
+    .my-lists{
+      .list{
+        ul{
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          font-weight: 200;
+  
+          li{
+            padding: 10px 15px;
+            margin: 5px 0;
+            cursor: pointer;
+            overflow:hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: flex;
+            align-items: center;
+            color: $menu-text;
+            
+            span{
+              margin-right: 5px;
+              padding: 2px 5px;
+              border-radius: 50%;
+              svg{
+                fill: #fff;
+                width: 13px;   
+                margin-top: 3px;          
+             }
+            }
+  
+            .color-red{
+                background-color: $red;
+            }
+  
+            .color-blue{
+                background: $blue;
+            }
+  
+            .color-green{
+                background: $green;
+            }
+  
+            .color-purple{
+                background: $purple;
+            }
+  
+            .color-orange{
+                background: $orange;
+            }
+  
+            .color-pink{
+                background: $pink;
+            }
+  
+            &:hover{
+                opacity: .85;
+            }
+  
+          }
+  
+  
+          .color-red{
+              background: $red2;
+          }
+  
+          .color-blue{
+              background: $blue2;
+          }
+          .color-green{
+              background: $green2;
+          }
+          .color-purple{
+              background: $purple2;
+          }
+  
+          .color-orange{
+              background: $orange2;
+          }
+  
+          .color-pink{
+              background: $pink2;
+          }
         }
       }
     }
