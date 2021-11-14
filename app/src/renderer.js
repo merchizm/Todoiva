@@ -1,12 +1,9 @@
 /* eslint-disable no-undef */ // for window and document
-
-const { TouchBarSlider } = require("@electron/remote");
-
 // macOS Events
 if (process.platform === "darwin") {
   const { ipcRenderer } = require("electron");
   let titleBarMacOS = document.getElementById("macos-titlebar");
-  let titleBarContent = document.getElementById("task-button");
+  let titleBarContent = document.getElementById("button-container");
 
   ipcRenderer.on("mac-efull", () => {
     titleBarMacOS.style.paddingLeft = "5px";
