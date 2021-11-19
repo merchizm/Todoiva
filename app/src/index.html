@@ -58,7 +58,7 @@
         <div class="my-lists">
             <header>
                 <h3 id="my-lists">-</h3>
-                <button class="list-btn" id="add-list">+</button>
+                <button class="list-btn" id="add-list" onclick="">+</button>
             </header>
 
 
@@ -114,12 +114,12 @@
     <main>
         <header>
             <h1 id="list-name">$</h1>
-            <button class="new-task-btn" data-list-id="" id="add-item">+</button>
+            <button class="new-task-btn" onclick="addToDo();" id="task-add" style="transition: all 0.6s ease-in-out;">+</button>
         </header>
        
-        <div class="task-add" style="display: none;">
+        <div data-listID="1" class="task-add bounceIn" id="task-input" style="display: none;">
             <span></span>
-            <input type="text" class="task-input" placeholder="Ne Yapsam?">
+            <input type="text" class="task-input" placeholder="Ne Yapsam?" id="add-input">
         </div>
         
 

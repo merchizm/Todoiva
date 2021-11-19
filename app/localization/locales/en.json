@@ -5,5 +5,6 @@
     "settings-language": "Language",
     "settings-theme": "Apperance",
     "settings-lang-l": "Change Language :",
-    "settings-theme-p": "Choose Your Apperance"
+    "settings-theme-p": "Choose Your Apperance",
+    "back-button":"Go Back"
 }

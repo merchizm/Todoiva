@@ -75,6 +75,10 @@ window.localization = window.localization || {};
       document.getElementById("settings-theme-p").innerText =
         window.i18n.__("settings-theme-p");
     },
+    settingsGoBack: function () {
+      document.getElementById("back-button").innerText =
+        window.i18n.__("back-button");
+    },
     init: function () {
       if (
         document.body.dataset.page === undefined ||
@@ -88,6 +92,7 @@ window.localization = window.localization || {};
         this.settingsTheme();
         this.settingsLangLabel();
         this.settingsThemeP();
+        this.settingsGoBack();
       }
     },
   };
@@ -97,12 +102,12 @@ window.localization = window.localization || {};
 // Settings Page
 // eslint-disable-next-line no-unused-vars
 function showSettings() {
-  fetch("settings.html" /*, options */)
+  fetch("settings.html")
     .then((response) => response.text())
     .then((html) => {
       document.body.innerHTML = html;
       document.body.dataset.page = "settings";
-      localization.translate.init(); // load localization for settings
+      localization.translate.init();
       languageSelectPrep();
     })
     .catch((error) => {
@@ -126,3 +131,58 @@ function languageSelectOnChange() {
   let select = document.getElementById("language").value;
   changeLanguage(select);
 }
+
+// eslint-disable-next-line no-unused-vars
+function goBack() {
+  fetch("index.html")
+    .then((response) => response.text())
+    .then((html) => {
+      let bodyExpression = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
+      document.body.innerHTML = html.match(bodyExpression)[0];
+      document.body.dataset.page = "default";
+      localization.translate.init();
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+}
+
+var clearAnimated = () => {
+  setTimeout(
+    () => document.getElementById("task-input").classList.remove("animated"),
+    300
+  );
+};
+
+function addToDo() {
+  document.getElementById("task-input").style = "display: block;";
+  setTimeout(
+    () => document.getElementById("task-input").classList.add("animated"),
+    10
+  );
+  let taskAdd = document.getElementById("task-add");
+  taskAdd.style =
+    "transition: all 0.3s ease-in-out; transform: rotate(45deg) scale(1.4);";
+  taskAdd.onclick = closeAddToDo;
+  clearAnimated();
+}
+
+function closeAddToDo() {
+  let taskAdd = document.getElementById("task-add");
+  taskAdd.style =
+    "transition: all 0.3s ease-in-out; transform: rotate(0deg) scale(1);";
+  taskAdd.onclick = "addToDo();";
+  document.getElementById("task-input").classList.remove("bounceIn");
+
+  document.getElementById("task-input").classList.add("bounceOut");
+  document.getElementById("task-input").classList.add("animated");
+
+  setTimeout(
+    () => (document.getElementById("task-input").style = "display: none;"),
+    300
+  );
+  taskAdd.onclick = addToDo;
+  clearAnimated();
+}
+
+// TODO: boşluğa tıklandığında kaybolsun
