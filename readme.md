@@ -18,9 +18,11 @@ Uygulamanın Görüntüleri bitirildiğinde eklenecek :)
 
 - [x] Yeni tasarım geliştirildi.
 
-- [ ] Veritabanı için sınıf ve fonksiyonlar yazıldı.
+- [x] Veritabanı için dosya hazırlandı.
 
-- [ ] Dil sistemi entegre edildi.
+- [x] Dil sistemi entegre edildi.
+
+- [ ] Animasyonların hepsi eklendi.
 
 - [ ] To-Do Listeleri oluşturulabilir hale geldi.
 
