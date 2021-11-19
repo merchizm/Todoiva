@@ -185,4 +185,12 @@ function closeAddToDo() {
   clearAnimated();
 }
 
+document.getElementById("add-input").addEventListener("keyup", (event) => {
+  if (event.key === "enter") {
+    let input = document.getElementById("add-input");
+    // TODO: Veritabanına ekleme yapacak kodu listid alıp yap
+    input.value = null;
+  }
+});
+
 // TODO: boşluğa tıklandığında kaybolsun
