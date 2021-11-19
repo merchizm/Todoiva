@@ -47,7 +47,7 @@ h1, h3, li{
       justify-content: space-between; 
       align-items: center;
       height: 35px;
-      padding-left: 74px; 
+      padding-left: 65px; 
       padding-right: 10px;
       color: #fff;
       cursor: pointer;
@@ -168,6 +168,43 @@ h1, h3, li{
         color: $menu-text;
       }
     }
+
+    .list{
+
+      ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-weight: 200;
+
+        li{
+          padding: 10px 15px;
+          margin: 5px 0;
+          cursor: pointer;
+          overflow:hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          display: flex;
+          align-items: center;
+
+          span{
+            margin-right: 5px;
+            padding: 2px 5px;
+            border-radius: 50%;
+
+            svg{
+              fill: #fff;
+              width: 13px;   
+              margin-top: 3px;          
+            }
+          }
+
+          &:hover{
+            opacity: .85;
+          }
+        }
+      }
+    }
   }
 
   .settings{
@@ -217,6 +254,11 @@ h1, h3, li{
     svg{
       width: 20px;
       margin-right: 7px;
+      cursor: pointer;
+    }
+
+    p{
+      cursor: pointer;
     }
   }
 }
@@ -653,32 +695,8 @@ main{
     .my-lists{
       .list{
         ul{
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          font-weight: 200;
-  
           li{
-            padding: 10px 15px;
-            margin: 5px 0;
-            cursor: pointer;
-            overflow:hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            display: flex;
-            align-items: center;
             color: $menu-text;
-            
-            span{
-              margin-right: 5px;
-              padding: 2px 5px;
-              border-radius: 50%;
-              svg{
-                fill: #fff;
-                width: 13px;   
-                margin-top: 3px;          
-             }
-            }
   
             .color-red{
                 background-color: $red;
@@ -703,13 +721,7 @@ main{
             .color-pink{
                 background: $pink;
             }
-  
-            &:hover{
-                opacity: .85;
-            }
-  
           }
-  
   
           .color-red{
               background: $red2;
@@ -761,10 +773,9 @@ main{
           background-color: $check;
       }
       input{
-              color: $icon;
+          color: $icon;
       }
     }
-      
   }
 
   .container{
@@ -784,7 +795,6 @@ main{
       fill: $icon;
     }
   }
-  
 }
 
 @media (prefers-color-scheme: light) {
@@ -845,32 +855,8 @@ main{
     .my-lists{
       .list{
         ul{
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          font-weight: 200;
-  
           li{
-            padding: 10px 15px;
-            margin: 5px 0;
-            cursor: pointer;
-            overflow:hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            display: flex;
-            align-items: center;
             color: $menu-text;
-            
-            span{
-              margin-right: 5px;
-              padding: 2px 5px;
-              border-radius: 50%;
-              svg{
-                fill: #fff;
-                width: 13px;   
-                margin-top: 3px;          
-             }
-            }
   
             .color-red{
                 background-color: $red;
@@ -895,13 +881,7 @@ main{
             .color-pink{
                 background: $pink;
             }
-  
-            &:hover{
-                opacity: .85;
-            }
-  
           }
-  
   
           .color-red{
               background: $red2;
@@ -953,10 +933,9 @@ main{
           background-color: $check;
       }
       input{
-              color: $icon;
+          color: $icon;
       }
     }
-      
   }
 
   .container{
@@ -976,5 +955,4 @@ main{
       fill: $icon;
     }
   }
-  
 }
