@@ -52,7 +52,7 @@ h1, h3, li{
       color: #fff;
       cursor: pointer;
 
-      .back-button{
+      .normal-button{
         display: flex;
         align-items: center;
         padding:3px;
@@ -176,17 +176,16 @@ h1, h3, li{
       position: absolute;
       height: 90%;
       width: 100%;
-      overflow-y: auto;
-
-      &::-webkit-scrollbar {
-        width: 8px;
-      }
-
       ul{
         list-style: none;
         margin: 0;
         padding: 0;
         font-weight: 200;
+        height: 55vw;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          width: 1.2vw;
+        }
 
         li{
           padding: 10px 15px;
@@ -198,6 +197,12 @@ h1, h3, li{
           display: flex;
           align-items: center;
 
+          &:first-child{
+            margin-top: 0;
+          }
+          &:last-child{
+            margin-bottom: 0;
+          }
           span{
             margin-right: 5px;
             padding: 2px 5px;
@@ -214,34 +219,6 @@ h1, h3, li{
             opacity: .85;
           }
         }
-      }
-    }
-  }
-
-  .settings{
-    position: absolute;
-    bottom: 45px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    transition: all .5s;
-    p{
-      margin: 0;
-    }
-
-    svg{
-      width: 15px;
-      height: 15px;
-      margin-right: 5px;
-      transition: all .5s;
-    }
-
-    &:hover{
-      font-size: 1.1rem;
-      transition: all .5s;
-      svg{
-        width: 18px;
-        height: 18px;
       }
     }
   }
@@ -632,7 +609,7 @@ main{
 .setting-main{
   height: 100%;
 
-  section[class$="content"]{
+  section[class="content"]{
     font-size: 1.2rem;
     display: flex;
     align-items: center;
@@ -702,15 +679,6 @@ main{
     }
 
     .my-lists{
-      .list{
-        &::-webkit-scrollbar-track {
-          background-color: $menu-bg;
-        }
-  
-        &::-webkit-scrollbar-thumb {
-          background-color: $border-color;
-          border-radius: 10px;
-        } 
         ul{
           li{
             color: $menu-text;
@@ -761,6 +729,16 @@ main{
           .color-pink{
               background: $pink2;
           }
+          &::-webkit-scrollbar-track {
+            background-color: rgba($color: #000000, $alpha: 0.1);
+          }
+    
+          &::-webkit-scrollbar-thumb {
+            background-color: rgb(17, 16, 16);
+            border-radius: 1rem;
+            &:hover{
+              background-color: rgba($color: rgb(13, 12, 12), $alpha: 0.4)
+            }
         }
       }
     }
@@ -871,15 +849,6 @@ main{
 
     .my-lists{
       .list{
-        &::-webkit-scrollbar-track {
-          background-color: $menu-bg;
-        }
-  
-        &::-webkit-scrollbar-thumb {
-          background-color: $circle-color;
-          border-radius: 10px;
-        } 
-
         ul{
           li{
             color: $menu-text;
@@ -930,6 +899,14 @@ main{
           .color-pink{
               background: $pink2;
           }
+          &::-webkit-scrollbar-track {
+            background-color: $menu-bg;
+          }
+    
+          &::-webkit-scrollbar-thumb {
+            background-color: $circle-color;
+            border-radius: 10px;
+          } 
         }
       }
     }

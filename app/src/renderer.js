@@ -147,6 +147,27 @@ function goBack() {
     });
 }
 
+// eslint-disable-next-line no-unused-vars
+function settingsNavigation(evt, Section) {
+  var i, tabContent, tabNav;
+
+  tabContent = document.getElementsByClassName("content");
+  for (i = 0; i < tabContent.length; i++) {
+    tabContent[i].style.display = "none";
+  }
+
+  tabNav = document.getElementsByClassName("nav");
+  for (i = 0; i < tabNav.length; i++) {
+    tabNav[i].className = tabNav[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the link that opened the tab
+  document.getElementById(Section).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Defalut Page
+
 var clearAnimated = () => {
   setTimeout(
     () => document.getElementById("task-input").classList.remove("animated"),
