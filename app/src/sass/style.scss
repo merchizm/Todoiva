@@ -608,16 +608,18 @@ main{
 
 .setting-main{
   height: 100%;
-
-  section[class="content"]{
-    font-size: 1.2rem;
+  #container{
+    height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-
-    label{
-      margin-right: 10px;
+    .content{
+      font-size: 1.2rem;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
