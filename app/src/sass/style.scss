@@ -1,76 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap');
+@use "sass:map";
 
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap");
 
 $menu-text: #686868;
 $text: #9195a1;
 $check: #404040;
 $disabled: #404040;
 
-
-*{  
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-html, body {
-    margin: 0;
-    height: 100vw;
-    overflow-x: hidden;
-    overflow: hidden;
+html,
+body {
+  margin: 0;
+  height: 100vw;
+  overflow: hidden;
 }
 
-h1, h3, li{
-    font-family: 'Lato', sans-serif;
+h1,
+h3,
+li {
+  font-family: "Lato", sans-serif;
 }
 
-:not(h1, h3, li){
-    font-family: 'Raleway', sans-serif;
+:not(h1, h3, li) {
+  font-family: "Raleway", sans-serif;
 }
 
-.title{
-  top:0;
+.title {
+  background-color: #686769;
+  top: 0;
   left: 0;
   z-index: 100;
   max-width: 100vw;
   user-select: none;
-  .macos-titlebar{
-    display: flex; 
+  .macos-titlebar {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    overflow: hidden; 
+    overflow: hidden;
     height: 35px;
-    padding-left: 2vw; 
+    padding-left: 2vw;
     padding-right: 10px;
     -webkit-app-region: drag;
-    .button-container{
-      display: flex; 
-      justify-content: space-between; 
+    .button-container {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       height: 35px;
-      padding-left: 65px; 
+      padding-left: 65px;
       padding-right: 10px;
       color: #fff;
       cursor: pointer;
 
-      .normal-button{
+      .normal-button {
         display: flex;
         align-items: center;
-        padding:3px;
+        padding: 3px;
         border-radius: 3px;
         cursor: pointer;
 
-        &:hover{
-          background-color: rgba(0, 0, 0, .1);
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
         }
 
-        svg{
+        svg {
           width: 15px;
           height: 15px;
           fill: #fff;
           margin-right: 7px;
         }
-        p{
-          font-size: .8rem;
+        p {
+          font-size: 0.8rem;
           margin: 0;
         }
       }
@@ -78,7 +81,7 @@ h1, h3, li{
   }
 }
 
-.menu{
+.menu {
   height: 100%;
   position: fixed;
   width: 250px;
@@ -87,82 +90,87 @@ h1, h3, li{
   left: 0;
   overflow: hidden;
   padding: 25px 10px;
-  .Search { 
+  .Search {
     position: relative;
     width: 100%;
 
-    input{ 
-      outline: none; 
-      resize: vertical; 
-      line-height: 14px; 
-      font-size: 14px; 
-      box-sizing: border-box; 
-      padding: 10px 15px;  
+    input {
+      outline: none;
+      resize: vertical;
+      line-height: 14px;
+      font-size: 14px;
+      box-sizing: border-box;
+      padding: 10px 15px;
       width: 100%;
-      border-radius: 5px; 
+      border-radius: 5px;
       text-transform: capitalize;
 
-      &:valid + .reset + .submit{display: none;} 
+      &:valid + .reset + .submit {
+        display: none;
+      }
 
-      &:valid + .reset{display: block;}
+      &:valid + .reset {
+        display: block;
+      }
     }
 
     input[type="search"]::-webkit-search-decoration,
     input[type="search"]::-webkit-search-cancel-button,
     input[type="search"]::-webkit-search-results-button,
-    input[type="search"]::-webkit-search-results-decoration { -webkit-appearance:none;
+    input[type="search"]::-webkit-search-results-decoration {
+      -webkit-appearance: none;
     }
 
-    .submit{ 
-      cursor: pointer; 
-      text-transform: uppercase; 
+    .submit {
+      cursor: pointer;
+      text-transform: uppercase;
       border: 0;
       background-color: transparent;
       position: absolute;
       top: 10px;
       right: 10px;
 
-      svg{
+      svg {
         width: 13px;
-        opacity: .5;
+        opacity: 0.5;
       }
     }
 
-    button[type='reset']{ 
-      cursor: pointer; 
-      padding: 0px 10px; 
-      background: none; 
-      outline: none; 
-      border:none;
+    button[type="reset"] {
+      cursor: pointer;
+      padding: 0 10px;
+      background: none;
+      outline: none;
+      border: none;
       display: none;
-      position: absolute; 
-      right: 1px; 
+      position: absolute;
+      right: 1px;
       top: 12px;
 
-      svg{
+      svg {
         width: 13px;
-        opacity: .5;
+        opacity: 0.5;
       }
     }
   }
 
-  .my-lists{
+  .my-lists {
     margin-top: 50px;
     position: relative;
     width: 100%;
     height: 90%;
-  
-    header{
+
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       color: $menu-text;
-      
-      h3{
+
+      h3 {
         font-weight: 400;
       }
 
-      .list-btn{
+      .list-btn {
         background-color: transparent;
         border: 0;
         font-size: 1.5rem;
@@ -172,11 +180,11 @@ h1, h3, li{
       }
     }
 
-    .list{
+    .list {
       position: absolute;
       height: 90%;
       width: 100%;
-      ul{
+      ul {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -187,82 +195,81 @@ h1, h3, li{
           width: 1.2vw;
         }
 
-        li{
+        li {
           padding: 10px 15px;
           margin: 5px 0;
           cursor: pointer;
-          overflow:hidden;
+          overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
           display: flex;
           align-items: center;
 
-          &:first-child{
+          &:first-child {
             margin-top: 0;
           }
-          &:last-child{
+          &:last-child {
             margin-bottom: 0;
           }
-          span{
+          span {
             margin-right: 5px;
             padding: 2px 5px;
             border-radius: 50%;
 
-            svg{
+            svg {
               fill: #fff;
-              width: 13px;   
-              margin-top: 3px;          
+              width: 13px;
+              margin-top: 3px;
             }
           }
 
-          &:hover{
-            opacity: .85;
+          &:hover {
+            opacity: 0.85;
           }
         }
       }
     }
   }
 
-  .language, .theme{
+  .language,
+  .theme {
     display: flex;
     align-items: center;
     font-size: 1.3rem;
   }
-
 }
 
-.setting-menu{
+.setting-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  div{
+  div {
     margin: 10px 0;
 
-    svg{
+    svg {
       width: 20px;
       margin-right: 7px;
       cursor: pointer;
     }
 
-    p{
+    p {
       cursor: pointer;
     }
   }
 }
 
-
-main{
+main {
   margin-left: 242px;
   padding-left: 40px;
   height: 100%;
 
-  header{
+  header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    .new-task-btn{
+    .new-task-btn {
       background-color: transparent;
       border: 0;
       font-size: 2rem;
@@ -270,23 +277,21 @@ main{
       cursor: pointer;
     }
 
-    h1{
-        font-weight: 400;
+    h1 {
+      font-weight: 400;
     }
   }
 
-
-  .task-add{
+  .task-add {
     margin: 20px 0 0 5px;
-    span{
+    span {
       display: inline-block;
       height: 2px;
       width: 8px;
       border-radius: 2px;
       margin: 0 15px 3px 0;
-      
     }
-    .task-input{
+    .task-input {
       border: 0;
       outline: 0;
       padding: 5px;
@@ -294,154 +299,163 @@ main{
       width: 50%;
       background-color: transparent;
       position: relative;
-  
     }
   }
-  
+
   /*base code*/
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.animated.infinite {
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
-.animated.hinge {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-}
-/*the animation definition*/
-@-webkit-keyframes bounceIn {
-  0%, 100%, 20%, 40%, 60%, 80% {
-    -webkit-transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
-    transition-timing-function: cubic-bezier(0.215, .61, .355, 1)
+  .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
   }
-  0% {
-    opacity: 0;
-    -webkit-transform: scale3d(.3, .3, .3);
-    transform: scale3d(.3, .3, .3)
+  .animated.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
   }
-  20% {
-    -webkit-transform: scale3d(1.1, 1.1, 1.1);
-    transform: scale3d(1.1, 1.1, 1.1)
+  .animated.hinge {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
   }
-  40% {
-    -webkit-transform: scale3d(.9, .9, .9);
-    transform: scale3d(.9, .9, .9)
+  /*the animation definition*/
+  @-webkit-keyframes bounceIn {
+    0%,
+    100%,
+    20%,
+    40%,
+    60%,
+    80% {
+      -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    0% {
+      opacity: 0;
+      -webkit-transform: scale3d(0.3, 0.3, 0.3);
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1);
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+      -webkit-transform: scale3d(0.9, 0.9, 0.9);
+      transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+      opacity: 1;
+      -webkit-transform: scale3d(1.03, 1.03, 1.03);
+      transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+      -webkit-transform: scale3d(0.97, 0.97, 0.97);
+      transform: scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
   }
-  60% {
-    opacity: 1;
-    -webkit-transform: scale3d(1.03, 1.03, 1.03);
-    transform: scale3d(1.03, 1.03, 1.03)
+  @keyframes bounceIn {
+    0%,
+    100%,
+    20%,
+    40%,
+    60%,
+    80% {
+      -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    0% {
+      opacity: 0;
+      -webkit-transform: scale3d(0.3, 0.3, 0.3);
+      -ms-transform: scale3d(0.3, 0.3, 0.3);
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1);
+      -ms-transform: scale3d(1.1, 1.1, 1.1);
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+      -webkit-transform: scale3d(0.9, 0.9, 0.9);
+      -ms-transform: scale3d(0.9, 0.9, 0.9);
+      transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+      opacity: 1;
+      -webkit-transform: scale3d(1.03, 1.03, 1.03);
+      -ms-transform: scale3d(1.03, 1.03, 1.03);
+      transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+      -webkit-transform: scale3d(0.97, 0.97, 0.97);
+      -ms-transform: scale3d(0.97, 0.97, 0.97);
+      transform: scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: scale3d(1, 1, 1);
+      -ms-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
   }
-  80% {
-    -webkit-transform: scale3d(.97, .97, .97);
-    transform: scale3d(.97, .97, .97)
+  /*the animation definition*/
+  @-webkit-keyframes bounceOut {
+    20% {
+      -webkit-transform: scale3d(0.9, 0.9, 0.9);
+      transform: scale3d(0.9, 0.9, 0.9);
+    }
+    50%,
+    55% {
+      opacity: 1;
+      -webkit-transform: scale3d(1.1, 1.1, 1.1);
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+    100% {
+      opacity: 0;
+      -webkit-transform: scale3d(0.3, 0.3, 0.3);
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
   }
-  100% {
-    opacity: 1;
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1)
+  @keyframes bounceOut {
+    20% {
+      -webkit-transform: scale3d(0.9, 0.9, 0.9);
+      -ms-transform: scale3d(0.9, 0.9, 0.9);
+      transform: scale3d(0.9, 0.9, 0.9);
+    }
+    50%,
+    55% {
+      opacity: 1;
+      -webkit-transform: scale3d(1.1, 1.1, 1.1);
+      -ms-transform: scale3d(1.1, 1.1, 1.1);
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+    100% {
+      opacity: 0;
+      -webkit-transform: scale3d(0.3, 0.3, 0.3);
+      -ms-transform: scale3d(0.3, 0.3, 0.3);
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
   }
-}
-@keyframes bounceIn {
-  0%, 100%, 20%, 40%, 60%, 80% {
-    -webkit-transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
-    transition-timing-function: cubic-bezier(0.215, .61, .355, 1)
+  .bounceOut {
+    -webkit-animation-name: bounceOut;
+    animation-name: bounceOut;
   }
-  0% {
-    opacity: 0;
-    -webkit-transform: scale3d(.3, .3, .3);
-    -ms-transform: scale3d(.3, .3, .3);
-    transform: scale3d(.3, .3, .3)
-  }
-  20% {
-    -webkit-transform: scale3d(1.1, 1.1, 1.1);
-    -ms-transform: scale3d(1.1, 1.1, 1.1);
-    transform: scale3d(1.1, 1.1, 1.1)
-  }
-  40% {
-    -webkit-transform: scale3d(.9, .9, .9);
-    -ms-transform: scale3d(.9, .9, .9);
-    transform: scale3d(.9, .9, .9)
-  }
-  60% {
-    opacity: 1;
-    -webkit-transform: scale3d(1.03, 1.03, 1.03);
-    -ms-transform: scale3d(1.03, 1.03, 1.03);
-    transform: scale3d(1.03, 1.03, 1.03)
-  }
-  80% {
-    -webkit-transform: scale3d(.97, .97, .97);
-    -ms-transform: scale3d(.97, .97, .97);
-    transform: scale3d(.97, .97, .97)
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: scale3d(1, 1, 1);
-    -ms-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1)
-  }
-}
-/*the animation definition*/
-@-webkit-keyframes bounceOut {
-  20% {
-    -webkit-transform: scale3d(.9, .9, .9);
-    transform: scale3d(.9, .9, .9)
-  }
-  50%,
-  55% {
-    opacity: 1;
-    -webkit-transform: scale3d(1.1, 1.1, 1.1);
-    transform: scale3d(1.1, 1.1, 1.1)
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: scale3d(.3, .3, .3);
-    transform: scale3d(.3, .3, .3)
-  }
-}
-@keyframes bounceOut {
-  20% {
-    -webkit-transform: scale3d(.9, .9, .9);
-    -ms-transform: scale3d(.9, .9, .9);
-    transform: scale3d(.9, .9, .9)
-  }
-  50%,
-  55% {
-    opacity: 1;
-    -webkit-transform: scale3d(1.1, 1.1, 1.1);
-    -ms-transform: scale3d(1.1, 1.1, 1.1);
-    transform: scale3d(1.1, 1.1, 1.1)
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: scale3d(.3, .3, .3);
-    -ms-transform: scale3d(.3, .3, .3);
-    transform: scale3d(.3, .3, .3)
-  }
-}
-.bounceOut {
-  -webkit-animation-name: bounceOut;
-  animation-name: bounceOut
-}
 
-.bounceIn {
-  -webkit-animation-name: bounceIn;
-  animation-name: bounceIn
-}
+  .bounceIn {
+    -webkit-animation-name: bounceIn;
+    animation-name: bounceIn;
+  }
 
-  .container{
+  .container {
     #checklist {
       position: relative;
       display: grid;
       grid-template-columns: 30px auto;
       align-items: center;
       margin-top: 30px;
-  
+
       label {
         padding: 10px;
         color: $text;
@@ -450,10 +464,10 @@ main{
         display: grid;
         align-items: center;
         width: fit-content;
-        transition: color .3s ease;
+        transition: color 0.3s ease;
         &::before,
         &::after {
-          content:"";
+          content: "";
           position: absolute;
         }
         &::before {
@@ -461,7 +475,7 @@ main{
           width: 8px;
           left: -27px;
           border-radius: 2px;
-          transition: background .3s ease; 
+          transition: background 0.3s ease;
         }
         &:after {
           height: 4px;
@@ -486,7 +500,7 @@ main{
         align-items: center;
         &::before,
         &::after {
-          content:"";
+          content: "";
           position: absolute;
           height: 2px;
           top: auto;
@@ -494,128 +508,129 @@ main{
           border-radius: 2px;
         }
         &::before {
-          width: 0px;
+          width: 0;
           right: 60%;
           transform-origin: right bottom;
         }
         &::after {
-          width: 0px;
+          width: 0;
           left: 40%;
           transform-origin: left bottom;
         }
         &:checked {
           &::before {
-            animation: check-01 .4s ease forwards;
+            animation: check-01 0.4s ease forwards;
           }
           &::after {
-            animation: check-02 .4s ease forwards;
+            animation: check-02 0.4s ease forwards;
           }
           + label {
             color: $disabled;
-            animation: move .3s ease .1s forwards;
+            animation: move 0.3s ease 0.1s forwards;
             &::before {
               background: $disabled;
-              animation: slice .4s ease forwards;
+              animation: slice 0.4s ease forwards;
             }
             &::after {
-              animation: firework .5s ease forwards .1s;
+              animation: firework 0.5s ease forwards 0.1s;
             }
           }
         }
       }
+    }
+
+    @keyframes move {
+      50% {
+        padding-left: 8px;
+        padding-right: 0;
       }
-      
-      @keyframes move {
-        50% {
-          padding-left: 8px;
-          padding-right: 0px;
-        }
-        100% {
-          padding-right: 4px;
-        }
+      100% {
+        padding-right: 4px;
       }
-      @keyframes slice {
-        60% {
-          width: 100%;
-          left: 4px;
-        }
-        100% {
-          width: 100%;
-          left: -2px;
-          padding-left: 0;
-        }
+    }
+    @keyframes slice {
+      60% {
+        width: 100%;
+        left: 4px;
       }
-      @keyframes check-01 {
-        0% {
-          width: 4px;
-          top: auto;
-          transform: rotate(0);
-        }
-        50% {
-          width: 0px;
-          top: auto;
-          transform: rotate(0);
-        }
-        51% {
-          width: 0px;
-          top: 8px;
-          transform: rotate(45deg);
-        }
-        100% {
-          width: 5px;
-          top: 8px;
-          transform: rotate(45deg);
-        }
+      100% {
+        width: 100%;
+        left: -2px;
+        padding-left: 0;
       }
-      @keyframes check-02 {
-        0% {
-          width: 4px;
-          top: auto;
-          transform: rotate(0);
-        }
-        50% {
-          width: 0px;
-          top: auto;
-          transform: rotate(0);
-        }
-        51% {
-          width: 0px;
-          top: 8px;
-          transform: rotate(-45deg);
-        }
-        100% {
-          width: 10px;
-          top: 8px;
-          transform: rotate(-45deg);
-        }
+    }
+    @keyframes check-01 {
+      0% {
+        width: 4px;
+        top: auto;
+        transform: rotate(0);
       }
-      @keyframes firework {
-        0% {
-          opacity: 1;
-          box-shadow: 0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check;
-        }
-        30% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-          box-shadow: 0 -15px 0 0px $check, 14px -8px 0 0px $check, 14px 8px 0 0px $check, 0 15px 0 0px $check, -14px 8px 0 0px $check, -14px -8px 0 0px $check;
-        }
+      50% {
+        width: 0;
+        top: auto;
+        transform: rotate(0);
+      }
+      51% {
+        width: 0;
+        top: 8px;
+        transform: rotate(45deg);
+      }
+      100% {
+        width: 5px;
+        top: 8px;
+        transform: rotate(45deg);
+      }
+    }
+    @keyframes check-02 {
+      0% {
+        width: 4px;
+        top: auto;
+        transform: rotate(0);
+      }
+      50% {
+        width: 0;
+        top: auto;
+        transform: rotate(0);
+      }
+      51% {
+        width: 0;
+        top: 8px;
+        transform: rotate(-45deg);
+      }
+      100% {
+        width: 10px;
+        top: 8px;
+        transform: rotate(-45deg);
+      }
+    }
+    @keyframes firework {
+      0% {
+        opacity: 1;
+        box-shadow: 0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check,
+          0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check;
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        box-shadow: 0 -15px 0 0px $check, 14px -8px 0 0px $check,
+          14px 8px 0 0px $check, 0 15px 0 0px $check, -14px 8px 0 0px $check,
+          -14px -8px 0 0px $check;
+      }
     }
   }
-
 }
 
-.setting-main{
- 
-  #container{
+.setting-main {
+  #container {
     height: 125%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    .content{
+    .content {
       font-size: 1.2rem;
       height: 60vh;
       display: flex;
@@ -625,340 +640,147 @@ main{
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  $menu-bg: #191919;
-  $main-bg: #202020;
-  $input-bg: #333333;
-  $border-color: #3d3d3d;
-  $shadow-color: rgba(224, 224, 224, 0.295);
-  $menu-text: #e7e7e7;
-  $circle-color: #d1d7dc;
-  $icon: #fff;
-
-
-  $purple: #a766d3;
-  $red: #e25757;
-  $blue: #5fa4ff;
-  $green: #2fc43e;
-  $orange: #fc9b2d;
-  $pink: #ff5df1;
-
-  $red2: rgba($red, .4);
-  $purple2: rgba($purple, .4);
-  $blue2: rgba($blue, .4);
-  $green2: rgba($green, .4);
-  $orange2: rgba($orange, .4);
-  $pink2: rgba($pink, .4);
-
-  $text: #eeeeee;
-  $check: #e7e7e7;
-  $disabled: #a8a8a8;
-
-  .title{
-    background-color: $purple;
-  }
-
-  .menu{
-    background-color: $menu-bg;
-    input{
-      background-color: $input-bg;
-      color: $menu-text;
-      border: 1px solid $border-color; 
-      &:focus{ 
-        box-shadow: 0px 0px 0px 1px $shadow-color;
+@mixin createPrefersColorScheme($ui-colors, $colors){
+  .menu {
+    background-color: map.get($ui-colors, "menu-bg");
+    input {
+      background-color: map.get($ui-colors, "input-bg");
+      color: map.get($ui-colors, "menu-text");
+      border: 1px solid map.get($ui-colors, "border-color");
+      &:focus {
+        box-shadow: 0 0 0 1px map.get($ui-colors, "shadow-color");
       }
     }
-    .Search{
-      .submit{ 
-        svg{
-          fill: $icon;
+    .Search {
+      .submit {
+        svg {
+          fill: map.get($ui-colors, "icon");
         }
       }
-      button[type='reset']{ 
-        svg{
-          fill: $icon;
+      button[type="reset"] {
+        svg {
+          fill: map.get($ui-colors, "icon");
         }
       }
     }
 
-    .my-lists{
-        ul{
-          li{
-            color: $menu-text;
-  
-            .color-red{
-                background-color: $red;
-            }
-  
-            .color-blue{
-                background: $blue;
-            }
-  
-            .color-green{
-                background: $green;
-            }
-  
-            .color-purple{
-                background: $purple;
-            }
-  
-            .color-orange{
-                background: $orange;
-            }
-  
-            .color-pink{
-                background: $pink;
+    .my-lists {
+      ul {
+        li {
+          color: map.get($ui-colors, "menu-text");
+          @each $color-name, $color in $colors{
+            .color-#{$color-name} {
+              background-color: $color;
             }
           }
-  
-          .color-red{
-              background: $red2;
+
+        }
+
+        @each $color-name, $color in $colors{
+          .color-#{$color-name} {
+            background-color: rgba($color, 0.4);
           }
-  
-          .color-blue{
-              background: $blue2;
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: rgba(#000000, 0.1);
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: rgb(17, 16, 16);
+          border-radius: 1rem;
+          &:hover {
+            background-color: rgba(rgb(13, 12, 12), 0.4);
           }
-          .color-green{
-              background: $green2;
-          }
-          .color-purple{
-              background: $purple2;
-          }
-  
-          .color-orange{
-              background: $orange2;
-          }
-  
-          .color-pink{
-              background: $pink2;
-          }
-          &::-webkit-scrollbar-track {
-            background-color: rgba($color: #000000, $alpha: 0.1);
-          }
-    
-          &::-webkit-scrollbar-thumb {
-            background-color: rgb(17, 16, 16);
-            border-radius: 1rem;
-            &:hover{
-              background-color: rgba($color: rgb(13, 12, 12), $alpha: 0.4)
-            }
         }
       }
     }
   }
 
-  .setting-menu{
-    color: $menu-text;
-    div{
-      svg{
-        fill: $icon;
+  .setting-menu {
+    color: map.get($ui-colors, "menu-text");
+    div {
+      svg {
+        fill: map.get($ui-colors, "icon");
       }
     }
   }
 
-  main{
-      background-color: $main-bg;
-      color: $icon;
+  main {
+    background-color: map.get($ui-colors, "main-bg");
+    color: map.get($ui-colors, "icon");
 
-      header{
-          button{
-              color: $icon;
-          }
+    header {
+      button {
+        color: map.get($ui-colors, "icon");
       }
+    }
 
-    .task-add{
-      span{
-          background-color: $check;
+    .task-add {
+      span {
+        background-color: map.get($ui-colors, "check");
       }
-      input{
-          color: $icon;
+      input {
+        color: map.get($ui-colors, "icon");
       }
     }
   }
 
-  .container{
-    #checklist{
-      label{
-        color: $text;
+  .container {
+    #checklist {
+      label {
+        color: map.get($ui-colors, "text");
         &::before {
-          background: $check;
+          background: map.get($ui-colors, "check");
         }
       }
     }
   }
 
-  .settings{
-    color: $menu-text;
-    svg{
-      fill: $icon;
+  .settings {
+    color: map.get($ui-colors, "menu-text");
+    svg {
+      fill: map.get($ui-colors, "icon");
     }
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  $ui-colors: (
+          "menu-bg" : #191919,
+          "main-bg": #202020,
+          "input-bg": #333333,
+          "border-color": #3d3d3d,
+          "shadow-color": rgba(224, 224, 224, 0.295),
+          "menu-text": #e7e7e7,
+          "circle-color": #d1d7dc,
+          "icon": #fff,
+          "text": #eeeeee,
+          "check": #e7e7e7,
+          "disabled": #a8a8a8
+  );
+
+  $colors: "red" #e25757, "blue" #5fa4ff, "green" #2fc43e, "purple" #a766d3, "orange" #fc9b2d, "pink" #ff5df1;
+
+  @include createPrefersColorScheme($ui-colors, $colors);
+}
+
 @media (prefers-color-scheme: light) {
-  $menu-bg: #fafafa;
-  $main-bg: #fdfdfd;
-  $input-bg: #fff;
-  $border-color: #ebebeb;
-  $shadow-color: rgba(0,0,0,0.03);
-  $menu-text: #686868;
-  $circle-color: #d1d7dc;
-  $icon: #000;
+  $ui-colors: (
+          "menu-bg" : #fafafa,
+          "main-bg": #fdfdfd,
+          "input-bg": #fff,
+          "border-color": #ebebeb,
+          "shadow-color": rgba(0, 0, 0, 0.03),
+          "menu-text": #686868,
+          "circle-color": #d1d7dc,
+          "icon": #000,
+          "text": #9195a1,
+          "check": #404040,
+          "disabled": #404040
+  );
 
-  $purple: #a872ff;
-  $red: #ff9797;
-  $blue: #75b1ff;
-  $green: #49d657;
-  $orange: #ffaf53;
-  $pink: #f781ed;
+  $colors: "purple" #a872ff, "red" #ff9797, "blue" #75b1ff, "green" #49d657, "orange" #ffaf53, "pink" #f781ed;
 
-  $red2: rgba($red, .2);
-  $purple2: rgba($purple, .2);
-  $blue2: rgba($blue, .2);
-  $green2: rgba($green, .2);
-  $orange2: rgba($orange, .2);
-  $pink2: rgba($pink, .2);
-
-  $text: #9195a1;
-  $check: #404040;
-  $disabled: #404040;
-
-  .title{
-    background-color: $purple;
-  }
-
-  .menu{
-    background-color: $menu-bg;
-    input{
-      background-color: $input-bg;
-      color: $menu-text;
-      border: 1px solid $border-color; 
-      &:focus{ 
-        box-shadow: 0px 0px 0px 1px $shadow-color;
-      }
-    }
-    .Search{
-      .submit{ 
-        svg{
-          fill: $icon;
-        }
-      }
-      button[type='reset']{ 
-        svg{
-          fill: $icon;
-        }
-      }
-    }
-
-    .my-lists{
-      .list{
-        ul{
-          li{
-            color: $menu-text;
-  
-            .color-red{
-                background-color: $red;
-            }
-  
-            .color-blue{
-                background: $blue;
-            }
-  
-            .color-green{
-                background: $green;
-            }
-  
-            .color-purple{
-                background: $purple;
-            }
-  
-            .color-orange{
-                background: $orange;
-            }
-  
-            .color-pink{
-                background: $pink;
-            }
-          }
-  
-          .color-red{
-              background: $red2;
-          }
-  
-          .color-blue{
-              background: $blue2;
-          }
-          .color-green{
-              background: $green2;
-          }
-          .color-purple{
-              background: $purple2;
-          }
-  
-          .color-orange{
-              background: $orange2;
-          }
-  
-          .color-pink{
-              background: $pink2;
-          }
-          &::-webkit-scrollbar-track {
-            background-color: $menu-bg;
-          }
-    
-          &::-webkit-scrollbar-thumb {
-            background-color: $circle-color;
-            border-radius: 10px;
-          } 
-        }
-      }
-    }
-  }
-
-  .setting-menu{
-    color: $menu-text;
-    div{
-      svg{
-        fill: $icon;
-      }
-    }
-  }
-
-  main{
-      background-color: $main-bg;
-      color: $icon;
-
-      header{
-          button{
-              color: $icon;
-          }
-      }
-
-    .task-add{
-      span{
-          background-color: $check;
-      }
-      input{
-          color: $icon;
-      }
-    }
-  }
-
-  .container{
-    #checklist{
-      label{
-        color: $text;
-        &::before {
-          background: $check;
-        }
-      }
-    }
-  }
-
-  .settings{
-    color: $menu-text;
-    svg{
-      fill: $icon;
-    }
-  }
+  @include createPrefersColorScheme($ui-colors, $colors);
 }
