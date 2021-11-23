@@ -1,6 +1,8 @@
-const remote = require("@electron/remote");
 const electron = require("electron");
+const remote =
+  process.type === "browser" ? electron : require("@electron/remote");
 const StormDB = require("stormdb");
+const i18n = new (require("../localization/i18n"))();
 const { join } = require("path");
 const app = electron.app ? electron.app : remote.app;
 
@@ -18,35 +20,38 @@ db.default({
   lists: [
     {
       listID: 0,
-      listName: "Tutorial",
+      listName: i18n.__("tutorial"),
       listColor: colors[Math.floor(Math.random() * colors.length)],
       listIcon: null,
       listItems: [
-        { itemID: 0, itemName: "Hello There !", checked: false },
-        { itemID: 1, itemName: "This is your to-do list 🥰", checked: false },
+        { itemID: 0, itemName: i18n.__("hello-there"), checked: false },
+        { itemID: 1, itemName: i18n.__("tut-i1"), checked: false },
         {
           itemID: 2,
-          itemName: "There are to-do lists on the right.",
+          itemName: i18n.__("tut-i2"),
           checked: false,
         },
         {
           itemID: 3,
           itemName:
-            "Right below the to-do lists we have a tiny button for settings.",
+            process.platform === "darwin"
+              ? i18n.__("tut-i3-for-mac")
+              : process.platform === "win32"
+              ? i18n.__("tut-i3-for-win")
+              : i18n.__("tut-i3-for-linux"),
           checked: false,
         },
         {
           itemID: 4,
-          itemName: "You can set your theme and language from settings.",
+          itemName: i18n.__("tut-i4"),
           checked: false,
         },
         {
           itemID: 5,
-          itemName:
-            "I may have more features in the future, but I will always be stylish and simple.",
+          itemName: i18n.__("tut-i5"),
           checked: false,
         },
-        { itemID: 6, itemName: "XOXO", checked: false },
+        { itemID: 6, itemName: i18n.__("tut-i6"), checked: false },
       ],
     },
   ],
@@ -57,6 +62,25 @@ db.default({
 });
 
 db.save(); // for defaults
+
+// exports
+
+module.exports = {
+  createList,
+  createToDo,
+  renameList,
+  changeColor,
+  changeIcon,
+  removeCompletes,
+  removeItem,
+  loadLists,
+  loadList,
+  todoCheckedStatus,
+  changeLanguage,
+  changeAppearance,
+  getAppearance,
+  getLanguage,
+};
 
 // list actions
 
@@ -71,8 +95,16 @@ function createList(data) {
   db.get("lists").push(temp).save();
 }
 
-function createToDo(data, listID) {
-  db.get("lists").get(listID).get("listItems").push(data).save();
+function createToDo(itemName, listID) {
+  db.get("lists")
+    .get(listID)
+    .get("listItems")
+    .push({
+      itemID: db.get("lists").get(listID).length + 1,
+      itemName: itemName,
+      checked: false,
+    })
+    .save();
 }
 
 function renameList(listID, newName) {
@@ -155,17 +187,10 @@ function changeAppearance(newValue) {
   db.get("settings").get("appearance").set(newValue).save();
 }
 
-module.exports = {
-  createList,
-  createToDo,
-  renameList,
-  changeColor,
-  changeIcon,
-  removeCompletes,
-  removeItem,
-  loadLists,
-  loadList,
-  todoCheckedStatus,
-  changeLanguage,
-  changeAppearance,
-};
+function getAppearance() {
+  return db.get("settings").get("appearance").value();
+}
+
+function getLanguage() {
+  return db.get("settings").get("language").value();
+}

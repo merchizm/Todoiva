@@ -6,5 +6,15 @@
     "settings-theme": "Apperance",
     "settings-lang-l": "Change Language :",
     "settings-theme-p": "Choose Your Apperance",
-    "back-button":"Go Back"
+    "back-button":"Go Back",
+    "tutorial": "Tutorial",
+    "hello-there": "Hello There !",
+    "tut-i1": "This is your to-do list 🥰",
+    "tut-i2": "There are to-do lists on the right.",
+    "tut-i3-for-mac": "Right above the to-do lists we have a tiny button for settings.",
+    "tut-i3-for-win": "Right next to the window control buttons, there is a tiny settings button just as stylish.",
+    "tut-i3-for-linux": "",
+    "tut-i4": "You can set your theme and language from settings.",
+    "tut-i5": "I may have more features in the future, but I will always be stylish and simple.",
+    "tut-i6": "XOXO"
 }

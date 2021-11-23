@@ -6,5 +6,15 @@
     "settings-theme": "Görünüş Ayarı",
     "settings-lang-l": "Bu arayüzün dilini değiştirin :",
     "settings-theme-p": "Görünüş",
-    "back-button":"Geri Dön"
+    "back-button":"Geri Dön",
+    "tutorial": "Todoiva Öğreticisi",
+    "hello-there": "Selam !",
+    "tut-i1": "Burası senin yapılacaklar listen 🥰",
+    "tut-i2": "Sağ tarafta da yapılacaklar listelerin var.",
+    "tut-i3-for-mac": "Hemen yukarıda ise ayarlara ulaşman için tatlı bir button var.",
+    "tut-i3-for-win": "Hemen pencere kontrol butonlarının yanında onlar kadar şık minik bir ayarlar buttonu var.",
+    "tut-i3-for-linux": "",
+    "tut-i4": "Ayarlardan dilersen tasarımı veya dili değiştirebilirsin.",
+    "tut-i5": "Belki ileride çok daha fazla özelliğim olur ama şimdilik ayarlarda yapabileceklerin bunlar 😊",
+    "tut-i6": ":* :*"
 }

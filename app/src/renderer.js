@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */ // for window and document
+const { changeLanguage, getLanguage } = require("../database/storm");
+const Event = new (require("./events"))();
 // macOS Events
 if (process.platform === "darwin") {
   const { ipcRenderer } = require("electron");
@@ -17,7 +19,7 @@ if (process.platform === "darwin") {
 }
 // windows Events
 if (process.platform === "win32") {
-  const remote = require("electron");
+  const remote = require("@electron/remote");
   const win = remote.getCurrentWindow();
 
   window.onbeforeunload = () => {
@@ -44,7 +46,7 @@ if (process.platform === "win32") {
   });
 }
 // Localization
-window.i18n = new (require("../localization/i18n"))();
+window.i18n = new (require("../localization/i18n"))(getLanguage());
 window.localization = window.localization || {};
 (function () {
   window.localization.translate = {
@@ -122,12 +124,12 @@ function languageSelectPrep() {
     let option = document.createElement("option");
     option.text = languages.languages[element];
     option.value = element;
+    getLanguage() === element && option.setAttribute("selected", true);
     select.add(option);
   });
 }
 // eslint-disable-next-line no-unused-vars
 function languageSelectOnChange() {
-  const { changeLanguage } = require("../database/storm");
   let select = document.getElementById("language").value;
   changeLanguage(select);
 }
@@ -149,7 +151,7 @@ function goBack() {
 
 // eslint-disable-next-line no-unused-vars
 function settingsNavigation(evt, Section) {
-  var i, tabContent, tabNav;
+  let i, tabContent, tabNav;
 
   tabContent = document.getElementsByClassName("content");
   for (i = 0; i < tabContent.length; i++) {
@@ -168,7 +170,7 @@ function settingsNavigation(evt, Section) {
 
 // Defalut Page
 
-var clearAnimated = () => {
+const clearAnimated = () => {
   setTimeout(
     () => document.getElementById("task-input").classList.remove("animated"),
     300
@@ -176,30 +178,30 @@ var clearAnimated = () => {
 };
 
 function addToDo() {
-  document.getElementById("task-input").style = "display: block;";
+  document.getElementById("task-input").style.display = "block";
   setTimeout(
     () => document.getElementById("task-input").classList.add("animated"),
     10
   );
   let taskAdd = document.getElementById("task-add");
-  taskAdd.style =
-    "transition: all 0.3s ease-in-out; transform: rotate(45deg) scale(1.4);";
+  taskAdd.style.transition =
+    "all 0.3s ease-in-out; transform: rotate(45deg) scale(1.4)";
   taskAdd.onclick = closeAddToDo;
   clearAnimated();
 }
 
 function closeAddToDo() {
   let taskAdd = document.getElementById("task-add");
-  taskAdd.style =
-    "transition: all 0.3s ease-in-out; transform: rotate(0deg) scale(1);";
-  taskAdd.onclick = "addToDo();";
+  taskAdd.style.transition =
+    "all 0.3s ease-in-out; transform: rotate(0deg) scale(1)";
+  taskAdd.onclick = addToDo;
   document.getElementById("task-input").classList.remove("bounceIn");
 
   document.getElementById("task-input").classList.add("bounceOut");
   document.getElementById("task-input").classList.add("animated");
 
   setTimeout(
-    () => (document.getElementById("task-input").style = "display: none;"),
+    () => (document.getElementById("task-input").style.display = "none"),
     300
   );
   taskAdd.onclick = addToDo;
@@ -209,7 +211,7 @@ function closeAddToDo() {
 document.getElementById("add-input").addEventListener("keyup", (event) => {
   if (event.key === "enter") {
     let input = document.getElementById("add-input");
-    // TODO: Veritabanına ekleme yapacak kodu listid alıp yap
+    Event.createToDo(input.value, input.dataset.listid);
     input.value = null;
   }
 });

@@ -1,21 +1,13 @@
 const path = require("path");
-const remote = require("@electron/remote");
-const electron = require("electron");
 const fs = require("fs");
 let loadedLanguage;
-const app = electron.app ? electron.app : remote.app;
 
 module.exports = i18n;
 
-function i18n() {
-  if (
-    fs.existsSync(path.join(__dirname, "locales", app.getLocale() + ".json"))
-  ) {
+function i18n(lang) {
+  if (fs.existsSync(path.join(__dirname, "locales", lang + ".json"))) {
     loadedLanguage = JSON.parse(
-      fs.readFileSync(
-        path.join(__dirname, "locales", app.getLocale() + ".json"),
-        "utf8"
-      )
+      fs.readFileSync(path.join(__dirname, "locales", lang + ".json"), "utf8")
     );
   } else {
     loadedLanguage = JSON.parse(

@@ -1,7 +1,7 @@
-const { app, BrowserWindow, shell } = require("electron");
+const { app, BrowserWindow, shell, nativeTheme } = require("electron");
 const path = require("path");
+const { getAppearance } = require("../database/storm");
 const url = require("url");
-// var i18n = new (require(path.join("../", "localization/i18n")))();
 const remote = require("@electron/remote/main");
 remote.initialize();
 
@@ -24,7 +24,9 @@ function createWindow() {
   // https://www.electronjs.org/docs/latest/breaking-changes#planned-breaking-api-changes-140
   remote.enable(mainWindow.webContents);
 
-  mainWindow.openDevTools();
+  // set Appearance
+  nativeTheme.themeSource = getAppearance();
+
   // and load the index.html of the app.
   mainWindow.loadURL(
     url.format({
