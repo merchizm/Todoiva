@@ -8,6 +8,12 @@ $text: #9195a1;
 $check: #404040;
 $disabled: #404040;
 
+@mixin flex-display($display, $align-items, $justify-content) {
+	display: $display;
+	align-items: $align-items;
+	justify-content: $justify-content;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -37,18 +43,14 @@ li {
   max-width: 100vw;
   user-select: none;
   .macos-titlebar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-display(flex, center, space-between);
     overflow: hidden;
     height: 35px;
     padding-left: 2vw;
     padding-right: 10px;
     -webkit-app-region: drag;
     .button-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex-display(flex, center, space-between);
       height: 35px;
       padding-left: 65px;
       padding-right: 10px;
@@ -161,9 +163,7 @@ li {
     height: 90%;
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flex-display(flex, center, space-between);
       color: $menu-text;
 
       h3 {
@@ -202,8 +202,7 @@ li {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-          display: flex;
-          align-items: center;
+          @include flex-display(flex, center, normal);
 
           &:first-child {
             margin-top: 0;
@@ -233,17 +232,15 @@ li {
 
   .language,
   .theme {
-    display: flex;
-    align-items: center;
+    @include flex-display(flex, center, normal);
     font-size: 1.3rem;
   }
 }
 
 .setting-menu {
-  display: flex;
+  @include flex-display(flex, center, center);
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
   div {
     margin: 10px 0;
 
@@ -265,9 +262,7 @@ main {
   height: 100%;
 
   header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-display(flex, center, space-between);
 
     .new-task-btn {
       background-color: transparent;
@@ -449,7 +444,7 @@ main {
   }
 
   .container {
-    #checklist {
+    #todolist {
       position: relative;
       display: grid;
       grid-template-columns: 30px auto;
@@ -498,6 +493,7 @@ main {
         cursor: pointer;
         display: grid;
         align-items: center;
+        
         &::before,
         &::after {
           content: "";
@@ -625,17 +621,13 @@ main {
 .setting-main {
   #container {
     height: 125%;
-    display: flex;
+    @include flex-display(flex, center, center);
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
     .content {
       font-size: 1.2rem;
       height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-display(flex, center, center);
     }
   }
 }
