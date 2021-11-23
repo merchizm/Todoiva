@@ -100,7 +100,7 @@ function createToDo(itemName, listID) {
     .get(listID)
     .get("listItems")
     .push({
-      itemID: db.get("lists").get(listID).length + 1,
+      itemID: db.get("lists").get(listID).get("listItems").value().length,
       itemName: itemName,
       checked: false,
     })

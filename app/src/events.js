@@ -104,8 +104,6 @@ class Events {
     });
     this.LoadLists(ele, doc, result);
   }
-
-
 }
 
 module.exports = Events;

@@ -150,7 +150,7 @@ function goBack() {
 }
 
 // eslint-disable-next-line no-unused-vars
-function settingsNavigation(evt, Section) {
+function settingsNavigation(event, Section) {
   let i, tabContent, tabNav;
 
   tabContent = document.getElementsByClassName("content");
@@ -165,7 +165,7 @@ function settingsNavigation(evt, Section) {
 
   // Show the current tab, and add an "active" class to the link that opened the tab
   document.getElementById(Section).style.display = "block";
-  evt.currentTarget.className += " active";
+  event.currentTarget.className += " active";
 }
 
 // Defalut Page
@@ -184,22 +184,22 @@ function addToDo() {
     10
   );
   let taskAdd = document.getElementById("task-add");
-  taskAdd.style.transition =
-    "all 0.3s ease-in-out; transform: rotate(45deg) scale(1.4)";
+  taskAdd.style =
+    "transition: all 0.3s ease-in-out; transform: rotate(45deg) scale(1.4);";
   taskAdd.onclick = closeAddToDo;
   clearAnimated();
 }
 
 function closeAddToDo() {
   let taskAdd = document.getElementById("task-add");
-  taskAdd.style.transition =
-    "all 0.3s ease-in-out; transform: rotate(0deg) scale(1)";
+  taskAdd.style =
+    "transition: all 0.3s ease-in-out; transform: rotate(0deg) scale(1);";
   taskAdd.onclick = addToDo;
   document.getElementById("task-input").classList.remove("bounceIn");
 
   document.getElementById("task-input").classList.add("bounceOut");
   document.getElementById("task-input").classList.add("animated");
-
+  document.getElementById("add-input").value = null;
   setTimeout(
     () => (document.getElementById("task-input").style.display = "none"),
     300
@@ -209,11 +209,19 @@ function closeAddToDo() {
 }
 
 document.getElementById("add-input").addEventListener("keyup", (event) => {
-  if (event.key === "enter") {
+  if (
+    event.key === "enter" ||
+    event.key === "Enter" ||
+    event.keyCode === "13"
+  ) {
     let input = document.getElementById("add-input");
     Event.createToDo(input.value, input.dataset.listid);
     input.value = null;
   }
 });
+
+(function () {
+  Event.LoadLists(document.getElementById("todolists"), document);
+})();
 
 // TODO: boşluğa tıklandığında kaybolsun
