@@ -31,8 +31,8 @@ li {
 }
 .title .macos-titlebar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   overflow: hidden;
   height: 35px;
   padding-left: 2vw;
@@ -41,8 +41,8 @@ li {
 }
 .title .macos-titlebar .button-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   height: 35px;
   padding-left: 65px;
   padding-right: 10px;
@@ -52,6 +52,7 @@ li {
 .title .macos-titlebar .button-container .normal-button {
   display: flex;
   align-items: center;
+  justify-content: normal;
   padding: 3px;
   border-radius: 3px;
   cursor: pointer;
@@ -143,8 +144,8 @@ li {
 }
 .menu .my-lists header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   color: #686868;
 }
 .menu .my-lists header h3 {
@@ -183,6 +184,7 @@ li {
   text-overflow: ellipsis;
   display: flex;
   align-items: center;
+  justify-content: normal;
 }
 .menu .my-lists .list ul li:first-child {
   margin-top: 0;
@@ -207,14 +209,15 @@ li {
 .menu .theme {
   display: flex;
   align-items: center;
+  justify-content: normal;
   font-size: 1.3rem;
 }
 
 .setting-menu {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .setting-menu div {
   margin: 10px 0;
@@ -399,14 +402,14 @@ main .bounceIn {
   -webkit-animation-name: bounceIn;
   animation-name: bounceIn;
 }
-main .container #checklist {
+main .container #todolist {
   position: relative;
   display: grid;
   grid-template-columns: 30px auto;
   align-items: center;
   margin-top: 30px;
 }
-main .container #checklist label {
+main .container #todolist label {
   padding: 10px;
   color: #9195a1;
   position: relative;
@@ -416,25 +419,26 @@ main .container #checklist label {
   width: fit-content;
   transition: color 0.3s ease;
 }
-main .container #checklist label::before, main .container #checklist label::after {
+main .container #todolist label::before, main .container #todolist label::after {
   content: "";
   position: absolute;
 }
-main .container #checklist label::before {
+main .container #todolist label::before {
   height: 2px;
   width: 8px;
   left: -27px;
   border-radius: 2px;
+  background-color: #9195a1;
   transition: background 0.3s ease;
 }
-main .container #checklist label:after {
+main .container #todolist label:after {
   height: 4px;
   width: 4px;
   top: 8px;
   left: -25px;
   border-radius: 50%;
 }
-main .container #checklist input[type=checkbox] {
+main .container #todolist input[type=checkbox] {
   -webkit-appearance: none;
   -moz-appearance: none;
   position: relative;
@@ -447,7 +451,7 @@ main .container #checklist input[type=checkbox] {
   display: grid;
   align-items: center;
 }
-main .container #checklist input[type=checkbox]::before, main .container #checklist input[type=checkbox]::after {
+main .container #todolist input[type=checkbox]::before, main .container #todolist input[type=checkbox]::after {
   content: "";
   position: absolute;
   height: 2px;
@@ -455,31 +459,31 @@ main .container #checklist input[type=checkbox]::before, main .container #checkl
   background: #404040;
   border-radius: 2px;
 }
-main .container #checklist input[type=checkbox]::before {
+main .container #todolist input[type=checkbox]::before {
   width: 0;
   right: 60%;
   transform-origin: right bottom;
 }
-main .container #checklist input[type=checkbox]::after {
+main .container #todolist input[type=checkbox]::after {
   width: 0;
   left: 40%;
   transform-origin: left bottom;
 }
-main .container #checklist input[type=checkbox]:checked::before {
+main .container #todolist input[type=checkbox]:checked::before {
   animation: check-01 0.4s ease forwards;
 }
-main .container #checklist input[type=checkbox]:checked::after {
+main .container #todolist input[type=checkbox]:checked::after {
   animation: check-02 0.4s ease forwards;
 }
-main .container #checklist input[type=checkbox]:checked + label {
+main .container #todolist input[type=checkbox]:checked + label {
   color: #404040;
   animation: move 0.3s ease 0.1s forwards;
 }
-main .container #checklist input[type=checkbox]:checked + label::before {
+main .container #todolist input[type=checkbox]:checked + label::before {
   background: #404040;
   animation: slice 0.4s ease forwards;
 }
-main .container #checklist input[type=checkbox]:checked + label::after {
+main .container #todolist input[type=checkbox]:checked + label::after {
   animation: firework 0.5s ease forwards 0.1s;
 }
 @keyframes move {
@@ -563,9 +567,9 @@ main .container #checklist input[type=checkbox]:checked + label::after {
 .setting-main #container {
   height: 125%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   overflow: hidden;
 }
 .setting-main #container .content {

@@ -469,6 +469,7 @@ main {
           width: 8px;
           left: -27px;
           border-radius: 2px;
+          background-color: $text;
           transition: background 0.3s ease;
         }
         &:after {
