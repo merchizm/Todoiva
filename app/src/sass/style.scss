@@ -58,8 +58,7 @@ li {
       cursor: pointer;
 
       .normal-button {
-        display: flex;
-        align-items: center;
+        @include flex-display(flex, center, normal);
         padding: 3px;
         border-radius: 3px;
         cursor: pointer;
