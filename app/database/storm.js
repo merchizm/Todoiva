@@ -24,15 +24,15 @@ db.default({
       listColor: colors[Math.floor(Math.random() * colors.length)],
       listIcon: null,
       listItems: [
-        { itemID: 0, itemName: i18n.__("hello-there"), checked: false },
-        { itemID: 1, itemName: i18n.__("tut-i1"), checked: false },
+        { itemID: 1, itemName: i18n.__("hello-there"), checked: false },
+        { itemID: 2, itemName: i18n.__("tut-i1"), checked: false },
         {
-          itemID: 2,
+          itemID: 3,
           itemName: i18n.__("tut-i2"),
           checked: false,
         },
         {
-          itemID: 3,
+          itemID: 4,
           itemName:
             process.platform === "darwin"
               ? i18n.__("tut-i3-for-mac")
@@ -42,16 +42,16 @@ db.default({
           checked: false,
         },
         {
-          itemID: 4,
+          itemID: 5,
           itemName: i18n.__("tut-i4"),
           checked: false,
         },
         {
-          itemID: 5,
+          itemID: 6,
           itemName: i18n.__("tut-i5"),
           checked: false,
         },
-        { itemID: 6, itemName: i18n.__("tut-i6"), checked: false },
+        { itemID: 7, itemName: i18n.__("tut-i6"), checked: false },
       ],
     },
   ],
@@ -63,25 +63,6 @@ db.default({
 
 db.save(); // for defaults
 
-// exports
-
-module.exports = {
-  createList,
-  createToDo,
-  renameList,
-  changeColor,
-  changeIcon,
-  removeCompletes,
-  removeItem,
-  loadLists,
-  loadList,
-  todoCheckedStatus,
-  changeLanguage,
-  changeAppearance,
-  getAppearance,
-  getLanguage,
-};
-
 // list actions
 
 function createList(data) {
@@ -92,7 +73,7 @@ function createList(data) {
     listIcon: data.listIcon,
     listItems: {},
   };
-  db.get("lists").push(temp).save();
+  db.get("lists").push(temp);
 }
 
 function createToDo(itemName, listID) {
@@ -103,8 +84,7 @@ function createToDo(itemName, listID) {
       itemID: db.get("lists").get(listID).get("listItems").value().length,
       itemName: itemName,
       checked: false,
-    })
-    .save();
+    });
 }
 
 function renameList(listID, newName) {
@@ -144,14 +124,17 @@ function removeCompletes(listID) {
           .get(listID)
           .get("listItems")
           .get(item.itemID)
-          .delete(true)
-          .save();
+          .delete(true);
       }
     });
 }
 
 function removeItem(itemID, listID) {
-  db.get("lists").get(listID).get("listItems").get(itemID).delete(true).save();
+  db.get("lists").get(listID).get("listItems").get(itemID).delete(true);
+}
+
+function getLength(listID) {
+  return db.get("lists").get(listID).get("listItems").value().length;
 }
 
 function loadLists() {
@@ -166,7 +149,7 @@ function todoCheckedStatus(itemID, listID, status) {
   db.get("lists")
     .get(listID)
     .get("listItems")
-    .get(itemID)
+    .get(itemID - 1)
     .get("checked")
     .set(status)
     .save();
@@ -194,3 +177,23 @@ function getAppearance() {
 function getLanguage() {
   return db.get("settings").get("language").value();
 }
+
+// exports
+
+module.exports = {
+  createList,
+  createToDo,
+  renameList,
+  changeColor,
+  changeIcon,
+  removeCompletes,
+  removeItem,
+  loadLists,
+  loadList,
+  todoCheckedStatus,
+  changeLanguage,
+  changeAppearance,
+  getAppearance,
+  getLanguage,
+  getLength,
+};

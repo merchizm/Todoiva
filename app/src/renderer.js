@@ -170,9 +170,9 @@ function settingsNavigation(event, Section) {
 
 // Defalut Page
 
-const clearAnimated = () => {
+const clearAnimated = (elementID) => {
   setTimeout(
-    () => document.getElementById("task-input").classList.remove("animated"),
+    () => document.getElementById(elementID).classList.remove("animated"),
     300
   );
 };
@@ -187,7 +187,7 @@ function addToDo() {
   taskAdd.style =
     "transition: all 0.3s ease-in-out; transform: rotate(45deg) scale(1.4);";
   taskAdd.onclick = closeAddToDo;
-  clearAnimated();
+  clearAnimated("task-input");
 }
 
 function closeAddToDo() {
@@ -197,15 +197,14 @@ function closeAddToDo() {
   taskAdd.onclick = addToDo;
   document.getElementById("task-input").classList.remove("bounceIn");
 
-  document.getElementById("task-input").classList.add("bounceOut");
-  document.getElementById("task-input").classList.add("animated");
+  document.getElementById("task-input").classList.add("bounceOut", "animated");
   document.getElementById("add-input").value = null;
   setTimeout(
     () => (document.getElementById("task-input").style.display = "none"),
     300
   );
   taskAdd.onclick = addToDo;
-  clearAnimated();
+  clearAnimated("task-input");
 }
 
 document.getElementById("add-input").addEventListener("keyup", (event) => {
@@ -214,14 +213,37 @@ document.getElementById("add-input").addEventListener("keyup", (event) => {
     event.key === "Enter" ||
     event.keyCode === "13"
   ) {
-    let input = document.getElementById("add-input");
-    Event.createToDo(input.value, input.dataset.listid);
-    input.value = null;
+    try {
+      let input = document.getElementById("add-input");
+      let todoList = document.getElementById("todolist");
+      let frag = document.createDocumentFragment();
+      let newInput = document.createElement("input");
+      let label = document.createElement("label");
+
+      newInput.type = "checkbox";
+      newInput.id = Event.createToDo(input.value, input.dataset.listid) + 1;
+      newInput.dataset.listid = input.dataset.listid;
+      newInput.checked = false;
+      newInput.addEventListener("change", Event.todoListener);
+
+      label.id = newInput.id + "_label";
+      label.setAttribute("for", newInput.id);
+      label.innerText = input.value;
+      label.classList.add("pulse", "animated");
+      frag.appendChild(newInput);
+      frag.appendChild(label);
+      todoList.appendChild(frag);
+      clearAnimated(label.id);
+
+      input.value = null;
+    } catch (error) {
+      console.log(error);
+    }
   }
 });
 
 (function () {
-  Event.LoadLists(document.getElementById("todolists"), document);
+  Event.loadLists(document.getElementById("todolists"), document);
 })();
 
 // TODO: boşluğa tıklandığında kaybolsun
