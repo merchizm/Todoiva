@@ -1,50 +1,52 @@
 /* eslint-disable no-undef */ // for window and document
 const { changeLanguage, getLanguage } = require("../database/storm");
 const Event = new (require("./events"))();
-// macOS Events
-if (process.platform === "darwin") {
-  const { ipcRenderer } = require("electron");
-  let titleBarMacOS = document.getElementById("macos-titlebar");
-  let titleBarContent = document.getElementById("button-container");
+window.events = function () {
+  // macOS Events
+  if (process.platform === "darwin") {
+    const { ipcRenderer } = require("electron");
+    let titleBarMacOS = document.getElementById("macos-titlebar");
+    let titleBarContent = document.getElementById("button-container");
 
-  ipcRenderer.on("mac-efull", () => {
-    titleBarMacOS.style.paddingLeft = "5px";
-    titleBarContent.style.paddingLeft = "5px";
-  });
+    ipcRenderer.on("mac-efull", () => {
+      titleBarMacOS.style.paddingLeft = "5px";
+      titleBarContent.style.paddingLeft = "5px";
+    });
 
-  ipcRenderer.on("mac-lfull", () => {
-    titleBarMacOS.style.paddingLeft = "2vw";
-    titleBarContent.style.paddingLeft = "74px";
-  });
-}
-// windows Events
-if (process.platform === "win32") {
-  const remote = require("@electron/remote");
-  const win = remote.getCurrentWindow();
+    ipcRenderer.on("mac-lfull", () => {
+      titleBarMacOS.style.paddingLeft = "2vw";
+      titleBarContent.style.paddingLeft = "74px";
+    });
+  }
+  // windows Events
+  else if (process.platform === "win32") {
+    const remote = require("@electron/remote");
+    const win = remote.getCurrentWindow();
 
-  window.onbeforeunload = () => {
-    /* If window is reloaded, remove win event listeners
-    (DOM element listeners get auto garbage collected but not
-    Electron win listeners as the win is not dereferenced unless closed) */
-    win.removeAllListeners();
-  };
+    window.onbeforeunload = () => {
+      /* If window is reloaded, remove win event listeners
+      (DOM element listeners get auto garbage collected but not
+      Electron win listeners as the win is not dereferenced unless closed) */
+      win.removeAllListeners();
+    };
 
-  document.getElementById("min-button").addEventListener("click", () => {
-    win.minimize();
-  });
+    document.getElementById("min-button").addEventListener("click", () => {
+      win.minimize();
+    });
 
-  document.getElementById("max-button").addEventListener("click", () => {
-    win.maximize();
-  });
+    document.getElementById("max-button").addEventListener("click", () => {
+      win.maximize();
+    });
 
-  document.getElementById("restore-button").addEventListener("click", () => {
-    win.unmaximize();
-  });
+    document.getElementById("restore-button").addEventListener("click", () => {
+      win.unmaximize();
+    });
 
-  document.getElementById("close-button").addEventListener("click", () => {
-    win.close();
-  });
-}
+    document.getElementById("close-button").addEventListener("click", () => {
+      win.close();
+    });
+  }
+};
 // Localization
 window.i18n = new (require("../localization/i18n"))(getLanguage());
 window.localization = window.localization || {};
@@ -57,29 +59,37 @@ window.localization = window.localization || {};
       document.getElementById("my-lists").innerText =
         window.i18n.__("my_lists");
     },
-    settingsText: function () {
-      document.getElementById("settings").innerText =
-        window.i18n.__("settings");
+    preferencesText: function () {
+      document.getElementById("preferences").innerText =
+        window.i18n.__("preferences");
     },
-    settingsLanguage: function () {
-      document.getElementById("settings-language").innerText =
-        window.i18n.__("settings-language");
+    preferencesLanguage: function () {
+      document.getElementById("preferences-language").innerText =
+        window.i18n.__("preferences-language");
     },
-    settingsTheme: function () {
-      document.getElementById("settings-theme").innerText =
-        window.i18n.__("settings-theme");
+    preferencesAppearance: function () {
+      document.getElementById("preferences-appearance").innerText =
+        window.i18n.__("preferences-appearance");
     },
-    settingsLangLabel: function () {
-      document.getElementById("settings-lang-l").innerText =
-        window.i18n.__("settings-lang-l");
+    preferencesLangLabel: function () {
+      document.getElementById("preferences-lang-l").innerText =
+        window.i18n.__("preferences-lang-l");
     },
-    settingsThemeP: function () {
-      document.getElementById("settings-theme-p").innerText =
-        window.i18n.__("settings-theme-p");
+    preferencesAppearanceP: function () {
+      document.getElementById("preferences-appearance-p").innerText =
+        window.i18n.__("preferences-appearance-p");
     },
-    settingsGoBack: function () {
+    preferencesGoBack: function () {
       document.getElementById("back-button").innerText =
         window.i18n.__("back-button");
+    },
+    preferencesAppearanceH: function () {
+      document.getElementById("preferences-appearance-h").innerText =
+        window.i18n.__("preferences-appearance-h");
+    },
+    preferencesLanguageH: function () {
+      document.getElementById("preferences-language-h").innerText =
+        window.i18n.__("preferences-language-h");
     },
     init: function () {
       if (
@@ -88,13 +98,15 @@ window.localization = window.localization || {};
       ) {
         this.searchText();
         this.listsText();
-        this.settingsText();
-      } else if (document.body.dataset.page === "settings") {
-        this.settingsLanguage();
-        this.settingsTheme();
-        this.settingsLangLabel();
-        this.settingsThemeP();
-        this.settingsGoBack();
+        this.preferencesText();
+      } else if (document.body.dataset.page === "preferences") {
+        this.preferencesLanguage();
+        this.preferencesAppearance();
+        this.preferencesLangLabel();
+        this.preferencesAppearanceP();
+        this.preferencesGoBack();
+        this.preferencesAppearanceH();
+        this.preferencesLanguageH();
       }
     },
   };
@@ -102,19 +114,45 @@ window.localization = window.localization || {};
   localization.translate.init();
 })();
 // Settings Page
+let prevPageState;
+
 // eslint-disable-next-line no-unused-vars
 function showSettings() {
   fetch("settings.html")
     .then((response) => response.text())
     .then((html) => {
+      let style = document.getElementById("title").style.backgroundColor + "";
+      prevPageState = document.body.innerHTML;
       document.body.innerHTML = html;
-      document.body.dataset.page = "settings";
+      document.body.dataset.page = "preferences";
       localization.translate.init();
       languageSelectPrep();
+      document.getElementById("title").style.backgroundColor = style;
+      window.events();
     })
     .catch((error) => {
       console.warn(error);
     });
+}
+
+// eslint-disable-next-line no-unused-vars
+function goBack() {
+  if (prevPageState.length > 0) {
+    document.body.innerHTML = prevPageState;
+    document.body.dataset.page = "default";
+  } else {
+    fetch("index.html")
+      .then((response) => response.text())
+      .then((html) => {
+        let bodyExpression = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
+        document.body.innerHTML = html.match(bodyExpression)[1];
+        document.body.dataset.page = "default";
+        localization.translate.init();
+      })
+      .catch((error) => {
+        console.warn(error);
+      });
+  }
 }
 
 function languageSelectPrep() {
@@ -133,42 +171,13 @@ function languageSelectOnChange() {
   let select = document.getElementById("language").value;
   changeLanguage(select);
 }
-
 // eslint-disable-next-line no-unused-vars
-function goBack() {
-  fetch("index.html")
-    .then((response) => response.text())
-    .then((html) => {
-      let bodyExpression = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-      document.body.innerHTML = html.match(bodyExpression)[0];
-      document.body.dataset.page = "default";
-      localization.translate.init();
-    })
-    .catch((error) => {
-      console.warn(error);
-    });
+function scrollToDiv(id) {
+  document.getElementById("sections").scrollTop =
+    document.getElementById(id).offsetTop - 35;
 }
 
-// eslint-disable-next-line no-unused-vars
-function settingsNavigation(event, Section) {
-  let i, tabContent, tabNav;
-
-  tabContent = document.getElementsByClassName("content");
-  for (i = 0; i < tabContent.length; i++) {
-    tabContent[i].style.display = "none";
-  }
-
-  tabNav = document.getElementsByClassName("nav");
-  for (i = 0; i < tabNav.length; i++) {
-    tabNav[i].className = tabNav[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the link that opened the tab
-  document.getElementById(Section).style.display = "block";
-  event.currentTarget.className += " active";
-}
-
-// Defalut Page
+// Default Page
 
 const clearAnimated = (elementID) => {
   setTimeout(
@@ -184,16 +193,16 @@ function addToDo() {
     10
   );
   let taskAdd = document.getElementById("task-add");
-  taskAdd.style =
-    "transition: all 0.3s ease-in-out; transform: rotate(45deg) scale(1.4);";
+  taskAdd.style.transition = "all 0.3s ease-in-out";
+  taskAdd.style.transform = "rotate(45deg) scale(1.4)";
   taskAdd.onclick = closeAddToDo;
   clearAnimated("task-input");
 }
 
 function closeAddToDo() {
   let taskAdd = document.getElementById("task-add");
-  taskAdd.style =
-    "transition: all 0.3s ease-in-out; transform: rotate(0deg) scale(1);";
+  taskAdd.style.transition = "all 0.3s ease-in-out";
+  taskAdd.style.transform = "rotate(0deg) scale(1)";
   taskAdd.onclick = addToDo;
   document.getElementById("task-input").classList.remove("bounceIn");
 
@@ -242,8 +251,13 @@ document.getElementById("add-input").addEventListener("keyup", (event) => {
   }
 });
 
+document.getElementById("search").addEventListener("change", (event) => {
+  console.log(event.target.value);
+});
+
 (function () {
   Event.loadLists(document.getElementById("todolists"), document);
+  window.events();
 })();
 
 // TODO: boşluğa tıklandığında kaybolsun

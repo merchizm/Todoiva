@@ -2,9 +2,9 @@ const electron = require("electron");
 const remote =
   process.type === "browser" ? electron : require("@electron/remote");
 const StormDB = require("stormdb");
-const i18n = new (require("../localization/i18n"))();
-const { join } = require("path");
 const app = electron.app ? electron.app : remote.app;
+const i18n = new (require("../localization/i18n"))(app.getLocale());
+const { join } = require("path");
 
 const database =
   process.env.NODE_ENV === "development"
@@ -67,13 +67,13 @@ db.save(); // for defaults
 
 function createList(data) {
   let temp = {
-    listID: db.get("lists").length + 1,
+    listID: db.get("lists").value().length + 1,
     listName: data.listName,
     listColor: colors[data.color],
     listIcon: data.listIcon,
     listItems: {},
   };
-  db.get("lists").push(temp);
+  db.get("lists").push(temp).save();
 }
 
 function createToDo(itemName, listID) {
@@ -81,10 +81,11 @@ function createToDo(itemName, listID) {
     .get(listID)
     .get("listItems")
     .push({
-      itemID: db.get("lists").get(listID).get("listItems").value().length,
+      itemID: db.get("lists").get(listID).get("listItems").value().length + 1,
       itemName: itemName,
       checked: false,
-    });
+    })
+    .save();
 }
 
 function renameList(listID, newName) {

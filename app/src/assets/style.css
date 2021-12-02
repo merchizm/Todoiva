@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap");
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
@@ -20,9 +24,6 @@ li {
 .wrapper {
   display: flex;
   flex-flow: row wrap;
-}
-.wrapper > * {
-  flex: 1 100%;
 }
 .wrapper .title-bar {
   background-color: #686769;
@@ -70,6 +71,7 @@ li {
   flex: 1;
   order: 2;
   overflow: hidden;
+  padding: 0 30px 50px 30px;
 }
 .wrapper .main header {
   display: flex;
@@ -106,7 +108,8 @@ li {
   position: relative;
 }
 .wrapper .main .container {
-  height: 90%;
+  margin-top: 30px;
+  height: 70%;
   overflow-y: auto;
 }
 .wrapper .main .container::-webkit-scrollbar {
@@ -117,7 +120,6 @@ li {
   display: grid;
   grid-template-columns: 30px auto;
   align-items: center;
-  margin-top: 30px;
 }
 .wrapper .main .container #todolist label {
   padding: 10px;
@@ -277,55 +279,51 @@ li {
   flex-direction: column;
   height: 100vh;
 }
-.wrapper .main .content header h1.sticky {
+.wrapper .main .content header h1 {
   font-size: 1.5rem;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 1;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(255, 255, 255, 0.07);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
 }
-.wrapper .main .content header .line {
-  width: 103%;
-  height: 1px;
-  margin-bottom: 20px;
+.wrapper .main .content header p {
+  margin: 0;
 }
-.wrapper .settings-menu {
+.wrapper aside {
   order: 1;
   height: 100vh;
   max-width: 280px;
   flex-direction: column;
+  padding: 25px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
-.wrapper .settings-menu .menu-item {
+.wrapper .preferences-menu .menu-item {
   margin: 10px 0;
   cursor: pointer;
   padding: 20px;
-  width: 95%;
-  border-radius: 5px;
+  width: 100%;
+  text-decoration: none;
 }
-.wrapper .settings-menu .menu-item svg {
+.wrapper .preferences-menu .menu-item svg {
   width: 20px;
   margin-right: 7px;
   cursor: pointer;
   margin-bottom: -5px;
 }
-.wrapper .settings-menu .menu-item p {
+.wrapper .preferences-menu .menu-item p {
   display: inline;
 }
 .wrapper .default-menu {
-  order: 1;
-  height: 100vh;
-  max-width: 280px;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
-  padding: 25px 10px;
 }
 .wrapper .default-menu .search {
   position: relative;
@@ -518,18 +516,23 @@ li {
   .wrapper .default-menu .my-lists ul::-webkit-scrollbar-thumb:hover {
     background-color: rgba(13, 12, 12, 0.4);
   }
-  .wrapper .settings-menu {
+  .wrapper .preferences-menu {
     color: #e7e7e7;
     text-align: center;
+    background-color: #191919;
   }
-  .wrapper .settings-menu .menu-item:hover {
+  .wrapper .preferences-menu .menu-item {
+    color: #e7e7e7;
+  }
+  .wrapper .preferences-menu .menu-item:hover {
     background-color: #111111;
     color: #fff;
+    border-radius: 15px;
   }
-  .wrapper .settings-menu .menu-item svg {
+  .wrapper .preferences-menu .menu-item svg {
     fill: #fff;
   }
-  .wrapper .settings-menu .menu-item a {
+  .wrapper .preferences-menu .menu-item a {
     color: #e7e7e7;
   }
   .wrapper .main {
@@ -636,18 +639,23 @@ li {
   .wrapper .default-menu .my-lists ul::-webkit-scrollbar-thumb:hover {
     background-color: rgba(13, 12, 12, 0.6);
   }
-  .wrapper .settings-menu {
+  .wrapper .preferences-menu {
     color: #686868;
     text-align: center;
+    background-color: #f7f7f7;
   }
-  .wrapper .settings-menu .menu-item:hover {
+  .wrapper .preferences-menu .menu-item {
+    color: #686868;
+  }
+  .wrapper .preferences-menu .menu-item:hover {
     background-color: #efefef;
     color: #000;
+    border-radius: 15px;
   }
-  .wrapper .settings-menu .menu-item svg {
+  .wrapper .preferences-menu .menu-item svg {
     fill: #000;
   }
-  .wrapper .settings-menu .menu-item a {
+  .wrapper .preferences-menu .menu-item a {
     color: #686868;
   }
   .wrapper .main {

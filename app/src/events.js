@@ -46,7 +46,7 @@ let getColor = function (colorID) {
     case "red":
       return "#E25757";
     case "green":
-      return "#2FC43E";
+      return "#43B343";
     case "blue":
       return "#5FA4FF";
     case "purple":

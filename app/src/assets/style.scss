@@ -1,0 +1,731 @@
+@use "sass:map";
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap");
+
+
+$menu-text: #686868;
+$text: #9195a1;
+$check: #404040;
+$disabled: #404040;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+h1,
+h3,
+li {
+  font-family: "Lato", sans-serif;
+}
+
+:not(h1, h3, li) {
+  font-family: "Raleway", sans-serif;
+}
+
+
+@mixin flex-display($display, $align-items, $justify-content) {
+  display: $display;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+
+
+  .title-bar {
+    background-color: #686769;
+    user-select: none;
+    height: 35px;
+    width: 100vw;
+    @include flex-display(flex, center, normal);
+    -webkit-app-region: drag;
+
+    .macos-title-bar {
+
+      .button-container {
+        @include flex-display(flex, center, normal);
+        padding-left: 85px;
+        padding-right: 10px;
+        color: #fff;
+
+        .normal-button {
+          @include flex-display(flex, center, normal);
+          padding: 4px;
+          border-radius: 3px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+          }
+
+          svg {
+            width: 15px;
+            height: 15px;
+            fill: #fff;
+            margin-right: 7px;
+          }
+
+          p {
+            font-size: 0.8rem;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .main {
+    text-align: left;
+    background-color: #202020;
+    height: 100vh;
+    flex: 1;
+    order: 2;
+    overflow: hidden;
+	padding: 0 30px 50px 30px;
+
+    header {
+      @include flex-display(flex, center, space-between);
+	  
+      .new-task-btn {
+        background-color: transparent;
+        border: 0;
+        font-size: 2rem;
+        margin-right: 20px;
+        cursor: pointer;
+      }
+
+      h1 {
+        font-weight: 400;
+      }
+    }
+
+    .task-add {
+      margin: 20px 0 0 5px;
+
+      span {
+        display: inline-block;
+        height: 2px;
+        width: 8px;
+        border-radius: 2px;
+        margin: 0 15px 3px 0;
+      }
+
+      .task-input {
+        border: 0;
+        outline: 0;
+        padding: 5px;
+        font-size: 1rem;
+        width: 50%;
+        background-color: transparent;
+        position: relative;
+      }
+    }
+
+    .container {
+      margin-top: 30px;
+      height: 70%;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 0.8vw;
+      }
+
+      #todolist {
+        position: relative;
+        display: grid;
+        grid-template-columns: 30px auto;
+        align-items: center;
+
+        label {
+          padding: 10px;
+          color: $text;
+          position: relative;
+          cursor: pointer;
+          display: grid;
+          align-items: center;
+          width: fit-content;
+          transition: color 0.3s ease;
+
+          &::before,
+          &::after {
+            content: "";
+            position: absolute;
+          }
+
+          &::before {
+            height: 2px;
+            width: 8px;
+            left: -27px;
+            border-radius: 2px;
+            background-color: $text;
+            transition: background 0.3s ease;
+          }
+
+          &:after {
+            height: 4px;
+            width: 4px;
+            top: 8px;
+            left: -25px;
+            border-radius: 50%;
+          }
+        }
+
+        input[type="checkbox"] {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          position: relative;
+          height: 15px;
+          width: 15px;
+          outline: none;
+          border: 0;
+          margin: 0 15px 0 0;
+          cursor: pointer;
+          display: grid;
+          align-items: center;
+
+          &::before,
+          &::after {
+            content: "";
+            position: absolute;
+            height: 2px;
+            top: auto;
+            background: $check;
+            border-radius: 2px;
+          }
+
+          &::before {
+            width: 0;
+            right: 60%;
+            transform-origin: right bottom;
+          }
+
+          &::after {
+            width: 0;
+            left: 40%;
+            transform-origin: left bottom;
+          }
+
+          &:checked {
+            &::before {
+              animation: check-01 0.4s ease forwards;
+            }
+
+            &::after {
+              animation: check-02 0.4s ease forwards;
+            }
+
+            + label {
+              color: $disabled;
+              animation: move 0.3s ease 0.1s forwards;
+
+              &::before {
+                background: $disabled;
+                animation: slice 0.4s ease forwards;
+              }
+
+              &::after {
+                animation: firework 0.5s ease forwards 0.1s;
+              }
+            }
+          }
+        }
+      }
+
+      @keyframes move {
+        50% {
+          padding-left: 8px;
+          padding-right: 0;
+        }
+        100% {
+          padding-right: 4px;
+        }
+      }
+      @keyframes slice {
+        60% {
+          width: 100%;
+          left: 4px;
+        }
+        100% {
+          width: 100%;
+          left: -2px;
+          padding-left: 0;
+        }
+      }
+      @keyframes check-01 {
+        0% {
+          width: 4px;
+          top: auto;
+          transform: rotate(0);
+        }
+        50% {
+          width: 0;
+          top: auto;
+          transform: rotate(0);
+        }
+        51% {
+          width: 0;
+          top: 8px;
+          transform: rotate(45deg);
+        }
+        100% {
+          width: 5px;
+          top: 8px;
+          transform: rotate(45deg);
+        }
+      }
+      @keyframes check-02 {
+        0% {
+          width: 4px;
+          top: auto;
+          transform: rotate(0);
+        }
+        50% {
+          width: 0;
+          top: auto;
+          transform: rotate(0);
+        }
+        51% {
+          width: 0;
+          top: 8px;
+          transform: rotate(-45deg);
+        }
+        100% {
+          width: 10px;
+          top: 8px;
+          transform: rotate(-45deg);
+        }
+      }
+      @keyframes firework {
+        0% {
+          opacity: 1;
+          box-shadow: 0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check,
+          0 0 0 -2px $check, 0 0 0 -2px $check, 0 0 0 -2px $check;
+        }
+        30% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          box-shadow: 0 -15px 0 0px $check, 14px -8px 0 0px $check,
+          14px 8px 0 0px $check, 0 15px 0 0px $check, -14px 8px 0 0px $check,
+          -14px -8px 0 0px $check;
+        }
+      }
+    }
+
+    .content {
+      flex-direction: column;
+      height: 100vh;
+
+      header {
+        h1 {
+          font-size: 1.5rem;
+          z-index: 1;
+          color: rgba(255, 255, 255, 0.9);
+          border-bottom-width: 1px;
+          border-bottom-style: solid; 
+          border-bottom-color: rgba(255, 255, 255, 0.07);
+          margin-bottom: 16px; 
+          padding-bottom: 12px; 
+          font-size: 16px; 
+          font-weight: 500; 
+          width: 100%;
+        }
+        p{
+          margin: 0;
+        }
+      }
+
+    }
+  }
+
+  aside{
+    order: 1;
+    height: 100vh;
+    max-width: 280px;
+    flex-direction: column;
+    padding: 25px 10px;
+    @include flex-display(flex, center, center);
+    user-select: none;
+  }
+
+  .preferences-menu {
+
+    .menu-item {
+      margin: 10px 0;
+      cursor: pointer;
+      padding: 20px;
+      width: 100%;
+      text-decoration: none;
+
+      svg {
+        width: 20px;
+        margin-right: 7px;
+        cursor: pointer;
+        margin-bottom: -5px;
+      }
+
+      p {
+        display: inline;
+      }
+    }
+  }
+
+  .default-menu {
+    overflow: hidden;
+
+    .search {
+      position: relative;
+      width: 100%;
+
+      input {
+        outline: none;
+        resize: vertical;
+        line-height: 14px;
+        font-size: 14px;
+        box-sizing: border-box;
+        padding: 10px 15px;
+        width: 100%;
+        border-radius: 5px;
+
+        &:valid + .reset + .submit {
+          display: none;
+        }
+
+        &:valid + .reset {
+          display: block;
+        }
+      }
+
+      input[type="search"]::-webkit-search-decoration,
+      input[type="search"]::-webkit-search-cancel-button,
+      input[type="search"]::-webkit-search-results-button,
+      input[type="search"]::-webkit-search-results-decoration {
+        -webkit-appearance: none;
+      }
+
+      .submit {
+        cursor: pointer;
+        text-transform: uppercase;
+        border: 0;
+        background-color: transparent;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        svg {
+          width: 13px;
+          opacity: 0.5;
+        }
+      }
+
+      button[type="reset"] {
+        cursor: pointer;
+        padding: 0 10px;
+        background: none;
+        outline: none;
+        border: none;
+        display: none;
+        position: absolute;
+        right: 1px;
+        top: 12px;
+
+        svg {
+          width: 13px;
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .my-lists {
+      margin-top: 50px;
+      position: relative;
+      width: 100%;
+      height: 90%;
+
+      header {
+        @include flex-display(flex, center, space-between);
+        color: $menu-text;
+
+        h3 {
+          font-weight: 400;
+        }
+
+        .list-btn {
+          background-color: transparent;
+          border: 0;
+          font-size: 1.5rem;
+          margin-right: 5px;
+          cursor: pointer;
+          color: $menu-text;
+        }
+      }
+
+      .list {
+        position: absolute;
+        height: 90%;
+        width: 100%;
+
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          font-weight: 200;
+          height: 55vw;
+          overflow-y: auto;
+
+          &::-webkit-scrollbar {
+            width: 1.2vw;
+          }
+
+          li {
+            padding: 10px 15px;
+            margin: 5px 0;
+            cursor: pointer;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            @include flex-display(flex, center, normal);
+
+            &:first-child {
+              margin-top: 0;
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            span {
+              margin-right: 5px;
+              padding: 2px 5px;
+              border-radius: 50%;
+
+              svg {
+                fill: #fff;
+                width: 13px;
+                margin-top: 3px;
+              }
+            }
+
+            &:hover {
+              opacity: 0.85;
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+}
+
+
+@mixin createScrollBar($track, $thumb-bg, $thumb-hover) {
+  &::-webkit-scrollbar-track {
+    background-color: $track;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-bg;
+    border-radius: 1rem;
+
+    &:hover {
+      background-color: $thumb-hover;
+    }
+  }
+}
+
+@mixin createPrefersColorScheme($ui-colors, $colors, $scrollbar) {
+  .wrapper {
+    .default-menu {
+      background-color: map.get($ui-colors, "menu-bg");
+
+      input {
+        background-color: map.get($ui-colors, "input-bg");
+        color: map.get($ui-colors, "menu-text");
+        border: 1px solid map.get($ui-colors, "border-color");
+
+        &:focus {
+          box-shadow: 0 0 0 1px map.get($ui-colors, "shadow-color");
+        }
+      }
+
+      .search {
+        .submit {
+          svg {
+            fill: map.get($ui-colors, "icon");
+          }
+        }
+
+        button[type="reset"] {
+          svg {
+            fill: map.get($ui-colors, "icon");
+          }
+        }
+      }
+
+      .my-lists {
+        ul {
+          li {
+            color: map.get($ui-colors, "menu-text");
+            @each $color-name, $color in $colors {
+              .color-#{$color-name} {
+                background-color: $color;
+              }
+            }
+
+          }
+
+          @each $color-name, $color in $colors {
+            .color-#{$color-name} {
+              background-color: rgba($color, 0.4);
+            }
+          }
+
+          @include createScrollBar(map.get($scrollbar, "track"), map.get($scrollbar, "thumb-bg"), map.get($scrollbar, "thumb-hover"));
+        }
+      }
+    }
+
+    .preferences-menu {
+      color: map.get($ui-colors, "menu-text");
+      text-align: center;
+      background-color: map.get($ui-colors, "menu-bg");
+      .menu-item {
+        color: map.get($ui-colors, "menu-text");
+        &:hover {
+          background-color: darken(map.get($ui-colors, "menu-bg"), 3%);
+          color: map.get($ui-colors, "icon");
+          border-radius: 15px;
+        }
+
+        svg {
+          fill: map.get($ui-colors, "icon");
+        }
+
+        a {
+          color: map.get($ui-colors, "menu-text")
+        }
+      }
+    }
+
+    .main {
+      background-color: map.get($ui-colors, "main-bg");
+      color: map.get($ui-colors, "icon");
+
+      header {
+        button {
+          color: map.get($ui-colors, "icon");
+        }
+      }
+
+      .task-add {
+        span {
+          background-color: map.get($ui-colors, "disabled");
+        }
+
+        input {
+          color: map.get($ui-colors, "icon");
+        }
+      }
+
+      .container {
+        #checklist {
+          label {
+            color: map.get($ui-colors, "text");
+
+            &::before {
+              background: map.get($ui-colors, "check");
+            }
+          }
+        }
+
+        @include createScrollBar(map.get($scrollbar, "track"), map.get($scrollbar, "thumb-bg"), map.get($scrollbar, "thumb-hover"));
+      }
+
+      .content {
+        header {
+          .line {
+            background-color: map.get($ui-colors, "line");
+          }
+        }
+
+        .custom-select {
+          select {
+            color: map.get($ui-colors, "text");
+            border-color: map.get($ui-colors, "border-color");
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
+@media (prefers-color-scheme: dark) {
+  $ui-colors: (
+          "menu-bg" : #191919,
+          "main-bg": #202020,
+          "input-bg": #333333,
+          "border-color": #3d3d3d,
+          "shadow-color": rgba(224, 224, 224, 0.295),
+          "menu-text": #e7e7e7,
+          "circle-color": #d1d7dc,
+          "icon": #fff,
+          "text": #eeeeee,
+          "check": #e7e7e7,
+          "disabled": #a8a8a8,
+          "line": #2a2a2a,
+          "settings-color": #e5e5e5
+  );
+
+  $colors: "red" #e25757, "blue" #5fa4ff, "green" #2fc43e, "purple" #a766d3, "orange" #fc9b2d, "pink" #ff5df1;
+
+  $scrollbar: (
+          "track": rgba(#000000, 0.1),
+          "thumb-bg": rgb(17, 16, 16),
+          "thumb-hover": rgba(rgb(13, 12, 12), 0.4)
+  );
+
+  @include createPrefersColorScheme($ui-colors, $colors, $scrollbar);
+}
+
+@media (prefers-color-scheme: light) {
+  $ui-colors: (
+          "menu-bg" : #f7f7f7,
+          "main-bg": #fdfdfd,
+          "input-bg": #fff,
+          "border-color": #ebebeb,
+          "shadow-color": rgba(0, 0, 0, 0.03),
+          "menu-text": #686868,
+          "circle-color": #d1d7dc,
+          "icon": #000,
+          "text": #9195a1,
+          "check": #404040,
+          "disabled": #404040,
+          "line": #EDEDED,
+          "settings-color": #343333
+  );
+
+  $colors: "purple" #a872ff, "red" #ff9797, "blue" #75b1ff, "green" #49d657, "orange" #ffaf53, "pink" #f781ed;
+
+  $scrollbar: (
+          "track": rgba(#000000, 0.1),
+          "thumb-bg": rgba(rgb(17, 16, 16), 0.7),
+          "thumb-hover": rgba(rgb(13, 12, 12), 0.6)
+  );
+
+  @include createPrefersColorScheme($ui-colors, $colors, $scrollbar);
+}
