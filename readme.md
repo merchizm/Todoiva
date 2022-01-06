@@ -31,4 +31,4 @@ Uygulamanın Görüntüleri bitirildiğinde eklenecek :)
 ## Katkı Sağlayanlar
 [![Contributors](https://contrib.rocks/image?repo=merchizm/Todoiva)](https://github.com/merchizm/Todoiva/graphs/contributors)
 
-Resim tarafından [contributors-img](https://contrib.rocks) oluşturuldu.
+Resim [contributors-img](https://contrib.rocks) tarafından oluşturuldu.
