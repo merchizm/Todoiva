@@ -364,7 +364,6 @@ li {
       .selectCustom {
         position: relative;
         width: 22rem;
-        height: 4rem;
       }
 
       .selectCustom {
@@ -405,7 +404,7 @@ li {
 
       .selectNative,
       .selectCustom-trigger {
-        font-size: 1.6rem;
+        font-size: 1rem;
         background-color: #fff;
         border: 1px solid #cecece;
         border-radius: 0.4rem;
@@ -797,9 +796,9 @@ li {
         }
 
         .custom-select {
-          select {
+          .selectCustom {
             color: map.get($ui-colors, "text");
-            border-color: map.get($ui-colors, "border-color");
+            background-color: map.get($ui-colors, "input-bg");
           }
         }
       }
