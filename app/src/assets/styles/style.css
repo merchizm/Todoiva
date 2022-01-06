@@ -321,6 +321,9 @@ li {
   justify-content: center;
   user-select: none;
 }
+.wrapper .preferences-menu {
+  padding: 25px 30px;
+}
 .wrapper .preferences-menu .menu-item {
   margin: 10px 0;
   cursor: pointer;

@@ -62,7 +62,24 @@
           <label for="language" id="preferences-lang-l"> - </label>
 
           <span class="custom-select">
-            <select id="language"></select>
+            <div class="select" id="language">
+              <div class="selectWrapper">
+                <select class="selectNative js-selectNative" aria-labelledby="jobLabel">
+                  <option value="sel" disabled="" selected=""> Dil seçiniz...</option>
+                  <option value="tr">Türkçe</option>
+                  <option value="en">English</option>
+                </select>
+          
+                <!-- Hide the custom select from AT (e.g. SR) using aria-hidden -->
+                <div class="selectCustom js-selectCustom" aria-hidden="true">
+                  <div class="selectCustom-trigger">Dil seçiniz</div>
+                  <div class="selectCustom-options">
+                    <div class="selectCustom-option" data-value="tr">Türkçe</div>
+                    <div class="selectCustom-option" data-value="rn">English</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </span>
         </div>
       </div>
