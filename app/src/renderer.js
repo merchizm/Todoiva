@@ -137,7 +137,6 @@ function showSettings() {
 
 // eslint-disable-next-line no-unused-vars
 function goBack() {
-  document.getElementById("fucking_fuck").remove();
   if (prevPageState.length > 0) {
     document.body.innerHTML = prevPageState;
     document.body.dataset.page = "default";

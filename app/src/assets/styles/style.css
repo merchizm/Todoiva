@@ -314,7 +314,6 @@ li {
 .wrapper .main .content .selectCustom {
   position: relative;
   width: 22rem;
-  height: 4rem;
 }
 .wrapper .main .content .selectCustom {
   position: absolute;
@@ -343,7 +342,7 @@ li {
 }
 .wrapper .main .content .selectNative,
 .wrapper .main .content .selectCustom-trigger {
-  font-size: 1.6rem;
+  font-size: 1rem;
   background-color: #fff;
   border: 1px solid #cecece;
   border-radius: 0.4rem;
@@ -689,9 +688,9 @@ li {
   .wrapper .main .content header .line {
     background-color: #2a2a2a;
   }
-  .wrapper .main .content .custom-select select {
+  .wrapper .main .content .custom-select .selectCustom {
     color: #eeeeee;
-    border-color: #3d3d3d;
+    background-color: #333333;
   }
 }
 @media (prefers-color-scheme: light) {
@@ -812,9 +811,9 @@ li {
   .wrapper .main .content header .line {
     background-color: #EDEDED;
   }
-  .wrapper .main .content .custom-select select {
+  .wrapper .main .content .custom-select .selectCustom {
     color: #9195a1;
-    border-color: #ebebeb;
+    background-color: #fff;
   }
 }
 
