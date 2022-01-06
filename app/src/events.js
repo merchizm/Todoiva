@@ -54,7 +54,7 @@ let getColor = function (colorID) {
     case "orange":
       return "#FC9B2D";
     case "pink":
-      return "#FF5DF1";
+      return "#E043C3";
     default:
       return "#7366D3";
   }

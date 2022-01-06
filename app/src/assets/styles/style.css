@@ -278,6 +278,9 @@ li {
 .wrapper .main .content {
   flex-direction: column;
   height: 100vh;
+  /* HIDE RADIO */
+  /* IMAGE STYLES */
+  /* CHECKED STYLES */
 }
 .wrapper .main .content header h1 {
   font-size: 1.5rem;
@@ -294,6 +297,18 @@ li {
 }
 .wrapper .main .content header p {
   margin: 0;
+}
+.wrapper .main .content [type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.wrapper .main .content [type=radio] + img {
+  cursor: pointer;
+}
+.wrapper .main .content [type=radio]:checked + img {
+  outline: 2px solid #f00;
 }
 .wrapper aside {
   order: 1;
