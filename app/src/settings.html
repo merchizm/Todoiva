@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todoiva</title>
-  <link rel="stylesheet" href="assets/style.css">
-</head>
-
-
-<body>
-
-  <div class="wrapper">
+<div class="wrapper">
     <header class="title-bar" id="title">
       <div class="macos-title-bar">
         <div class="button-container" id="button-container">
@@ -62,20 +48,15 @@
           <label for="language" id="preferences-lang-l"> - </label>
 
           <span class="custom-select">
-            <div class="select" id="language">
+            <div class="select">
               <div class="selectWrapper">
-                <select class="selectNative js-selectNative" aria-labelledby="jobLabel">
-                  <option value="sel" disabled="" selected=""> Dil seçiniz...</option>
-                  <option value="tr">Türkçe</option>
-                  <option value="en">English</option>
+                <select class="selectNative js-selectNative" id="language">
                 </select>
           
                 <!-- Hide the custom select from AT (e.g. SR) using aria-hidden -->
                 <div class="selectCustom js-selectCustom" aria-hidden="true">
                   <div class="selectCustom-trigger">Dil seçiniz</div>
-                  <div class="selectCustom-options">
-                    <div class="selectCustom-option" data-value="tr">Türkçe</div>
-                    <div class="selectCustom-option" data-value="rn">English</div>
+                  <div class="selectCustom-options" id="language_2">
                   </div>
                 </div>
               </div>
@@ -106,7 +87,3 @@
       </div>
     </main>
   </div>
-
-</body>
-
-</html>

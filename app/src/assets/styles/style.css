@@ -310,6 +310,110 @@ li {
 .wrapper .main .content [type=radio]:checked + img {
   outline: 2px solid #f00;
 }
+.wrapper .main .content .selectNative,
+.wrapper .main .content .selectCustom {
+  position: relative;
+  width: 22rem;
+  height: 4rem;
+}
+.wrapper .main .content .selectCustom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+@media (hover: hover) {
+  .wrapper .main .content .selectCustom {
+    display: block;
+  }
+  .wrapper .main .content .selectNative:focus + .selectCustom {
+    display: none;
+  }
+}
+.wrapper .main .content .selectNative:focus,
+.wrapper .main .content .selectCustom.isActive .selectCustom-trigger {
+  outline: none;
+  box-shadow: rgba(100, 100, 100, 0.2) 0px 7px 19px 0px;
+}
+.wrapper .main .content .select {
+  position: relative;
+}
+.wrapper .main .content .selectWrapper {
+  position: relative;
+}
+.wrapper .main .content .selectNative,
+.wrapper .main .content .selectCustom-trigger {
+  font-size: 1.6rem;
+  background-color: #fff;
+  border: 1px solid #cecece;
+  border-radius: 0.4rem;
+}
+.wrapper .main .content .selectCustom-trigger {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 0.8rem 0.8rem;
+  cursor: pointer;
+}
+.wrapper .main .content .selectCustom-trigger::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border: 2px solid;
+  border-color: transparent rgba(73, 54, 54, 0.4) rgba(73, 54, 54, 0.4) transparent;
+  position: absolute;
+  right: 10px;
+  top: 13px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+.wrapper .main .content .selectCustom.isActive .selectCustom-trigger::after {
+  top: 17px;
+  transform: rotate(225deg);
+  -webkit-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+.wrapper .main .content .selectCustom-trigger:hover {
+  border-color: #bdbdbd;
+}
+.wrapper .main .content .selectCustom-options {
+  position: absolute;
+  top: 4.6rem;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #cecece;
+  border-radius: 0.4rem;
+  z-index: 1;
+  padding: 0.8rem 0;
+  display: none;
+  box-shadow: rgba(100, 100, 100, 0.2) 0px 7px 19px 0px;
+}
+.wrapper .main .content .selectCustom.isActive .selectCustom-options {
+  display: block;
+}
+.wrapper .main .content .selectCustom-option {
+  position: relative;
+  padding: 0.8rem;
+  padding-left: 2.5rem;
+}
+.wrapper .main .content .selectCustom-option.isHover,
+.wrapper .main .content .selectCustom-option:hover {
+  background-color: #f5f4f4;
+  opacity: 0.8;
+  cursor: default;
+}
 .wrapper aside {
   order: 1;
   height: 100vh;

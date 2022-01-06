@@ -137,6 +137,7 @@ function showSettings() {
 
 // eslint-disable-next-line no-unused-vars
 function goBack() {
+  document.getElementById("fucking_fuck").remove();
   if (prevPageState.length > 0) {
     document.body.innerHTML = prevPageState;
     document.body.dataset.page = "default";
@@ -158,12 +159,19 @@ function goBack() {
 function languageSelectPrep() {
   const languages = require("../localization/meta.json");
   let select = document.getElementById("language");
+  let customSelect = document.getElementById("language_2");
   Object.keys(languages.languages).forEach((element) => {
     let option = document.createElement("option");
     option.text = languages.languages[element];
     option.value = element;
     getLanguage() === element && option.setAttribute("selected", true);
     select.add(option);
+    // add selectCustom-option
+    let customOption = document.createElement("div");
+    customOption.classList.add("selectCustom-option");
+    customOption.dataset.value = element;
+    customOption.innerText = languages.languages[element];
+    customSelect.append(customOption);
   });
 }
 // eslint-disable-next-line no-unused-vars
