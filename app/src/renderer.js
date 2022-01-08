@@ -259,7 +259,14 @@ document.getElementById("add-input").addEventListener("keyup", (event) => {
 });
 
 document.getElementById("search").addEventListener("change", (event) => {
-  console.log(event.target.value);
+  console.log("a");
+  Event.search(
+    event.target.value,
+    document,
+    document.getElementById("todolists")
+  );
+  // TODO: divin içerisini temizle ve içeriği gir
+  // TODO: Search reset'e basıldığında içeriği sil listeleri yükle
 });
 
 (function () {
