@@ -363,7 +363,7 @@ li {
       .selectNative,
       .selectCustom {
         position: relative;
-        width: 22rem;
+        width: 130px;
       }
 
       .selectCustom {
@@ -371,6 +371,7 @@ li {
         top: 0;
         left: 0;
         display: none;
+        border-radius: 0.4rem;
       }
 
       // This media query detects devices where the primary
@@ -405,8 +406,6 @@ li {
       .selectNative,
       .selectCustom-trigger {
         font-size: 1rem;
-        background-color: #fff;
-        border: 1px solid #cecece;
         border-radius: 0.4rem;
       }
 
@@ -415,7 +414,7 @@ li {
         width: 100%;
         height: 100%;
         background-color: #fff;
-        padding: 0.8rem 0.8rem;
+        padding: .5rem .8rem;
         cursor: pointer;
       }
 
@@ -424,10 +423,10 @@ li {
         width: 6px;
         height: 6px;
         border: 2px solid;
-        border-color: transparent rgba(73, 54, 54, 0.4) rgba(73, 54, 54, 0.4) transparent ;
+        border-color: transparent rgba(73, 54, 54, 0.4) rgba(73, 54, 54, 0.4) transparent;
         position: absolute;
         right: 10px;
-        top: 13px;
+        top: 10px;
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
         -moz-transform: rotate(45deg);
@@ -447,10 +446,6 @@ li {
           -moz-transition: all .4s;
           -ms-transition: all .4s;
           -o-transition: all .4s;
-      }
-
-      .selectCustom-trigger:hover {
-        border-color: #bdbdbd;
       }
 
       .selectCustom-options {
@@ -801,11 +796,23 @@ li {
             background-color: map.get($ui-colors, "input-bg");
           }
         }
+
+        .selectNative,
+        .selectCustom-trigger {
+          background-color: map.get($ui-colors, "input-bg");
+          border: 1px solid map.get($ui-colors, "border-color");
+        }
+
+        .selectCustom-trigger::after{
+          border-color: transparent map.get($ui-colors, "circle-color") map.get($ui-colors, "circle-color") transparent;
+        }
+
+        .selectCustom-trigger:hover {
+          border-color: map.get($ui-colors, "circle-color");
+        }
       }
     }
   }
-
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -816,7 +823,7 @@ li {
           "border-color": #3d3d3d,
           "shadow-color": rgba(224, 224, 224, 0.295),
           "menu-text": #e7e7e7,
-          "circle-color": #d1d7dc,
+          "circle-color": #b3b7b9,
           "icon": #fff,
           "text": #eeeeee,
           "check": #e7e7e7,
