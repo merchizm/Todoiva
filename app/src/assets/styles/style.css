@@ -312,7 +312,7 @@ li {
 .wrapper .main #language-section .selectNative,
 .wrapper .main #language-section .selectCustom {
   position: relative;
-  width: 130px;
+  width: 180px;
 }
 .wrapper .main #language-section .selectCustom {
   position: absolute;
@@ -332,7 +332,6 @@ li {
 .wrapper .main #language-section .selectNative:focus,
 .wrapper .main #language-section .selectCustom.isActive .selectCustom-trigger {
   outline: none;
-  box-shadow: rgba(129, 129, 129, 0.1) 0px 3px 7px 0px;
 }
 .wrapper .main #language-section .select {
   position: relative;
@@ -378,9 +377,7 @@ li {
   border-style: solid;
   border-radius: 0.4rem;
   z-index: 1;
-  padding: 0.8rem 0;
   display: none;
-  box-shadow: rgba(116, 115, 115, 0.1) 0px 3px 7px 0px;
 }
 .wrapper .main #language-section .selectCustom.isActive .selectCustom-options {
   display: block;
@@ -388,14 +385,17 @@ li {
 .wrapper .main #language-section .selectCustom-option {
   position: relative;
   padding: 0.8rem;
-  padding-left: 2.5rem;
+  padding-left: 1.5rem;
+  border-radius: 0.4rem;
 }
 .wrapper .main #language-section .selectCustom-option.isHover,
 .wrapper .main #language-section .selectCustom-option:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   cursor: pointer;
 }
 .wrapper .main #appearance-section .appearance-selection {
+  margin-left: -35px;
+  margin-top: -10px;
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
@@ -407,17 +407,23 @@ li {
 .wrapper .main #appearance-section .appearance-selection label input {
   display: none;
 }
-.wrapper .main #appearance-section .appearance-selection label input + img {
+.wrapper .main #appearance-section .appearance-selection label input:hover + figure img, .wrapper .main #appearance-section .appearance-selection label input:checked + figure img {
+  border-width: 2px;
+  border-style: solid;
+}
+.wrapper .main #appearance-section .appearance-selection label figure {
+  width: 100%;
+  min-width: 200px;
+}
+.wrapper .main #appearance-section .appearance-selection label figure img {
   cursor: pointer;
   width: 100%;
+  min-width: 200px;
   height: auto;
   border-radius: 0.4rem;
 }
-.wrapper .main #appearance-section .appearance-selection label input:hover + img, .wrapper .main #appearance-section .appearance-selection label input:checked + img {
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 0.4rem;
-  transform: scale(1.1);
+.wrapper .main #appearance-section .appearance-selection label figure figcaption {
+  text-align: center;
 }
 .wrapper aside {
   order: 1;
@@ -717,9 +723,11 @@ li {
   .wrapper .main #language-section .selectCustom-trigger:hover {
     border-color: #b3b7b9;
   }
-  .wrapper .main #appearance-section label input:hover + img,
-.wrapper .main #appearance-section label input:checked + img {
+  .wrapper .main #appearance-section label input:hover + figure img {
     border-color: #3d3d3d;
+  }
+  .wrapper .main #appearance-section label input:checked + figure img {
+    border-color: #b3b7b9;
   }
 }
 @media (prefers-color-scheme: light) {
@@ -863,9 +871,11 @@ li {
   .wrapper .main #language-section .selectCustom-trigger:hover {
     border-color: #d1d7dc;
   }
-  .wrapper .main #appearance-section label input:hover + img,
-.wrapper .main #appearance-section label input:checked + img {
+  .wrapper .main #appearance-section label input:hover + figure img {
     border-color: #ebebeb;
+  }
+  .wrapper .main #appearance-section label input:checked + figure img {
+    border-color: #d1d7dc;
   }
 }
 

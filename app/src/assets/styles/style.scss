@@ -364,7 +364,7 @@ li {
       .selectNative,
       .selectCustom {
         position: relative;
-        width: 130px;
+        width: 180px;
       }
 
       .selectCustom {
@@ -393,7 +393,6 @@ li {
       .selectNative:focus,
       .selectCustom.isActive .selectCustom-trigger {
         outline: none;
-        box-shadow: rgba(129, 129, 129, 0.1) 0px 3px 7px 0px;
       }
 
       .select {
@@ -446,9 +445,7 @@ li {
         border-style: solid;
         border-radius: 0.4rem;
         z-index: 1;
-        padding: .8rem 0;
         display: none;
-        box-shadow: rgba(116, 115, 115, 0.1) 0px 3px 7px 0px;
       }
 
       .selectCustom.isActive .selectCustom-options {
@@ -458,18 +455,21 @@ li {
       .selectCustom-option {
         position: relative;
         padding: .8rem;
-        padding-left: 2.5rem;
+        padding-left: 1.5rem;
+        border-radius: 0.4rem;
       }
 
       .selectCustom-option.isHover,
       .selectCustom-option:hover {
-        opacity: .8;
+        opacity: .9;
         cursor: pointer;
       }
     }
 
     #appearance-section{
       .appearance-selection{
+        margin-left: -35px;
+        margin-top: -10px;
         display: flex;
         gap: 15px;
         flex-wrap: wrap;
@@ -480,19 +480,28 @@ li {
           input { 
             display: none;
   
-            & + img {
+            &:hover + figure,
+            &:checked + figure{
+              img{
+                border-width: 2px;
+                border-style: solid;
+              }
+            }
+          }
+
+          figure {
+            width: 100%;
+            min-width: 200px;
+            img{
               cursor: pointer;
               width: 100%;
+              min-width: 200px;
               height: auto;
               border-radius: .4rem;
             }
-  
-            &:hover + img,
-            &:checked + img {
-              border-width: 2px;
-              border-style: solid;
-              border-radius: .4rem;
-              transform: scale(1.1);
+
+            figcaption{
+              text-align: center;
             }
           }
         }
@@ -843,9 +852,15 @@ li {
 
       #appearance-section{
         label{
-          input:hover + img,
-          input:checked + img{
-            border-color: map.get($ui-colors, "border-color");
+          input:hover + figure{
+            img{
+              border-color: map.get($ui-colors, "border-color");
+            }
+          }
+          input:checked + figure{
+            img{
+              border-color: map.get($ui-colors, "circle-color");
+            }
           }
         }
       }
