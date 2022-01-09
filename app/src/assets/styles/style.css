@@ -393,6 +393,9 @@ li {
   opacity: 0.9;
   cursor: pointer;
 }
+.wrapper .main #appearance-section p {
+  margin-top: 0;
+}
 .wrapper .main #appearance-section .appearance-selection {
   margin-left: -35px;
   margin-top: -10px;
