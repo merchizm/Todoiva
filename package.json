@@ -2,7 +2,7 @@
     "name": "todoiva",
     "version": "1.2.0",
     "description": "Stylish, simple, loyal to-do app.",
-    "main": "./app/src/index.js",
+    "main": "app/src/main.js",
     "scripts": {
         "dev": "cross-env NODE_ENV=development electron .",
         "prod": "cross-env NODE_ENV=production electron .",

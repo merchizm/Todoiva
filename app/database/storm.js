@@ -9,7 +9,7 @@ const { join } = require("path");
 const database =
   process.env.NODE_ENV === "development"
     ? join(__dirname, "dev_db.json")
-    : join(app.getPath("userData"), "todoiva_db.stormdb");
+    : join(app.getPath("userData"), "todoiva_db.storm");
 const engine = new StormDB.localFileEngine(database);
 const db = new StormDB(engine);
 
@@ -73,7 +73,8 @@ function createList(data) {
     listIcon: data.listIcon,
     listItems: {},
   };
-  db.get("lists").push(temp).save();
+  db.get("lists").push(temp);
+  db.save();
 }
 
 function createToDo(itemName, listID) {
@@ -84,17 +85,13 @@ function createToDo(itemName, listID) {
       itemID: db.get("lists").get(listID).get("listItems").value().length + 1,
       itemName: itemName,
       checked: false,
-    })
-    .save();
+    });
+  db.save();
 }
 
 function renameList(listID, newName) {
-  db.get("lists")
-    .get(listID)
-    .get("listItems")
-    .get("listName")
-    .set(newName)
-    .save();
+  db.get("lists").get(listID).get("listItems").get("listName").set(newName);
+  db.save();
 }
 
 function changeColor(listID, newColor) {
@@ -102,17 +99,13 @@ function changeColor(listID, newColor) {
     .get(listID)
     .get("listItems")
     .get("listColor")
-    .set(colors[newColor])
-    .save();
+    .set(colors[newColor]);
+  db.save();
 }
 
 function changeIcon(listID, newIcon) {
-  db.get("lists")
-    .get(listID)
-    .get("listItems")
-    .get("listIcon")
-    .set(newIcon)
-    .save(); // TODO: create icons and array
+  db.get("lists").get(listID).get("listItems").get("listIcon").set(newIcon);
+  db.save(); // TODO: create icons and array
 }
 
 function removeCompletes(listID) {
@@ -152,8 +145,8 @@ function todoCheckedStatus(itemID, listID, status) {
     .get("listItems")
     .get(itemID - 1)
     .get("checked")
-    .set(status)
-    .save();
+    .set(status);
+  db.save();
 }
 
 // setting actions

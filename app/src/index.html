@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todoiva</title>
-    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/style.min.css">
     <link rel="stylesheet" href="assets/styles/animations.css">
 </head>
 
-<body>
+<body class="fadeOut">
     <div class="wrapper">
         <header class="title-bar" id="title">
             <div class="macos-title-bar">
                 <div class="button-container" id="button-container">
-                    <div class="normal-button" onclick="showSettings()">
+                    <div class="normal-button" onclick=" showPreferences()">
                         <svg id="settings_svg" height="512" viewBox="0 0 24 24" width="512"
                             xmlns="http://www.w3.org/2000/svg">
                             <g>
@@ -40,8 +40,7 @@
 
                     <button type="reset" class="reset">
                         <svg id="reset" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            x="0px" y="0px" viewBox="0 0 512.001 512.001"
-                            style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
+                            x="0px" y="0px" viewBox="0 0 512.001 512.001" xml:space="preserve">
                             <g>
                                 <g>
                                     <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717
@@ -55,8 +54,7 @@
                     </button>
                     <span class="submit">
                         <svg id="submit" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            x="0px" y="0px" viewBox="0 0 612.01 612.01" style="enable-background:new 0 0 612.01 612.01;"
-                            xml:space="preserve">
+                            x="0px" y="0px" viewBox="0 0 612.01 612.01" xml:space="preserve">
                             <g>
                                 <g id="_x34__4_">
                                     <g>
@@ -92,13 +90,12 @@
         <main class="main">
             <header>
                 <h1 id="list-name">$</h1>
-                <button class="new-task-btn" onclick="addToDo();" id="task-add"
-                >+</button>
+                <button class="new-task-btn" onclick="showToDo();" id="task-add">+</button>
             </header>
 
             <div class="task-add bounceIn" id="task-input" style="display: none;">
                 <span></span>
-                <input type="text" class="task-input" data-listid="1" placeholder="Ne Yapsam?" id="add-input">
+                <input type="text" class="task-input" data-listid="1" placeholder="-" id="add-input">
             </div>
 
             <div class="container">
@@ -109,5 +106,5 @@
     </div>
 </body>
 <script src="renderer.js"></script>
-
+<script src="index.js"></script>
 </html>
