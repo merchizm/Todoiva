@@ -78,11 +78,22 @@ li {
   justify-content: space-between;
 }
 .wrapper .main header .new-task-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   border: 0;
+  border-radius: 50%;
   font-size: 2rem;
   margin-right: 20px;
+  padding: 0 6px;
+  height: 1.6rem;
   cursor: pointer;
+  transition: all 0.6s ease-in-out;
+}
+.wrapper .main header .new-task-btn:focus {
+  border-width: 1px;
+  border-style: solid;
 }
 .wrapper .main header h1 {
   font-weight: 400;
@@ -655,6 +666,9 @@ li {
   .wrapper .main header button {
     color: #fff;
   }
+  .wrapper .main header button:focus {
+    border-color: #3d3d3d;
+  }
   .wrapper .main .task-add span {
     background-color: #a8a8a8;
   }
@@ -788,6 +802,9 @@ li {
   }
   .wrapper .main header button {
     color: #000;
+  }
+  .wrapper .main header button:focus {
+    border-color: #ebebeb;
   }
   .wrapper .main .task-add span {
     background-color: #404040;

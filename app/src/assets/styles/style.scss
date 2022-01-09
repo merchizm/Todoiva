@@ -93,11 +93,23 @@ li {
       @include flex-display(flex, center, space-between);
 	  
       .new-task-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: transparent;
         border: 0;
+        border-radius: 50%;
         font-size: 2rem;
         margin-right: 20px;
+        padding: 0 6px;
+        height: 1.6rem;
         cursor: pointer;
+        transition: all 0.6s ease-in-out;
+
+        &:focus{
+          border-width: 1px;
+          border-style: solid;
+        }
       }
 
       h1 {
@@ -765,6 +777,10 @@ li {
       header {
         button {
           color: map.get($ui-colors, "icon");
+
+          &:focus{
+            border-color: map.get($ui-colors, "border-color")
+          }
         }
       }
 
