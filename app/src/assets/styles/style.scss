@@ -393,7 +393,7 @@ li {
       .selectNative:focus,
       .selectCustom.isActive .selectCustom-trigger {
         outline: none;
-        box-shadow: rgba(100, 100, 100, 0.2) 0px 7px 19px 0px;
+        box-shadow: rgba(129, 129, 129, 0.1) 0px 3px 7px 0px;
       }
 
       .select {
@@ -439,16 +439,16 @@ li {
 
       .selectCustom-options {
         position: absolute;
-        top: calc(3.8rem + 0.8rem);
+        top: calc(30px + .7rem);
         left: 0;
         width: 100%;
-        background-color: white;
-        border: 1px solid #cecece;
+        border-width: 1px;
+        border-style: solid;
         border-radius: 0.4rem;
         z-index: 1;
         padding: .8rem 0;
         display: none;
-        box-shadow: rgba(100, 100, 100, 0.2) 0px 7px 19px 0px;
+        box-shadow: rgba(116, 115, 115, 0.1) 0px 3px 7px 0px;
       }
 
       .selectCustom.isActive .selectCustom-options {
@@ -463,40 +463,38 @@ li {
 
       .selectCustom-option.isHover,
       .selectCustom-option:hover {
-        background-color: #f5f4f4; 
         opacity: .8;
-        cursor: default;
+        cursor: pointer;
       }
     }
 
     #appearance-section{
-      label:not(:last-child){
-        margin-right: 20px;
-      }
+      .appearance-selection{
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
 
-      label{
-        input { 
-          display: none;
-
-          & + img {
-            cursor: pointer;
-            width: 128px;
-            height: 128px;
+        label{
+          width: 30%;
+          min-width: 200px;
+          input { 
+            display: none;
+  
+            & + img {
+              cursor: pointer;
+              width: 100%;
+              height: auto;
+              border-radius: .4rem;
+            }
+  
+            &:hover + img,
+            &:checked + img {
+              border-width: 2px;
+              border-style: solid;
+              border-radius: .4rem;
+              transform: scale(1.1);
+            }
           }
-
-          &:hover + img,
-          &:checked + img {
-            border-width: 2px;
-            border-style: solid;
-            border-radius: .4rem;
-            transform: scale(1.1);
-          }
-        }
-      }
-
-      &:last-child{
-        img{
-          padding-right: 10px;
         }
       }
     }
@@ -817,6 +815,17 @@ li {
       }
 
       #language-section{
+        .selectCustom-options {
+          color: map.get($ui-colors, "text");
+          background-color: map.get($ui-colors, "input-bg");
+          border-color: map.get($ui-colors, "border-color");
+        }
+
+        .selectCustom-option.isHover,
+        .selectCustom-option:hover{
+          background-color: map.get($ui-colors, "menu-bg");
+        }
+
         .selectNative,
         .selectCustom-trigger {
           background-color: map.get($ui-colors, "input-bg");
