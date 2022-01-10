@@ -1,5 +1,4 @@
 "use strict";
-
 /* Features needed to make the selectCustom work for mouse users.
 
 - Toggle custom select visibility when clicking the "box"
@@ -10,6 +9,7 @@
 - Sync both selects values when selecting a option. (native or custom)
 
 */
+const { changeLanguage } = require("../database/storm");
 const elSelectNative = document.getElementsByClassName("js-selectNative")[0];
 const elSelectCustom = document.getElementsByClassName("js-selectCustom")[0];
 const elSelectCustomBox = elSelectCustom.children[0];
@@ -83,6 +83,7 @@ function updateCustomSelectChecked(value, text) {
   }
 
   if (elOption) {
+    changeLanguage(elOption.dataset.value);
     elOption.classList.add("isActive");
   }
 

@@ -1,5 +1,3 @@
-const { changeLanguage } = require("../database/storm");
-
 document.getElementById("title").style.backgroundColor = decodeURI(
   window.location.href.split("#")[1]
 );
@@ -19,10 +17,7 @@ function goBack() {
   body.classList.add("animated");
 }
 
-// eslint-disable-next-line no-unused-vars
-function languageSelectOnChange() {
-  changeLanguage(document.getElementById("language").value);
-}
+
 // eslint-disable-next-line no-unused-vars
 function scrollToDiv(id) {
   document.getElementById("sections").scrollTop =
@@ -37,8 +32,9 @@ function languageSelectPrep() {
     let option = document.createElement("option");
     option.text = languages.languages[element];
     option.value = element;
-    getLanguage() === element &&
-    option.setAttribute("selected", true.toString());
+    if (getLanguage().split("-")[0] === element)
+      document.getElementById("language_trigger").innerText =
+        languages.languages[element];
     select.add(option);
     // add selectCustom-option
     let customOption = document.createElement("div");
