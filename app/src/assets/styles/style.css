@@ -703,8 +703,9 @@ li {
   .wrapper .main .container::-webkit-scrollbar-thumb:hover {
     background-color: rgba(13, 12, 12, 0.4);
   }
-  .wrapper .main .content header .line {
-    background-color: #2a2a2a;
+  .wrapper .main .content header h1 {
+    color: #eeeeee;
+    border-bottom-color: #2a2a2a;
   }
   .wrapper .main #language-section .selectCustom-options {
     color: #eeeeee;
@@ -851,8 +852,9 @@ li {
   .wrapper .main .container::-webkit-scrollbar-thumb:hover {
     background-color: rgba(13, 12, 12, 0.6);
   }
-  .wrapper .main .content header .line {
-    background-color: #EDEDED;
+  .wrapper .main .content header h1 {
+    color: #494A4E;
+    border-bottom-color: #e3e0e0;
   }
   .wrapper .main #language-section .selectCustom-options {
     color: #9195a1;

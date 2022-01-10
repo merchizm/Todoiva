@@ -820,8 +820,9 @@ li {
 
       .content {
         header {
-          .line {
-            background-color: map.get($ui-colors, "line");
+          h1{
+            color: map.get($ui-colors, "title");
+            border-bottom-color: map.get($ui-colors, "line");
           }
         }
       }
@@ -885,7 +886,8 @@ li {
           "check": #e7e7e7,
           "disabled": #a8a8a8,
           "line": #2a2a2a,
-          "settings-color": #e5e5e5
+          "settings-color": #e5e5e5,
+          "title": #eeeeee
   );
 
   $colors: "red" #e25757, "blue" #5fa4ff, "green" #2fc43e, "purple" #a766d3, "orange" #fc9b2d, "pink" #ff5df1;
@@ -912,8 +914,9 @@ li {
           "text": #9195a1,
           "check": #404040,
           "disabled": #404040,
-          "line": #EDEDED,
-          "settings-color": #343333
+          "line": #e3e0e0,
+          "settings-color": #343333,
+          "title": #494A4E
   );
 
   $colors: "purple" #a872ff, "red" #ff9797, "blue" #75b1ff, "green" #49d657, "orange" #ffaf53, "pink" #f781ed;

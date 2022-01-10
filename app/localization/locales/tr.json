@@ -1,14 +1,14 @@
 {
-    "search":"Ara",
-    "my_lists":"Listelerim",
-    "preferences":"Ayarlar",
+    "search": "Ara",
+    "my_lists": "Listelerim",
+    "preferences": "Ayarlar",
     "preferences-language": "Dil",
     "preferences-language-h": "Dil Seçenekleri",
     "preferences-appearance": "Görünüm",
     "preferences-lang-l": "Bu arayüzün dilini değiştirin :",
     "preferences-appearance-p": "Görünüş",
     "preferences-appearance-h": "Görünüm Seçenekleri",
-    "back-button":"Geri Dön",
+    "back-button": "Geri Dön",
     "tutorial": "Todoiva Öğreticisi",
     "hello-there": "Selam !",
     "tut-i1": "Burası senin yapılacaklar listen 🥰",
@@ -18,5 +18,8 @@
     "tut-i3-for-linux": "",
     "tut-i4": "Ayarlardan dilersen tasarımı veya dili değiştirebilirsin.",
     "tut-i5": "Belki ileride çok daha fazla özelliğim olur ama şimdilik ayarlarda yapabileceklerin bunlar 😊",
-    "tut-i6": ":* :*"
+    "tut-i6": ":* :*",
+    "light": "Açık Mod",
+    "dark": "Karanlık Mod",
+    "system-choice": "Sistem Tercihi"
 }

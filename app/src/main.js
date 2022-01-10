@@ -1,6 +1,6 @@
-const { app, BrowserWindow, shell, nativeTheme } = require("electron");
+const { app, BrowserWindow, ipcMain, nativeTheme } = require("electron");
 const path = require("path");
-const { getAppearance } = require("../database/storm");
+const { getAppearance, changeAppearance } = require("../database/storm");
 const url = require("url");
 const remote = require("@electron/remote/main");
 remote.initialize();
@@ -27,6 +27,22 @@ function createWindow() {
   // set Appearance
   nativeTheme.themeSource = getAppearance();
 
+  // dynamically change
+  ipcMain.handle("dark-mode:light", () => {
+    nativeTheme.themeSource = "light";
+    changeAppearance("light");
+  });
+
+  ipcMain.handle("dark-mode:dark", () => {
+    nativeTheme.themeSource = "dark";
+    changeAppearance("dark");
+  });
+
+  ipcMain.handle("dark-mode:system", () => {
+    nativeTheme.themeSource = "system";
+    changeAppearance("system");
+  });
+
   // and load the index.html of the app.
   mainWindow.loadURL(
     url.format({
@@ -45,15 +61,15 @@ function createWindow() {
   });
 
   // force external links to open in default browser
-  let handleRedirect = function (e, Url) {
+  /*  let handleRedirect = function (e, Url) {
     if (Url !== mainWindow.webContents.getURL()) {
-      //e.preventDefault();
-      //shell.openExternal(Url);
+      e.preventDefault();
+      shell.openExternal(Url);
     }
   };
 
   mainWindow.webContents.on("will-navigate", handleRedirect);
-  mainWindow.webContents.on("new-window", handleRedirect);
+  mainWindow.webContents.on("new-window", handleRedirect);*/
 }
 
 // This method will be called when Electron has finished

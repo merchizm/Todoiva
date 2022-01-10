@@ -1,4 +1,5 @@
 const { getLanguage } = require("../database/storm");
+const { ipcRenderer } = require("electron");
 const Event = new (require("./events"))();
 window.events = function () {
   // macOS Events
@@ -104,6 +105,16 @@ window.localization = window.localization || {};
         document.getElementById("preferences-language-h").innerText =
           window.i18n.__("preferences-language-h");
       },
+      preferencesAppearanceLight: function () {
+        document.getElementById("light").innerText = window.i18n.__("light");
+      },
+      preferencesAppearanceDark: function () {
+        document.getElementById("dark").innerText = window.i18n.__("dark");
+      },
+      preferencesAppearanceSC: function () {
+        document.getElementById("system-choice").innerText =
+          window.i18n.__("system-choice");
+      },
       init: function () {
         this.preferencesLanguage();
         this.preferencesAppearance();
@@ -112,6 +123,9 @@ window.localization = window.localization || {};
         this.preferencesGoBack();
         this.preferencesAppearanceH();
         this.preferencesLanguageH();
+        this.preferencesAppearanceLight();
+        this.preferencesAppearanceDark();
+        this.preferencesAppearanceSC();
       },
     };
   }
@@ -120,9 +134,28 @@ window.localization = window.localization || {};
 })();
 
 (function () {
-  window.location.pathname
-    .split("/")
-    [window.location.pathname.split("/").length - 1].split(".")[0] ===
-    "index" && Event.loadLists(document.getElementById("todolists"), document);
+  if (
+    window.location.pathname
+      .split("/")
+      [window.location.pathname.split("/").length - 1].split(".")[0] ===
+    "preferences"
+  ) {
+    document
+      .getElementById("dark_input")
+      .addEventListener("click", async () => {
+        await ipcRenderer.invoke("dark-mode:dark");
+      });
+    document
+      .getElementById("light_input")
+      .addEventListener("click", async () => {
+        await ipcRenderer.invoke("dark-mode:light");
+      });
+    document.getElementById("sc_input").addEventListener("click", async () => {
+      await ipcRenderer.invoke("dark-mode:system");
+    });
+  } else {
+    Event.loadLists(document.getElementById("todolists"), document);
+  }
+
   window.events();
 })();

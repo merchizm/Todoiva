@@ -18,5 +18,8 @@
     "tut-i3-for-linux": "",
     "tut-i4": "You can set your appearance and language from Preferences.",
     "tut-i5": "I may have more features in the future, but I will always be stylish and simple.",
-    "tut-i6": "XOXO"
+    "tut-i6": "XOXO",
+    "light": "Light",
+    "dark": "Dark",
+    "system-choice":"System Choice"
 }
