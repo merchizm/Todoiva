@@ -115,6 +115,10 @@ window.localization = window.localization || {};
         document.getElementById("system-choice").innerText =
           window.i18n.__("system-choice");
       },
+      preferencesLanguageInfoBox: function () {
+        document.getElementById("info-box").children[1].innerText =
+          window.i18n.__("language-info");
+      },
       init: function () {
         this.preferencesLanguage();
         this.preferencesAppearance();
@@ -126,6 +130,7 @@ window.localization = window.localization || {};
         this.preferencesAppearanceLight();
         this.preferencesAppearanceDark();
         this.preferencesAppearanceSC();
+        this.preferencesLanguageInfoBox();
       },
     };
   }
