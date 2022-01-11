@@ -1,12 +1,15 @@
+// eslint-disable-next-line no-unused-vars
 function showPreferences() {
   let body = document.body;
-  setTimeout(function() {
-    if(body.classList.contains("animated")){
+  setTimeout(function () {
+    if (body.classList.contains("navigating")) {
       console.log("navigating..");
-      window.location = "preferences.html#" + document.getElementById("title").style.backgroundColor;
+      window.location =
+        "preferences.html#" +
+        document.getElementById("title").style.backgroundColor;
     }
   }, 100);
-  body.classList.add("animated");
+  body.classList.add("navigating");
 }
 
 function clearAnimated(elementID) {

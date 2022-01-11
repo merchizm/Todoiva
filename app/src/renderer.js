@@ -156,6 +156,11 @@ window.localization = window.localization || {};
   } else {
     Event.loadLists(document.getElementById("todolists"), document);
   }
-
   window.events();
 })();
+
+window.onload = function () {
+  setTimeout(function () {
+    document.getElementsByClassName("pre-loader")[0].style.display = "none";
+  }, 200);
+};

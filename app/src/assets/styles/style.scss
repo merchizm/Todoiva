@@ -36,6 +36,7 @@ li {
   justify-content: $justify-content;
 }
 
+
 .wrapper {
   display: flex;
   flex-flow: row wrap;
@@ -707,6 +708,35 @@ li {
 }
 
 @mixin createPrefersColorScheme($ui-colors, $colors, $scrollbar) {
+
+  .pre-loader{
+    position: absolute;
+    top:0;
+    left:0;
+    -webkit-app-region: drag;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: map.get($ui-colors, "main-bg");
+    z-index: 1000;
+    width:100vw;
+    height:100vw;
+    .loader {
+      border: 4px solid map.get($ui-colors, "loader-border");
+      border-top: 4px solid map.get($ui-colors, "loader-border-active");
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  }
+
   .wrapper {
     .default-menu {
       background-color: map.get($ui-colors, "menu-bg");
@@ -828,6 +858,29 @@ li {
       }
 
       #language-section{
+        .info-box{
+          padding:10px;
+          background-color: map.get($ui-colors, "info-box-color");
+          color: map.get($ui-colors, "info-box-bold-color") !important;
+          margin-top: 30px;
+          border: 1px solid map.get($ui-colors, "info-box-bold-color");
+          display:flex;
+          align-items: center;
+          align-content: center;
+          svg{
+            margin-right:10px;
+            fill: map.get($ui-colors, "info-box-bold-color");
+          }
+          a{
+            text-decoration: none;
+            color: map.get($ui-colors, "info-box-bold-color");
+            &:hover{
+              color: map.get($ui-colors, "info-box-a-hover-color");
+              cursor: pointer;
+            }
+          }
+        }
+
         .selectCustom-options {
           color: map.get($ui-colors, "text");
           background-color: map.get($ui-colors, "input-bg");
@@ -887,7 +940,12 @@ li {
           "disabled": #a8a8a8,
           "line": #2a2a2a,
           "settings-color": #e5e5e5,
-          "title": #eeeeee
+          "title": #eeeeee,
+          "info-box-color": #5fa4ff,
+          "info-box-bold-color": #38649a,
+          "info-box-a-hover-color": #305788,
+          "loader-border":  #f3f3f3,
+          "loader-border-active": #3498db
   );
 
   $colors: "red" #e25757, "blue" #5fa4ff, "green" #2fc43e, "purple" #a766d3, "orange" #fc9b2d, "pink" #ff5df1;
@@ -916,7 +974,12 @@ li {
           "disabled": #404040,
           "line": #e3e0e0,
           "settings-color": #343333,
-          "title": #494A4E
+          "title": #494A4E,
+          "info-box-color": #8cbeff,
+          "info-box-bold-color": #3880d7,
+          "info-box-a-hover-color": #224e83,
+          "loader-border": #8e9098,
+          "loader-border-active": #3498db
   );
 
   $colors: "purple" #a872ff, "red" #ff9797, "blue" #75b1ff, "green" #49d657, "orange" #ffaf53, "pink" #f781ed;

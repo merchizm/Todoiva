@@ -9,12 +9,12 @@ document.getElementById("title").style.backgroundColor = decodeURI(
 function goBack() {
   let body = document.body;
   setTimeout(function () {
-    if (body.classList.contains("animated")) {
+    if (body.classList.contains("navigating")) {
       console.log("navigating..");
       window.location = "index.html";
     }
   }, 100);
-  body.classList.add("animated");
+  body.classList.add("navigating");
 }
 
 

@@ -83,6 +83,7 @@ function updateCustomSelectChecked(value, text) {
   }
 
   if (elOption) {
+    document.getElementById("info-box").style.display = "flex";
     changeLanguage(elOption.dataset.value);
     elOption.classList.add("isActive");
   }
