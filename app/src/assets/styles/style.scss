@@ -76,6 +76,7 @@ li {
           p {
             font-size: 0.8rem;
             margin: 0;
+            cursor: pointer;
           }
         }
       }
@@ -357,6 +358,25 @@ li {
         label{
           display: block;
           margin-bottom: 15px;
+        }
+      }
+
+      .info-box{
+        padding:15px;
+        margin-top: 30px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: .4rem;
+        
+        svg{
+          margin-right:10px;
+          min-width: 17px;
+        }
+
+        a{
+          text-decoration: none;
+          cursor: pointer;
         }
       }
     }
@@ -691,6 +711,26 @@ li {
   }
 }
 
+.pre-loader{
+  -webkit-app-region: drag;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  width:100vw;
+  height:100vh;
+
+  .loader{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    -webkit-animation: spin 2s linear infinite;
+  }
+}
+
 
 @mixin createScrollBar($track, $thumb-bg, $thumb-hover) {
   &::-webkit-scrollbar-track {
@@ -710,25 +750,11 @@ li {
 @mixin createPrefersColorScheme($ui-colors, $colors, $scrollbar) {
 
   .pre-loader{
-    position: absolute;
-    top:0;
-    left:0;
-    -webkit-app-region: drag;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
     background-color: map.get($ui-colors, "main-bg");
-    z-index: 1000;
-    width:100vw;
-    height:100vw;
+
     .loader {
       border: 4px solid map.get($ui-colors, "loader-border");
       border-top: 4px solid map.get($ui-colors, "loader-border-active");
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      animation: spin 2s linear infinite;
     }
 
     @keyframes spin {
@@ -859,24 +885,17 @@ li {
 
       #language-section{
         .info-box{
-          padding:10px;
           background-color: map.get($ui-colors, "info-box-color");
           color: map.get($ui-colors, "info-box-bold-color") !important;
-          margin-top: 30px;
           border: 1px solid map.get($ui-colors, "info-box-bold-color");
-          display:flex;
-          align-items: center;
-          align-content: center;
+          
           svg{
-            margin-right:10px;
             fill: map.get($ui-colors, "info-box-bold-color");
           }
           a{
-            text-decoration: none;
             color: map.get($ui-colors, "info-box-bold-color");
             &:hover{
               color: map.get($ui-colors, "info-box-a-hover-color");
-              cursor: pointer;
             }
           }
         }
@@ -941,9 +960,9 @@ li {
           "line": #2a2a2a,
           "settings-color": #e5e5e5,
           "title": #eeeeee,
-          "info-box-color": #5fa4ff,
-          "info-box-bold-color": #38649a,
-          "info-box-a-hover-color": #305788,
+          "info-box-color": rgba(#5fa4ff, .7),
+          "info-box-bold-color": #173864,
+          "info-box-a-hover-color": #11243b,
           "loader-border":  #f3f3f3,
           "loader-border-active": #3498db
   );
