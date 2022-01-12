@@ -95,9 +95,7 @@ li {
       @include flex-display(flex, center, space-between);
 	  
       .new-task-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex-display(flex, center, center);
         background-color: transparent;
         border: 0;
         border-radius: 50%;
@@ -331,6 +329,16 @@ li {
           -14px -8px 0 0px $check;
         }
       }
+
+      .completed-items{
+        margin-top: 30px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+     
+        h2{
+          font-size: 1.1rem;
+        }
+      }
     }
 
     .content {
@@ -364,9 +372,7 @@ li {
       .info-box{
         padding:15px;
         margin-top: 30px;
-        display:flex;
-        align-items: center;
-        justify-content: center;
+        @include flex-display(flex, center, center);
         border-radius: .4rem;
         
         svg{
@@ -545,6 +551,8 @@ li {
 
   .preferences-menu {
     padding: 25px 30px;
+    text-align: center;
+
     .menu-item {
       margin: 10px 0;
       cursor: pointer;
@@ -715,9 +723,7 @@ li {
   -webkit-app-region: drag;
   position: absolute;
   top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-display(flex, center, center);
   z-index: 3;
   width:100vw;
   height:100vh;
@@ -730,6 +736,90 @@ li {
     -webkit-animation: spin 2s linear infinite;
   }
 }
+
+.target {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  @include flex-display(flex, center, center);
+}
+
+.contextMenu {
+  height: 0;
+  overflow: hidden;
+  backdrop-filter: blur(1px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: menuAnimation 0.4s 0s both;
+  transform-origin: left;
+  list-style: none;
+  margin: 4px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  &-item {
+    padding: 4px;
+  }
+
+  &-item[data-divider="top"] {
+    border-top: 1px solid;
+  }
+
+  &-item[data-divider="bottom"] {
+    border-bottom: 1px solid;
+  }
+
+  &-item[data-divider="top-bottom"] {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+  }
+
+  &-button {
+    background: 0;
+    border: 0;
+    white-space: nowrap;
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 24px 6px 7px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    width: 100%;
+    animation: menuItemAnimation 0.2s 0s both;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+  }
+}
+
+@keyframes menuAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  100% {
+    height: var(--height);
+    opacity: 1;
+    border-radius: 8px;
+    transform: scale(1);
+  }
+}
+
+@keyframes menuItemAnimation {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 
 
 @mixin createScrollBar($track, $thumb-bg, $thumb-hover) {
@@ -760,6 +850,26 @@ li {
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+  }
+
+  .contextMenu{
+    background: map.get($ui-colors, "click-menu-bg");
+    box-shadow: 0 0 0 1px map.get($ui-colors, "menu-border"), 0 2px 2px rgb(0 0 0 / 3%),
+    0 4px 4px rgb(0 0 0 / 4%), 0 5px 3px rgb(0 0 0 / 5%),
+    0 15px 15px rgb(0 0 0 / 6%), 0 3px 3px rgb(0 0 0 / 7%),
+    0 70px 65px rgb(0 0 0 / 9%);
+
+    &-item[data-divider] {
+      border-color: map.get($ui-colors, "item-border");
+    }
+
+    &-button {
+      color: map.get($ui-colors, "item-color");
+
+      &:hover {
+        background-color: map.get($ui-colors, "item-bg-hover");
+      }
     }
   }
 
@@ -816,7 +926,6 @@ li {
 
     .preferences-menu {
       color: map.get($ui-colors, "menu-text");
-      text-align: center;
       background-color: map.get($ui-colors, "menu-bg");
       .menu-item {
         color: map.get($ui-colors, "menu-text");
@@ -872,6 +981,11 @@ li {
         }
 
         @include createScrollBar(map.get($scrollbar, "track"), map.get($scrollbar, "thumb-bg"), map.get($scrollbar, "thumb-hover"));
+
+        .completed-items{
+          color: map.get($ui-colors, "title");
+          border-bottom-color: map.get($ui-colors, "border-color");
+        }
       }
 
       .content {
@@ -946,25 +1060,34 @@ li {
 
 @media (prefers-color-scheme: dark) {
   $ui-colors: (
-          "menu-bg" : #191919,
-          "main-bg": #202020,
-          "input-bg": #333333,
-          "border-color": #3d3d3d,
-          "shadow-color": rgba(224, 224, 224, 0.295),
-          "menu-text": #e7e7e7,
-          "circle-color": #b3b7b9,
-          "icon": #fff,
-          "text": #eeeeee,
-          "check": #e7e7e7,
-          "disabled": #a8a8a8,
-          "line": #2a2a2a,
-          "settings-color": #e5e5e5,
-          "title": #eeeeee,
-          "info-box-color": rgba(#5fa4ff, .7),
-          "info-box-bold-color": #173864,
-          "info-box-a-hover-color": #11243b,
-          "loader-border":  #f3f3f3,
-          "loader-border-active": #3498db
+    "menu-bg" : #191919,
+    "main-bg": #202020,
+    "input-bg": #333333,
+    "border-color": #3d3d3d,
+    "shadow-color": rgba(224, 224, 224, 0.295),
+    "menu-text": #e7e7e7,
+    "circle-color": #b3b7b9,
+    "icon": #fff,
+    "text": #eeeeee,
+    "check": #e7e7e7,
+    "disabled": #a8a8a8,
+    "line": #2a2a2a,
+    "settings-color": #e5e5e5,
+    "title": #eeeeee,
+    "info-box-color": rgba(#5fa4ff, .7),
+    "info-box-bold-color": #173864,
+    "info-box-a-hover-color": #11243b,
+    "loader-border":  #f3f3f3,
+    "loader-border-active": #3498db,
+    "menu-border": rgba(255, 255, 255, 0.08),
+    "click-menu-bg": linear-gradient(
+      45deg,
+      rgba(10, 20, 28, .7) 50%,
+      rgba(10, 20, 28, .9) 100%
+    ),
+    "item-border": rgba(255, 255, 255, 0.1),
+    "item-color": #fff,
+    "item-bg-hover": rgba(255, 255, 255, 0.1)
   );
 
   $colors: "red" #e25757, "blue" #5fa4ff, "green" #2fc43e, "purple" #a766d3, "orange" #fc9b2d, "pink" #ff5df1;
@@ -980,25 +1103,34 @@ li {
 
 @media (prefers-color-scheme: light) {
   $ui-colors: (
-          "menu-bg" : #f7f7f7,
-          "main-bg": #fdfdfd,
-          "input-bg": #fff,
-          "border-color": #ebebeb,
-          "shadow-color": rgba(0, 0, 0, 0.03),
-          "menu-text": #686868,
-          "circle-color": #d1d7dc,
-          "icon": #000,
-          "text": #9195a1,
-          "check": #404040,
-          "disabled": #404040,
-          "line": #e3e0e0,
-          "settings-color": #343333,
-          "title": #494A4E,
-          "info-box-color": #8cbeff,
-          "info-box-bold-color": #3880d7,
-          "info-box-a-hover-color": #224e83,
-          "loader-border": #8e9098,
-          "loader-border-active": #3498db
+    "menu-bg" : #f7f7f7,
+    "main-bg": #fdfdfd,
+    "input-bg": #fff,
+    "border-color": #ebebeb,
+    "shadow-color": rgba(0, 0, 0, 0.03),
+    "menu-text": #686868,
+    "circle-color": #d1d7dc,
+    "icon": #000,
+    "text": #9195a1,
+    "check": #404040,
+    "disabled": #404040,
+    "line": #e3e0e0,
+    "settings-color": #343333,
+    "title": #494A4E,
+    "info-box-color": #8cbeff,
+    "info-box-bold-color": #3880d7,
+    "info-box-a-hover-color": #224e83,
+    "loader-border": #8e9098,
+    "loader-border-active": #3498db,
+    "click-menu-bg": linear-gradient(
+      45deg,
+      rgba(255, 255, 255, .7) 50%,
+      rgba(255, 255, 255, .9) 100%
+    ),
+    "menu-border": rgba(0, 0, 0, 0.08),
+    "item-border": rgba(0, 0, 0, 0.1),
+    "item-color": rgb(10, 20, 28),
+    "item-bg-hover": rgba(10, 20, 28, 0.09)
   );
 
   $colors: "purple" #a872ff, "red" #ff9797, "blue" #75b1ff, "green" #49d657, "orange" #ffaf53, "pink" #f781ed;
