@@ -22,5 +22,8 @@
     "light": "Açık Mod",
     "dark": "Karanlık Mod",
     "system-choice": "Sistem Tercihi",
-    "language-info": "Dil başarıyla değiştirildi. Arayüzü güncellemek için tıklayın."
+    "language-info": "Dil başarıyla değiştirildi. Arayüzü güncellemek için tıklayın.",
+    "completed-items": "Tamamlananlar Görevler",
+    "show": "Göster",
+    "hide": "Gizle"
 }

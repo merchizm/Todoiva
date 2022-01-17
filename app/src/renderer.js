@@ -69,10 +69,29 @@ window.localization = window.localization || {};
         document.getElementById("preferences").innerText =
           window.i18n.__("preferences");
       },
+      completedItemsText: function () {
+        document.getElementsByClassName(
+          "completed-items"
+        )[0].children[0].children[0].children[1].innerText =
+          window.i18n.__("completed-items");
+      },
+      showText: function () {
+        document.getElementsByClassName(
+          "completed-items"
+        )[0].children[0].children[1].dataset.show = window.i18n.__("show");
+      },
+      hideText: function () {
+        document.getElementsByClassName(
+          "completed-items"
+        )[0].children[0].children[1].dataset.hide = window.i18n.__("hide");
+      },
       init: function () {
         this.searchText();
         this.listsText();
         this.preferencesText();
+        this.completedItemsText();
+        this.showText();
+        this.hideText();
       },
     };
   } else {
@@ -159,7 +178,7 @@ window.localization = window.localization || {};
       await ipcRenderer.invoke("dark-mode:system");
     });
   } else {
-    Event.loadLists(document.getElementById("todolists"), document);
+    Event.loadLists(document.getElementById("todolists"));
   }
   window.events();
 })();

@@ -58,10 +58,22 @@ db.default({
   settings: {
     appearance: "system",
     language: app.getLocale(),
+    lastList: 0,
+    showCompletedItems: true,
   },
 });
 
 db.save(); // for defaults
+
+// functionality
+
+function getLastListID() {
+  return db.get("settings").get("lastList").value();
+}
+
+function setLastListID(listID) {
+  return db.get("settings").get("lastList").set(listID).save();
+}
 
 // list actions
 
@@ -172,6 +184,10 @@ function getLanguage() {
   return db.get("settings").get("language").value();
 }
 
+function getShowCompletedItems() {
+  return db.get("settings").get("showCompletedItems").value();
+}
+
 // exports
 
 module.exports = {
@@ -190,4 +206,7 @@ module.exports = {
   getAppearance,
   getLanguage,
   getLength,
+  getLastListID,
+  setLastListID,
+  getShowCompletedItems,
 };
