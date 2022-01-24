@@ -1,34 +1,34 @@
-<img src="todoiva-logo.png" align="right" />
+<img src="github_resources/todoiva-logo.png" align="right" />
 
-# Todoiva ![Version](https://img.shields.io/badge/1.2%20B-brightgreen) 
-> Sadık, şık yardımcınız
+# Todoiva ![Version](https://img.shields.io/badge/1.2%20B-brightgreen) [![Türkçe readme.md](https://img.shields.io/badge/Türkçe%20için%20Tıkla-red)](readme_tr.md)
+> Your loyal, stylish to-do assistant
 
-Todoiva, yarışma amacı gütmeyen kendi çizgisinden usulca ilerleyen şık bir electron uygulamasıdır. Uygulama kodlayan kişilerin pratik bir şekilde kodlarken öğrenmesi için geliştirilmiştir. 
-
----
-
-Uygulamanın Görüntüleri bitirildiğinde eklenecek :)
+Todoiva is a stylish non-competitive electron app. Todoiva developing for developers to learn practically while coding.  
 
 ---
 
+## Screenshoots
 
-## Yol Haritası
+![Dark Screenshot](github_resources/dark-ss.png "Dark Screenshot")
+![Light Screenshot](github_resources/light-ss.png "Light Screenshot")
 
-- [x] Yeni versiyon için yeni branch oluşturuldu.
+## Roadmap
 
-- [x] Yeni tasarım geliştirildi.
+- [x] Improved new design.
 
-- [x] Veritabanı için dosya hazırlandı.
+- [x] New database system integrated.
 
-- [x] Dil sistemi entegre edildi.
+- [x] Language system integrated.
 
-- [ ] Animasyonların hepsi eklendi.
+- [ ] Animations added.
 
-- [ ] To-Do Listeleri oluşturulabilir hale geldi.
+- [ ] To-Do Lists can be created.
 
-- [ ] To-Do itemleri tamamen silinmek yerine tamamlanacak hale, silinmesi istenilen de silinecek hale geldi.
+- [ ] To-Do items will be completed instead of being completely deleted, and the desired deletion will be deleted.
 
-## Katkı Sağlayanlar
+- [ ] Minor features have been added to make the interface easier to use.
+
+## Contributors
 [![Contributors](https://contrib.rocks/image?repo=merchizm/Todoiva)](https://github.com/merchizm/Todoiva/graphs/contributors)
 
-Resim [contributors-img](https://contrib.rocks) tarafından oluşturuldu.
+Contributors Image created by [contributors-img](https://contrib.rocks)
