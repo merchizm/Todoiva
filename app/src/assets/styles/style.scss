@@ -48,6 +48,7 @@ li {
     width: 100vw;
     @include flex-display(flex, center, normal);
     -webkit-app-region: drag;
+    transition: background-color .5s;
 
     .macos-title-bar {
       .button-container {

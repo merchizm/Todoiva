@@ -34,6 +34,7 @@ li {
   align-items: center;
   justify-content: normal;
   -webkit-app-region: drag;
+  transition: background-color 0.5s;
 }
 .wrapper .title-bar .macos-title-bar .button-container {
   display: flex;
@@ -99,6 +100,7 @@ li {
 }
 .wrapper .main header h1 {
   font-weight: 400;
+  color: #2fc43e !important;
 }
 .wrapper .main .task-add {
   margin: 20px 0 0 5px;
