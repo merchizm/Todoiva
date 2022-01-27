@@ -470,6 +470,7 @@ li {
 .wrapper aside {
   order: 1;
   height: 100vh;
+  min-width: 150px;
   max-width: 280px;
   flex-direction: column;
   padding: 25px 10px;
@@ -478,11 +479,11 @@ li {
   justify-content: center;
   user-select: none;
 }
-.wrapper .resizing {
+.wrapper aside .resizer {
   order: 2;
-  width: 1px;
+  width: 3px;
   height: 100vh;
-  background-color: rebeccapurple;
+  cursor: col-resize;
 }
 .wrapper .preferences-menu {
   padding: 25px 30px;
@@ -758,7 +759,7 @@ li {
     background-color: rgba(255, 255, 255, 0.1);
   }
 
-  .wrapper .resizing {
+  .wrapper aside .resizer {
     background-color: #191919;
   }
   .wrapper .default-menu {
@@ -957,7 +958,7 @@ li {
     background-color: rgba(10, 20, 28, 0.09);
   }
 
-  .wrapper .resizing {
+  .wrapper aside .resizer {
     background-color: #f7f7f7;
   }
   .wrapper .default-menu {

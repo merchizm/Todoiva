@@ -125,15 +125,23 @@ events.prototype.loadList = function (listID, loadComps = undefined) {
     document.getElementsByClassName("completed-items")[0].children[0]
       .children[1].dataset.hide;
 
-  if (loadComps)
+  if (loadComps) {
     document.getElementsByClassName(
       "completed-items"
     )[0].children[0].children[1].innerText = hideText;
-  else
+    document.getElementsByClassName("completed-items")[0].onclick =
+      function () {
+        events.prototype.loadList(listID, false);
+      };
+  } else {
     document.getElementsByClassName(
       "completed-items"
     )[0].children[0].children[1].innerText = showText;
-
+    document.getElementsByClassName("completed-items")[0].onclick =
+      function () {
+        events.prototype.loadList(listID, true);
+      };
+  }
   document.getElementsByClassName(
     "completed-items"
   )[0].children[0].children[0].children[0].innerHTML =

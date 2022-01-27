@@ -85,6 +85,10 @@ window.localization = window.localization || {};
           "completed-items"
         )[0].children[0].children[1].dataset.hide = window.i18n.__("hide");
       },
+      searchResults: function () {
+        document.getElementById("my-lists").dataset.results =
+          window.i18n.__("search-results");
+      },
       init: function () {
         this.searchText();
         this.listsText();
@@ -92,6 +96,7 @@ window.localization = window.localization || {};
         this.completedItemsText();
         this.showText();
         this.hideText();
+        this.searchResults();
       },
     };
   } else {
@@ -181,6 +186,19 @@ window.localization = window.localization || {};
     Event.loadLists(document.getElementById("todolists"));
   }
   window.events();
+  const resizer = document.getElementsByClassName("resizer")[0];
+  const aside = document.getElementsByTagName("aside")[0];
+  function resize(e) {
+    aside.style.width = e.pageX - resizer.getBoundingClientRect().left + "px";
+  }
+  resizer.addEventListener("mousedown", function (e) {
+    e.preventDefault();
+    window.addEventListener("mousemove", resize);
+
+    window.addEventListener("mouseup", function () {
+      window.removeEventListener("mousemove", resize);
+    });
+  });
 })();
 
 window.onload = function () {

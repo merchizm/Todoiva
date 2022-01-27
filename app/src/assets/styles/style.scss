@@ -556,19 +556,20 @@ li {
   aside{
     order: 1;
     height: 100vh;
+    min-width: 150px;
     max-width: 280px;
     flex-direction: column;
     padding: 25px 10px;
     @include flex-display(flex, center, center);
     user-select: none;
+    .resizer{
+      order: 2;
+      width: 3px;
+      height: 100vh;
+      cursor: col-resize;
+    }
   }
 
-  .resizing{
-    order: 2;
-    width: 1px;
-    height: 100vh;
-    background-color: rebeccapurple;
-  }
 
   .preferences-menu {
     padding: 25px 30px;
@@ -895,8 +896,11 @@ li {
   }
 
   .wrapper {
-    .resizing{
-      background-color: map.get($ui-colors, "menu-bg");
+
+    aside{
+      .resizer{
+        background-color: map.get($ui-colors, "menu-bg");
+      }
     }
 
     .default-menu {
