@@ -71,7 +71,7 @@ li {
   height: 100vh;
   width: 100%;
   flex: 1;
-  order: 3;
+  order: 2;
   overflow: hidden;
   padding: 0 30px 50px 30px;
 }
@@ -470,20 +470,18 @@ li {
 .wrapper aside {
   order: 1;
   height: 100vh;
-  min-width: 150px;
-  max-width: 280px;
-  flex-direction: column;
+  min-width: 23vw;
+  max-width: 35vw;
   padding: 25px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   user-select: none;
 }
 .wrapper aside .resizer {
-  order: 2;
   width: 3px;
   height: 100vh;
   cursor: col-resize;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .wrapper .preferences-menu {
   padding: 25px 30px;
@@ -507,12 +505,13 @@ li {
 }
 .wrapper .default-menu {
   overflow: hidden;
+  position: relative;
 }
-.wrapper .default-menu .search {
+.wrapper .default-menu .menu-content .search {
   position: relative;
   width: 100%;
 }
-.wrapper .default-menu .search input {
+.wrapper .default-menu .menu-content .search input {
   outline: none;
   resize: vertical;
   line-height: 14px;
@@ -522,19 +521,19 @@ li {
   width: 100%;
   border-radius: 5px;
 }
-.wrapper .default-menu .search input:valid + .reset + .submit {
+.wrapper .default-menu .menu-content .search input:valid + .reset + .submit {
   display: none;
 }
-.wrapper .default-menu .search input:valid + .reset {
+.wrapper .default-menu .menu-content .search input:valid + .reset {
   display: block;
 }
-.wrapper .default-menu .search input[type=search]::-webkit-search-decoration,
-.wrapper .default-menu .search input[type=search]::-webkit-search-cancel-button,
-.wrapper .default-menu .search input[type=search]::-webkit-search-results-button,
-.wrapper .default-menu .search input[type=search]::-webkit-search-results-decoration {
+.wrapper .default-menu .menu-content .search input[type=search]::-webkit-search-decoration,
+.wrapper .default-menu .menu-content .search input[type=search]::-webkit-search-cancel-button,
+.wrapper .default-menu .menu-content .search input[type=search]::-webkit-search-results-button,
+.wrapper .default-menu .menu-content .search input[type=search]::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
-.wrapper .default-menu .search .submit {
+.wrapper .default-menu .menu-content .search .submit {
   cursor: pointer;
   text-transform: uppercase;
   border: 0;
@@ -543,11 +542,11 @@ li {
   top: 10px;
   right: 10px;
 }
-.wrapper .default-menu .search .submit svg {
+.wrapper .default-menu .menu-content .search .submit svg {
   width: 13px;
   opacity: 0.5;
 }
-.wrapper .default-menu .search button[type=reset] {
+.wrapper .default-menu .menu-content .search button[type=reset] {
   cursor: pointer;
   padding: 0 10px;
   background: none;
@@ -558,26 +557,26 @@ li {
   right: 1px;
   top: 12px;
 }
-.wrapper .default-menu .search button[type=reset] svg {
+.wrapper .default-menu .menu-content .search button[type=reset] svg {
   width: 13px;
   opacity: 0.5;
 }
-.wrapper .default-menu .my-lists {
+.wrapper .default-menu .menu-content .my-lists {
   margin-top: 50px;
   position: relative;
   width: 100%;
   height: 90%;
 }
-.wrapper .default-menu .my-lists header {
+.wrapper .default-menu .menu-content .my-lists header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #686868;
 }
-.wrapper .default-menu .my-lists header h3 {
+.wrapper .default-menu .menu-content .my-lists header h3 {
   font-weight: 400;
 }
-.wrapper .default-menu .my-lists header .list-btn {
+.wrapper .default-menu .menu-content .my-lists header .list-btn {
   background-color: transparent;
   border: 0;
   font-size: 1.5rem;
@@ -585,12 +584,12 @@ li {
   cursor: pointer;
   color: #686868;
 }
-.wrapper .default-menu .my-lists .list {
+.wrapper .default-menu .menu-content .my-lists .list {
   position: absolute;
   height: 90%;
   width: 100%;
 }
-.wrapper .default-menu .my-lists .list ul {
+.wrapper .default-menu .menu-content .my-lists .list ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -598,10 +597,10 @@ li {
   height: 55vw;
   overflow-y: auto;
 }
-.wrapper .default-menu .my-lists .list ul::-webkit-scrollbar {
+.wrapper .default-menu .menu-content .my-lists .list ul::-webkit-scrollbar {
   width: 1.2vw;
 }
-.wrapper .default-menu .my-lists .list ul li {
+.wrapper .default-menu .menu-content .my-lists .list ul li {
   padding: 10px 15px;
   margin: 5px 0;
   cursor: pointer;
@@ -612,23 +611,23 @@ li {
   align-items: center;
   justify-content: normal;
 }
-.wrapper .default-menu .my-lists .list ul li:first-child {
+.wrapper .default-menu .menu-content .my-lists .list ul li:first-child {
   margin-top: 0;
 }
-.wrapper .default-menu .my-lists .list ul li:last-child {
+.wrapper .default-menu .menu-content .my-lists .list ul li:last-child {
   margin-bottom: 0;
 }
-.wrapper .default-menu .my-lists .list ul li span {
+.wrapper .default-menu .menu-content .my-lists .list ul li span {
   margin-right: 5px;
   padding: 2px 5px;
   border-radius: 50%;
 }
-.wrapper .default-menu .my-lists .list ul li span svg {
+.wrapper .default-menu .menu-content .my-lists .list ul li span svg {
   fill: #fff;
   width: 13px;
   margin-top: 3px;
 }
-.wrapper .default-menu .my-lists .list ul li:hover {
+.wrapper .default-menu .menu-content .my-lists .list ul li:hover {
   opacity: 0.85;
 }
 

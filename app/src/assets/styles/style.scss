@@ -89,7 +89,7 @@ li {
     height: 100vh;
     width: 100%;
     flex: 1;
-    order: 3;
+    order: 2;
     overflow: hidden;
 	  padding: 0 30px 50px 30px;
 
@@ -556,17 +556,17 @@ li {
   aside{
     order: 1;
     height: 100vh;
-    min-width: 150px;
-    max-width: 280px;
-    flex-direction: column;
+    min-width: 23vw;
+    max-width: 35vw;
     padding: 25px 10px;
-    @include flex-display(flex, center, center);
     user-select: none;
     .resizer{
-      order: 2;
       width: 3px;
       height: 100vh;
       cursor: col-resize;
+      position: absolute;
+      right: 0;
+      top: 0;
     }
   }
 
@@ -597,142 +597,145 @@ li {
 
   .default-menu {
     overflow: hidden;
+    position: relative;
 
-    .search {
-      position: relative;
-      width: 100%;
-
-      input {
-        outline: none;
-        resize: vertical;
-        line-height: 14px;
-        font-size: 14px;
-        box-sizing: border-box;
-        padding: 10px 15px;
+    .menu-content{
+      .search {
+        position: relative;
         width: 100%;
-        border-radius: 5px;
-
-        &:valid + .reset + .submit {
-          display: none;
-        }
-
-        &:valid + .reset {
-          display: block;
-        }
-      }
-
-      input[type="search"]::-webkit-search-decoration,
-      input[type="search"]::-webkit-search-cancel-button,
-      input[type="search"]::-webkit-search-results-button,
-      input[type="search"]::-webkit-search-results-decoration {
-        -webkit-appearance: none;
-      }
-
-      .submit {
-        cursor: pointer;
-        text-transform: uppercase;
-        border: 0;
-        background-color: transparent;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-
-        svg {
-          width: 13px;
-          opacity: 0.5;
-        }
-      }
-
-      button[type="reset"] {
-        cursor: pointer;
-        padding: 0 10px;
-        background: none;
-        outline: none;
-        border: none;
-        display: none;
-        position: absolute;
-        right: 1px;
-        top: 12px;
-
-        svg {
-          width: 13px;
-          opacity: 0.5;
-        }
-      }
-    }
-
-    .my-lists {
-      margin-top: 50px;
-      position: relative;
-      width: 100%;
-      height: 90%;
-
-      header {
-        @include flex-display(flex, center, space-between);
-        color: $menu-text;
-
-        h3 {
-          font-weight: 400;
-        }
-
-        .list-btn {
-          background-color: transparent;
-          border: 0;
-          font-size: 1.5rem;
-          margin-right: 5px;
-          cursor: pointer;
-          color: $menu-text;
-        }
-      }
-
-      .list {
-        position: absolute;
-        height: 90%;
-        width: 100%;
-
-        ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          font-weight: 200;
-          height: 55vw;
-          overflow-y: auto;
-
-          &::-webkit-scrollbar {
-            width: 1.2vw;
+  
+        input {
+          outline: none;
+          resize: vertical;
+          line-height: 14px;
+          font-size: 14px;
+          box-sizing: border-box;
+          padding: 10px 15px;
+          width: 100%;
+          border-radius: 5px;
+  
+          &:valid + .reset + .submit {
+            display: none;
           }
-
-          li {
-            padding: 10px 15px;
-            margin: 5px 0;
+  
+          &:valid + .reset {
+            display: block;
+          }
+        }
+  
+        input[type="search"]::-webkit-search-decoration,
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-results-button,
+        input[type="search"]::-webkit-search-results-decoration {
+          -webkit-appearance: none;
+        }
+  
+        .submit {
+          cursor: pointer;
+          text-transform: uppercase;
+          border: 0;
+          background-color: transparent;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+  
+          svg {
+            width: 13px;
+            opacity: 0.5;
+          }
+        }
+  
+        button[type="reset"] {
+          cursor: pointer;
+          padding: 0 10px;
+          background: none;
+          outline: none;
+          border: none;
+          display: none;
+          position: absolute;
+          right: 1px;
+          top: 12px;
+  
+          svg {
+            width: 13px;
+            opacity: 0.5;
+          }
+        }
+      }
+  
+      .my-lists {
+        margin-top: 50px;
+        position: relative;
+        width: 100%;
+        height: 90%;
+  
+        header {
+          @include flex-display(flex, center, space-between);
+          color: $menu-text;
+  
+          h3 {
+            font-weight: 400;
+          }
+  
+          .list-btn {
+            background-color: transparent;
+            border: 0;
+            font-size: 1.5rem;
+            margin-right: 5px;
             cursor: pointer;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            @include flex-display(flex, center, normal);
-
-            &:first-child {
-              margin-top: 0;
+            color: $menu-text;
+          }
+        }
+  
+        .list {
+          position: absolute;
+          height: 90%;
+          width: 100%;
+  
+          ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-weight: 200;
+            height: 55vw;
+            overflow-y: auto;
+  
+            &::-webkit-scrollbar {
+              width: 1.2vw;
             }
-
-            &:last-child {
-              margin-bottom: 0;
-            }
-
-            span {
-              margin-right: 5px;
-              padding: 2px 5px;
-              border-radius: 50%;
-
-              svg {
-                fill: #fff;
-                width: 13px;
-                margin-top: 3px;
+  
+            li {
+              padding: 10px 15px;
+              margin: 5px 0;
+              cursor: pointer;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              @include flex-display(flex, center, normal);
+  
+              &:first-child {
+                margin-top: 0;
               }
-            }
-
-            &:hover {
-              opacity: 0.85;
+  
+              &:last-child {
+                margin-bottom: 0;
+              }
+  
+              span {
+                margin-right: 5px;
+                padding: 2px 5px;
+                border-radius: 50%;
+  
+                svg {
+                  fill: #fff;
+                  width: 13px;
+                  margin-top: 3px;
+                }
+              }
+  
+              &:hover {
+                opacity: 0.85;
+              }
             }
           }
         }
