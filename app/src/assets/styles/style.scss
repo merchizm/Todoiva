@@ -143,7 +143,7 @@ li {
 
     .container {
       margin-top: 30px;
-      height: 70%;
+      height: 68vh;
       overflow-y: auto;
 
       &::-webkit-scrollbar {
@@ -337,10 +337,11 @@ li {
       padding: 0 30px;
       padding-right: 50px;
       width: 100%;
-      bottom: 0;
       left: 230px;
       border-top-width: 1px;
       border-top-style: solid;
+      position: fixed;
+      bottom: 0;
 
       header{
         @include flex-display(flex, center, space-between);
