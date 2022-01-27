@@ -71,7 +71,7 @@ li {
   height: 100vh;
   width: 100%;
   flex: 1;
-  order: 2;
+  order: 3;
   overflow: hidden;
   padding: 0 30px 50px 30px;
 }
@@ -100,7 +100,6 @@ li {
 }
 .wrapper .main header h1 {
   font-weight: 400;
-  color: #2fc43e !important;
 }
 .wrapper .main .task-add {
   margin: 20px 0 0 5px;
@@ -479,6 +478,12 @@ li {
   justify-content: center;
   user-select: none;
 }
+.wrapper .resizing {
+  order: 2;
+  width: 1px;
+  height: 100vh;
+  background-color: rebeccapurple;
+}
 .wrapper .preferences-menu {
   padding: 25px 30px;
   text-align: center;
@@ -753,6 +758,9 @@ li {
     background-color: rgba(255, 255, 255, 0.1);
   }
 
+  .wrapper .resizing {
+    background-color: #191919;
+  }
   .wrapper .default-menu {
     background-color: #191919;
   }
@@ -949,6 +957,9 @@ li {
     background-color: rgba(10, 20, 28, 0.09);
   }
 
+  .wrapper .resizing {
+    background-color: #f7f7f7;
+  }
   .wrapper .default-menu {
     background-color: #f7f7f7;
   }

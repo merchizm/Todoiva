@@ -89,7 +89,7 @@ li {
     height: 100vh;
     width: 100%;
     flex: 1;
-    order: 2;
+    order: 3;
     overflow: hidden;
 	  padding: 0 30px 50px 30px;
 
@@ -563,6 +563,13 @@ li {
     user-select: none;
   }
 
+  .resizing{
+    order: 2;
+    width: 1px;
+    height: 100vh;
+    background-color: rebeccapurple;
+  }
+
   .preferences-menu {
     padding: 25px 30px;
     text-align: center;
@@ -888,6 +895,10 @@ li {
   }
 
   .wrapper {
+    .resizing{
+      background-color: map.get($ui-colors, "menu-bg");
+    }
+
     .default-menu {
       background-color: map.get($ui-colors, "menu-bg");
 
