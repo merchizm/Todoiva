@@ -26,5 +26,6 @@
     "completed-items": "Tamamlananlar Görevler",
     "show": "Göster",
     "hide": "Gizle",
-    "search-results": "Arama Sonuçları"
+    "search-results": "Arama Sonuçları",
+    "not-found": "Sonuç bulunamadı."
 }

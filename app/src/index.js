@@ -28,6 +28,12 @@ function showToDo() {
   let taskAdd = document.getElementById("task-add");
   taskAdd.style.transition = "all 0.3s ease-in-out";
   taskAdd.style.transform = "rotate(45deg) scale(1.4)";
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && e.code === "Escape") {
+      closeAddToDo();
+      window.removeEventListener("keydown", arguments.callee);
+    }
+  });
   taskAdd.onclick = closeAddToDo;
   clearAnimated("task-input");
 }
@@ -80,13 +86,34 @@ document.getElementById("add-input").addEventListener("keyup", (event) => {
   }
 });
 
-document.getElementById("search").addEventListener("change", (event) => {
-  console.log("a");
-  Event.search(
-    event.target.value,
-    document,
-    document.getElementById("todolists")
-  );
-  // TODO: divin içerisini temizle ve içeriği gir
-  // TODO: Search reset'e basıldığında içeriği sil listeleri yükle
+document.querySelector("#search").addEventListener("input", (c_e) => {
+  let searchFunction = function (e) {
+    if (e.key === "Escape" && e.code === "Escape") {
+      Event.loadLists(document.getElementById("todolists"));
+      window.removeEventListener("keydown", arguments.callee);
+    }
+  };
+  if (c_e.target.value.length > 2) {
+    // set results title
+    document.getElementById("my-lists").dataset.lists =
+      document.getElementById("my-lists").innerText;
+    document.getElementById("my-lists").innerText =
+      document.getElementById("my-lists").dataset.results;
+    // set escape shortcut to reset and reload list when clicked reset button
+    window.addEventListener("keydown", searchFunction);
+    if (document.getElementsByTagName("button")[0].type === "reset") {
+      document.getElementsByTagName("button")[0].onclick = function () {
+        Event.loadLists(document.getElementById("todolists"));
+      };
+    }
+
+    Event.search(
+      c_e.target.value,
+      document.getElementById("todolists"),
+      document.getElementById("my-lists").dataset.notfound
+    );
+  } else if (c_e.target.value.length <= 0) {
+    Event.loadLists(document.getElementById("todolists"));
+    window.removeEventListener("keydown", searchFunction);
+  }
 });

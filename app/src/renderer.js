@@ -89,6 +89,10 @@ window.localization = window.localization || {};
         document.getElementById("my-lists").dataset.results =
           window.i18n.__("search-results");
       },
+      notFound: function () {
+        document.getElementById("my-lists").dataset.notfound =
+          window.i18n.__("not-found");
+      },
       init: function () {
         this.searchText();
         this.listsText();
@@ -97,6 +101,7 @@ window.localization = window.localization || {};
         this.showText();
         this.hideText();
         this.searchResults();
+        this.notFound();
       },
     };
   } else {

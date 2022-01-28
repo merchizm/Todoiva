@@ -26,5 +26,6 @@
     "completed-items": "Completed",
     "show": "Show",
     "hide": "Hide",
-    "search-results": "Search Results"
+    "search-results": "Search Results",
+    "not-found": "0 results found."
 }

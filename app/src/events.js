@@ -11,6 +11,7 @@ const events = function () {
 };
 
 events.prototype.loadLists = function (element, jsonData = null) {
+  element.innerHTML = "";
   jsonData ||= events.prototype._lls(); // for new ones
   jsonData.forEach((list) => {
     (function () {
@@ -101,12 +102,13 @@ events.prototype.loadList = function (listID, loadComps = undefined) {
       let label = document.createElement("label");
 
       input.type = "checkbox";
-      input.id = todoItem.itemID;
+      input.id = todoItem.itemID + "_input";
+      input.dataset.itemid = todoItem.itemID;
       input.dataset.listid = listID;
       input.addEventListener("change", this.todoListener);
       input.checked = todoItem.checked;
-      label.id = input.id + "_label";
-      label.setAttribute("for", todoItem.itemID);
+      label.id = todoItem.itemID + "_input_label";
+      label.setAttribute("for", todoItem.itemID + "_input");
       label.innerText = todoItem.itemName;
 
       frag.appendChild(input);
@@ -148,7 +150,7 @@ events.prototype.loadList = function (listID, loadComps = undefined) {
     completedItemsCount.toString();
 };
 
-events.prototype.search = function (v, ele) {
+events.prototype.search = function (v, ele, notFound) {
   let jsonData = events.prototype._lls();
   let value = v.toLowerCase().trim();
   const result = jsonData.filter((data) => {
@@ -156,7 +158,14 @@ events.prototype.search = function (v, ele) {
       return JSON.stringify(data[key]).toLowerCase().trim().includes(value);
     });
   });
-  events.prototype.loadLists(ele, result);
+  if (result.length <= 0) {
+    ele.innerHTML = "";
+    let li = document.createElement("li");
+    li.innerText = notFound;
+    ele.appendChild(li);
+  } else {
+    events.prototype.loadLists(ele, result);
+  }
 };
 
 events.prototype.createToDo = function (value, listID) {
@@ -166,7 +175,7 @@ events.prototype.createToDo = function (value, listID) {
 
 events.prototype.todoListener = function (event) {
   events.prototype._todoCheckedStatus(
-    event.target.id,
+    event.target.dataset.itemid,
     event.target.dataset.listid,
     event.target.checked
   );
