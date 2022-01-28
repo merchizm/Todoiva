@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todoiva</title>
-    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/style.min.css">
     <link rel="stylesheet" href="assets/styles/animations.css">
 </head>
 
@@ -34,7 +34,7 @@
         </header>
 
         <aside class="default-menu">
-           <div class="menu-content">
+            <div class="menu-content">
                 <div class="search">
                     <form method="get" onsubmit="return false;">
                         <input type="search" id="search" placeholder="Ara" required autocomplete="off">
@@ -84,7 +84,12 @@
                         </ul>
                     </div>
                 </div>
-           </div>
+            </div>
+
+            <div class="deleted-items">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ph" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path d="M216 48h-40v-8a24.1 24.1 0 0 0-24-24h-48a24.1 24.1 0 0 0-24 24v8H40a8 8 0 0 0 0 16h8v144a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16V64h8a8 8 0 0 0 0-16zM96 40a8 8 0 0 1 8-8h48a8 8 0 0 1 8 8v8H96zm96 168H64V64h128zm-80-104v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0zm48 0v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0z" fill="currentColor"></path></svg>
+                <p>silinmiş öğeler</p>
+            </div>
 
             <div class="resizer"></div>
         </aside>

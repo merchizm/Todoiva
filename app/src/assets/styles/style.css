@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -74,6 +75,7 @@ li {
   order: 2;
   overflow: hidden;
   padding: 0 30px 50px 30px;
+  position: relative;
 }
 .wrapper .main header {
   display: flex;
@@ -122,7 +124,7 @@ li {
 }
 .wrapper .main .container {
   margin-top: 30px;
-  height: 68vh;
+  height: calc(100% - 150px);
   overflow-y: auto;
 }
 .wrapper .main .container::-webkit-scrollbar {
@@ -292,11 +294,11 @@ li {
   padding: 0 30px;
   padding-right: 50px;
   width: 100%;
-  left: 230px;
   border-top-width: 1px;
   border-top-style: solid;
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  bottom: 35px;
+  left: 0;
 }
 .wrapper .main .completed-items header {
   display: flex;
@@ -484,27 +486,43 @@ li {
 }
 .wrapper .preferences-menu {
   padding: 25px 30px;
-  text-align: center;
+  text-align: start;
 }
-.wrapper .preferences-menu .menu-item {
-  margin: 10px 0;
+.wrapper .preferences-menu .menu-section {
+  margin-bottom: 35px;
+}
+.wrapper .preferences-menu .menu-section:not(:first-of-type) {
+  padding-top: 40px;
+}
+.wrapper .preferences-menu .menu-section .title {
+  font-size: 0.8rem;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+.wrapper .preferences-menu .menu-section .menu-item {
   cursor: pointer;
-  padding: 20px;
+  padding: 10px;
   width: 100%;
   text-decoration: none;
 }
-.wrapper .preferences-menu .menu-item svg {
+.wrapper .preferences-menu .menu-section .menu-item svg {
   width: 20px;
   margin-right: 7px;
   cursor: pointer;
   margin-bottom: -5px;
 }
-.wrapper .preferences-menu .menu-item p {
+.wrapper .preferences-menu .menu-section .menu-item p {
   display: inline;
+  font-size: 1.1rem;
 }
 .wrapper .default-menu {
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .wrapper .default-menu .menu-content .search {
   position: relative;
@@ -628,6 +646,18 @@ li {
 }
 .wrapper .default-menu .menu-content .my-lists .list ul li:hover {
   opacity: 0.85;
+}
+.wrapper .default-menu .deleted-items {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  font-size: 1rem;
+}
+.wrapper .default-menu .deleted-items p {
+  margin-left: 5px;
+  cursor: pointer;
 }
 
 .pre-loader {
@@ -763,75 +793,80 @@ li {
   .wrapper .default-menu {
     background-color: #191919;
   }
-  .wrapper .default-menu input {
+  .wrapper .default-menu .menu-content .search input {
     background-color: #333333;
     color: #e7e7e7;
     border: 1px solid #3d3d3d;
   }
-  .wrapper .default-menu input:focus {
+  .wrapper .default-menu .menu-content .search input:focus {
     box-shadow: 0 0 0 1px rgba(224, 224, 224, 0.295);
   }
-  .wrapper .default-menu .search .submit svg {
+  .wrapper .default-menu .menu-content .search .submit svg {
     fill: #fff;
   }
-  .wrapper .default-menu .search button[type=reset] svg {
+  .wrapper .default-menu .menu-content .search button[type=reset] svg {
     fill: #fff;
   }
-  .wrapper .default-menu .my-lists ul li {
+  .wrapper .default-menu .menu-content .my-lists ul li {
     color: #e7e7e7;
   }
-  .wrapper .default-menu .my-lists ul li .color-red {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-red {
     background-color: #e25757;
   }
-  .wrapper .default-menu .my-lists ul li .color-blue {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-blue {
     background-color: #5fa4ff;
   }
-  .wrapper .default-menu .my-lists ul li .color-green {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-green {
     background-color: #2fc43e;
   }
-  .wrapper .default-menu .my-lists ul li .color-purple {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-purple {
     background-color: #a766d3;
   }
-  .wrapper .default-menu .my-lists ul li .color-orange {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-orange {
     background-color: #fc9b2d;
   }
-  .wrapper .default-menu .my-lists ul li .color-pink {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-pink {
     background-color: #ff5df1;
   }
-  .wrapper .default-menu .my-lists ul .color-red {
+  .wrapper .default-menu .menu-content .my-lists ul .color-red {
     background-color: rgba(226, 87, 87, 0.4);
   }
-  .wrapper .default-menu .my-lists ul .color-blue {
+  .wrapper .default-menu .menu-content .my-lists ul .color-blue {
     background-color: rgba(95, 164, 255, 0.4);
   }
-  .wrapper .default-menu .my-lists ul .color-green {
+  .wrapper .default-menu .menu-content .my-lists ul .color-green {
     background-color: rgba(47, 196, 62, 0.4);
   }
-  .wrapper .default-menu .my-lists ul .color-purple {
+  .wrapper .default-menu .menu-content .my-lists ul .color-purple {
     background-color: rgba(167, 102, 211, 0.4);
   }
-  .wrapper .default-menu .my-lists ul .color-orange {
+  .wrapper .default-menu .menu-content .my-lists ul .color-orange {
     background-color: rgba(252, 155, 45, 0.4);
   }
-  .wrapper .default-menu .my-lists ul .color-pink {
+  .wrapper .default-menu .menu-content .my-lists ul .color-pink {
     background-color: rgba(255, 93, 241, 0.4);
   }
-  .wrapper .default-menu .my-lists ul::-webkit-scrollbar-track {
+  .wrapper .default-menu .menu-content .my-lists ul::-webkit-scrollbar-track {
     background-color: rgba(0, 0, 0, 0.1);
   }
-  .wrapper .default-menu .my-lists ul::-webkit-scrollbar-thumb {
+  .wrapper .default-menu .menu-content .my-lists ul::-webkit-scrollbar-thumb {
     background-color: #111010;
     border-radius: 1rem;
   }
-  .wrapper .default-menu .my-lists ul::-webkit-scrollbar-thumb:hover {
+  .wrapper .default-menu .menu-content .my-lists ul::-webkit-scrollbar-thumb:hover {
     background-color: rgba(13, 12, 12, 0.4);
   }
-  .wrapper .preferences-menu {
+  .wrapper .default-menu .deleted-items {
     color: #e7e7e7;
+  }
+  .wrapper .default-menu .deleted-items:hover {
+    color: #a8a8a8;
+  }
+  .wrapper .preferences-menu {
     background-color: #191919;
   }
-  .wrapper .preferences-menu .menu-item {
-    color: #e7e7e7;
+  .wrapper .preferences-menu .menu-section .title {
+    color: #b3b7b9;
   }
   .wrapper .preferences-menu .menu-item:hover {
     background-color: #111111;
@@ -841,8 +876,11 @@ li {
   .wrapper .preferences-menu .menu-item svg {
     fill: #fff;
   }
-  .wrapper .preferences-menu .menu-item a {
+  .wrapper .preferences-menu .menu-item p {
     color: #e7e7e7;
+  }
+  .wrapper .preferences-menu .menu-item p:hover {
+    color: #a8a8a8;
   }
   .wrapper .main {
     background-color: #202020;
@@ -878,6 +916,7 @@ li {
   }
   .wrapper .main .completed-items {
     color: #eeeeee;
+    background-color: #202020;
     border-top-color: #3d3d3d;
   }
   .wrapper .main .content header h1 {
@@ -962,75 +1001,80 @@ li {
   .wrapper .default-menu {
     background-color: #f7f7f7;
   }
-  .wrapper .default-menu input {
+  .wrapper .default-menu .menu-content .search input {
     background-color: #fff;
     color: #686868;
     border: 1px solid #ebebeb;
   }
-  .wrapper .default-menu input:focus {
+  .wrapper .default-menu .menu-content .search input:focus {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
   }
-  .wrapper .default-menu .search .submit svg {
+  .wrapper .default-menu .menu-content .search .submit svg {
     fill: #000;
   }
-  .wrapper .default-menu .search button[type=reset] svg {
+  .wrapper .default-menu .menu-content .search button[type=reset] svg {
     fill: #000;
   }
-  .wrapper .default-menu .my-lists ul li {
+  .wrapper .default-menu .menu-content .my-lists ul li {
     color: #686868;
   }
-  .wrapper .default-menu .my-lists ul li .color-purple {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-purple {
     background-color: #a872ff;
   }
-  .wrapper .default-menu .my-lists ul li .color-red {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-red {
     background-color: #ff9797;
   }
-  .wrapper .default-menu .my-lists ul li .color-blue {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-blue {
     background-color: #75b1ff;
   }
-  .wrapper .default-menu .my-lists ul li .color-green {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-green {
     background-color: #49d657;
   }
-  .wrapper .default-menu .my-lists ul li .color-orange {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-orange {
     background-color: #ffaf53;
   }
-  .wrapper .default-menu .my-lists ul li .color-pink {
+  .wrapper .default-menu .menu-content .my-lists ul li .color-pink {
     background-color: #f781ed;
   }
-  .wrapper .default-menu .my-lists ul .color-purple {
+  .wrapper .default-menu .menu-content .my-lists ul .color-purple {
     background-color: rgba(168, 114, 255, 0.4);
   }
-  .wrapper .default-menu .my-lists ul .color-red {
+  .wrapper .default-menu .menu-content .my-lists ul .color-red {
     background-color: rgba(255, 151, 151, 0.4);
   }
-  .wrapper .default-menu .my-lists ul .color-blue {
+  .wrapper .default-menu .menu-content .my-lists ul .color-blue {
     background-color: rgba(117, 177, 255, 0.4);
   }
-  .wrapper .default-menu .my-lists ul .color-green {
+  .wrapper .default-menu .menu-content .my-lists ul .color-green {
     background-color: rgba(73, 214, 87, 0.4);
   }
-  .wrapper .default-menu .my-lists ul .color-orange {
+  .wrapper .default-menu .menu-content .my-lists ul .color-orange {
     background-color: rgba(255, 175, 83, 0.4);
   }
-  .wrapper .default-menu .my-lists ul .color-pink {
+  .wrapper .default-menu .menu-content .my-lists ul .color-pink {
     background-color: rgba(247, 129, 237, 0.4);
   }
-  .wrapper .default-menu .my-lists ul::-webkit-scrollbar-track {
+  .wrapper .default-menu .menu-content .my-lists ul::-webkit-scrollbar-track {
     background-color: rgba(0, 0, 0, 0.1);
   }
-  .wrapper .default-menu .my-lists ul::-webkit-scrollbar-thumb {
+  .wrapper .default-menu .menu-content .my-lists ul::-webkit-scrollbar-thumb {
     background-color: rgba(17, 16, 16, 0.7);
     border-radius: 1rem;
   }
-  .wrapper .default-menu .my-lists ul::-webkit-scrollbar-thumb:hover {
+  .wrapper .default-menu .menu-content .my-lists ul::-webkit-scrollbar-thumb:hover {
     background-color: rgba(13, 12, 12, 0.6);
   }
-  .wrapper .preferences-menu {
+  .wrapper .default-menu .deleted-items {
     color: #686868;
+  }
+  .wrapper .default-menu .deleted-items:hover {
+    color: #404040;
+  }
+  .wrapper .preferences-menu {
     background-color: #f7f7f7;
   }
-  .wrapper .preferences-menu .menu-item {
-    color: #686868;
+  .wrapper .preferences-menu .menu-section .title {
+    color: #d1d7dc;
   }
   .wrapper .preferences-menu .menu-item:hover {
     background-color: #efefef;
@@ -1040,8 +1084,11 @@ li {
   .wrapper .preferences-menu .menu-item svg {
     fill: #000;
   }
-  .wrapper .preferences-menu .menu-item a {
+  .wrapper .preferences-menu .menu-item p {
     color: #686868;
+  }
+  .wrapper .preferences-menu .menu-item p:hover {
+    color: #404040;
   }
   .wrapper .main {
     background-color: #fdfdfd;
@@ -1077,6 +1124,7 @@ li {
   }
   .wrapper .main .completed-items {
     color: #494A4E;
+    background-color: #fdfdfd;
     border-top-color: #ebebeb;
   }
   .wrapper .main .content header h1 {

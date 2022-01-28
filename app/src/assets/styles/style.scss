@@ -2,8 +2,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap");
-
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 $menu-text: #686868;
 $text: #9195a1;
 $check: #404040;
@@ -92,6 +91,7 @@ li {
     order: 2;
     overflow: hidden;
 	  padding: 0 30px 50px 30px;
+    position: relative;
 
     header {
       @include flex-display(flex, center, space-between);
@@ -143,7 +143,7 @@ li {
 
     .container {
       margin-top: 30px;
-      height: 68vh;
+      height: calc(100% - 150px);
       overflow-y: auto;
 
       &::-webkit-scrollbar {
@@ -337,11 +337,11 @@ li {
       padding: 0 30px;
       padding-right: 50px;
       width: 100%;
-      left: 230px;
       border-top-width: 1px;
       border-top-style: solid;
-      position: fixed;
-      bottom: 0;
+      position: absolute;
+      bottom: 35px;
+      left: 0;
 
       header{
         @include flex-display(flex, center, space-between);
@@ -572,31 +572,50 @@ li {
 
   .preferences-menu {
     padding: 25px 30px;
-    text-align: center;
+    text-align: start;
 
-    .menu-item {
-      margin: 10px 0;
-      cursor: pointer;
-      padding: 20px;
-      width: 100%;
-      text-decoration: none;
-
-      svg {
-        width: 20px;
-        margin-right: 7px;
-        cursor: pointer;
-        margin-bottom: -5px;
+    .menu-section{
+      margin-bottom:35px;
+      &:not(:first-of-type){
+        padding-top: 40px;
       }
 
-      p {
-        display: inline;
+      .title{
+        font-size: .8rem;
+        font-family: 'Poppins', sans-serif;    
+        margin: 0;
+        padding-left: 10px;
+        text-transform: uppercase;
+
+      }
+      .menu-item {
+        cursor: pointer;
+        padding: 10px;
+        width: 100%;
+        text-decoration: none;
+  
+        svg {
+          width: 20px;
+          margin-right: 7px;
+          cursor: pointer;
+          margin-bottom: -5px;
+        }
+  
+        p {
+          display: inline;
+          font-size: 1.1rem;
+        }
       }
     }
+    
   }
 
   .default-menu {
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .menu-content{
       .search {
@@ -738,6 +757,20 @@ li {
             }
           }
         }
+      }
+    }
+
+    .deleted-items{
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      width: 100%;
+      font-size: 1rem;
+
+      p{
+        margin-left: 5px;
+        cursor: pointer;
       }
     }
   }
@@ -908,58 +941,72 @@ li {
     .default-menu {
       background-color: map.get($ui-colors, "menu-bg");
 
-      input {
-        background-color: map.get($ui-colors, "input-bg");
-        color: map.get($ui-colors, "menu-text");
-        border: 1px solid map.get($ui-colors, "border-color");
-
-        &:focus {
-          box-shadow: 0 0 0 1px map.get($ui-colors, "shadow-color");
-        }
-      }
-
-      .search {
-        .submit {
-          svg {
-            fill: map.get($ui-colors, "icon");
-          }
-        }
-
-        button[type="reset"] {
-          svg {
-            fill: map.get($ui-colors, "icon");
-          }
-        }
-      }
-
-      .my-lists {
-        ul {
-          li {
+      .menu-content{
+        .search {
+          input {
+            background-color: map.get($ui-colors, "input-bg");
             color: map.get($ui-colors, "menu-text");
+            border: 1px solid map.get($ui-colors, "border-color");
+    
+            &:focus {
+              box-shadow: 0 0 0 1px map.get($ui-colors, "shadow-color");
+            }
+          }
+          .submit {
+            svg {
+              fill: map.get($ui-colors, "icon");
+            }
+          }
+  
+          button[type="reset"] {
+            svg {
+              fill: map.get($ui-colors, "icon");
+            }
+          }
+        }
+  
+        .my-lists {
+          ul {
+            li {
+              color: map.get($ui-colors, "menu-text");
+              @each $color-name, $color in $colors {
+                .color-#{$color-name} {
+                  background-color: $color;
+                }
+              }
+  
+            }
+  
             @each $color-name, $color in $colors {
               .color-#{$color-name} {
-                background-color: $color;
+                background-color: rgba($color, 0.4);
               }
             }
-
+  
+            @include createScrollBar(map.get($scrollbar, "track"), map.get($scrollbar, "thumb-bg"), map.get($scrollbar, "thumb-hover"));
           }
+        }
+      }
+      
+      .deleted-items{
+        color: map.get($ui-colors, "menu-text");
 
-          @each $color-name, $color in $colors {
-            .color-#{$color-name} {
-              background-color: rgba($color, 0.4);
-            }
-          }
-
-          @include createScrollBar(map.get($scrollbar, "track"), map.get($scrollbar, "thumb-bg"), map.get($scrollbar, "thumb-hover"));
+        &:hover{
+          color: map.get($ui-colors, "disabled");
         }
       }
     }
 
     .preferences-menu {
-      color: map.get($ui-colors, "menu-text");
       background-color: map.get($ui-colors, "menu-bg");
+
+      .menu-section{
+        .title{
+          color: map.get($ui-colors, "circle-color");
+        }
+      }
+
       .menu-item {
-        color: map.get($ui-colors, "menu-text");
         &:hover {
           background-color: darken(map.get($ui-colors, "menu-bg"), 3%);
           color: map.get($ui-colors, "icon");
@@ -970,8 +1017,11 @@ li {
           fill: map.get($ui-colors, "icon");
         }
 
-        a {
-          color: map.get($ui-colors, "menu-text")
+        p{
+          color: map.get($ui-colors, "menu-text");
+          &:hover {
+            color: map.get($ui-colors, "disabled");
+          }
         }
       }
     }
@@ -1016,6 +1066,7 @@ li {
 
       .completed-items{
         color: map.get($ui-colors, "title");
+        background-color: map.get($ui-colors, "main-bg");
         border-top-color: map.get($ui-colors, "border-color");
       }
 
