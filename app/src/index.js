@@ -72,7 +72,7 @@ document.getElementById("add-input").addEventListener("keyup", (event) => {
 
       label.id = newInput.id + "_label";
       label.setAttribute("for", newInput.id);
-      label.innerText = input.value;
+      label.innerHTML = Event.linkify(input.value);
       label.classList.add("pulse", "animated");
       frag.appendChild(newInput);
       frag.appendChild(label);

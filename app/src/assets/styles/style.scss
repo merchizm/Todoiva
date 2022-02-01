@@ -1054,7 +1054,6 @@ li {
         #checklist {
           label {
             color: map.get($ui-colors, "text");
-
             &::before {
               background: map.get($ui-colors, "check");
             }

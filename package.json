@@ -113,6 +113,7 @@
         "prettier": "^2.4.1"
     },
     "dependencies": {
-        "stormdb": "^0.5.2"
+      "he": "^1.2.0",
+      "stormdb": "^0.5.2"
     }
 }
