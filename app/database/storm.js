@@ -90,13 +90,14 @@ function createList(data) {
 }
 
 function createToDo(itemName, listID) {
+  const he = require("he");
   db.get("lists")
     .get(listID)
     .get("listItems")
     .push({
       itemID: db.get("lists").get(listID).get("listItems").value().length + 1,
-      itemName: itemName,
-      checked: false,
+      itemName: he.encode(itemName),
+      checked: false
     });
   db.save();
 }
