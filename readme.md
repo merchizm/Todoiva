@@ -3,7 +3,8 @@
 # Todoiva ![Version](https://img.shields.io/badge/1.2%20B-brightgreen) [![Türkçe readme.md](https://img.shields.io/badge/Türkçe%20için%20Tıkla-red)](readme_tr.md)
 > Your loyal, stylish to-do assistant
 
-Todoiva is a stylish non-competitive electron app. Todoiva developing for developers to learn practically while coding.  
+Todoiva is a stylish non-competitive electron app. Todoiva developing for developers to learn coding as pratically as they could learn. 
+
 
 ---
 
