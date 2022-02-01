@@ -160,19 +160,19 @@ events.prototype.linkify = function(inputText) {
     /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
   replacedText = inputText.replace(
     replacePattern1,
-    "<a href=\"$&\" target=\"_blank\">$&</a>"
+    '<a href=\"$&\" target=\"_blank\">$&</a>'
   );
   //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
   replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
   replacedText = replacedText.replace(
     replacePattern2,
-    "$1<a href=\"http://$&\" target=\"_blank\">$&</a>"
+    '<a href=\"http://$&\" target=\"_blank\">$&</a>'
   );
   //Change email addresses to mailto:: links.
   replacePattern3 = /[\w.]+@[a-zA-Z_-]+?(?:\.[a-zA-Z]{2,6})+/gim;
   replacedText = replacedText.replace(
     replacePattern3,
-    "<a href=\"mailto:$&\">$&</a>"
+    '<a href=\"mailto:$&\">$&</a>'
   );
   return replacedText;
 };
