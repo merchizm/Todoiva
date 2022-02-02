@@ -141,7 +141,7 @@ events.prototype.loadList = function (listID, loadComps = undefined) {
       "completed-items"
     )[0].children[0].children[1].innerText = showText;
     document.getElementsByClassName("completed-items")[0].onclick =
-      function() {
+      function () {
         events.prototype.loadList(listID, true);
       };
   }
@@ -152,7 +152,7 @@ events.prototype.loadList = function (listID, loadComps = undefined) {
 };
 
 // https://stackoverflow.com/a/3890175
-events.prototype.linkify = function(inputText) {
+events.prototype.linkify = function (inputText) {
   var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
   //URLs starting with http://, https://, or ftp://
@@ -160,24 +160,24 @@ events.prototype.linkify = function(inputText) {
     /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
   replacedText = inputText.replace(
     replacePattern1,
-    '<a href=\"$&\" target=\"_blank\">$&</a>'
+    '<a href="$&" target="_blank">$&</a>'
   );
   //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
   replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
   replacedText = replacedText.replace(
     replacePattern2,
-    '<a href=\"http://$&\" target=\"_blank\">$&</a>'
+    '<a href="http://$&" target="_blank">$&</a>'
   );
   //Change email addresses to mailto:: links.
   replacePattern3 = /[\w.]+@[a-zA-Z_-]+?(?:\.[a-zA-Z]{2,6})+/gim;
   replacedText = replacedText.replace(
     replacePattern3,
-    '<a href=\"mailto:$&\">$&</a>'
+    '<a href="mailto:$&">$&</a>'
   );
   return replacedText;
 };
 
-events.prototype.search = function(v, ele, notFound) {
+events.prototype.search = function (v, ele, notFound) {
   let jsonData = events.prototype._lls();
   let value = v.toLowerCase().trim();
   const result = jsonData.filter((data) => {
