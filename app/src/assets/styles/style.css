@@ -309,6 +309,62 @@ li {
 .wrapper .main .completed-items header p {
   font-size: 0.9rem;
 }
+.wrapper .main .completed-items header .tracking-out-expand {
+  -webkit-animation: tracking-out-expand 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: tracking-out-expand 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.wrapper .main .completed-items header .tracking-in-expand {
+  -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes tracking-out-expand {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    letter-spacing: 0.1em;
+    opacity: 0;
+  }
+}
+@keyframes tracking-out-expand {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    letter-spacing: 0.1em;
+    opacity: 0;
+  }
+}
 .wrapper .main .content {
   flex-direction: column;
   height: 100vh;
