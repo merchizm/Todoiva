@@ -1,6 +1,13 @@
 <img src="github_resources/todoiva-logo.png" align="right" />
 
-# Todoiva ![Version](https://img.shields.io/badge/1.2%20B-brightgreen)  [![English readme.md](https://img.shields.io/badge/Click%20for%20English-red)](readme.md)
+# Todoiva
+![Version](https://img.shields.io/badge/1.2%20B-brightgreen)
+[![Türkçe readme.md](https://img.shields.io/badge/Türkçe%20için%20Tıkla-red)](readme_tr.md)
+[![codecov][codecov-image]][codecov-url]
+[![CodeFactor][CodeFactor-image]][CodeFactor-url]
+[![CodeQL][codeql-image]][codeql-url]
+[![Github Tag][github-tag-image]][github-tag-url]
+[![Dependency Status][dependabot-badge]][dependabot-url]
 > Sadık, şık yardımcınız
 
 Todoiva, yarışma amacı gütmeyen kendi çizgisinden usulca ilerleyen şık bir electron uygulamasıdır. Uygulama kodlayan kişilerin pratik bir şekilde kodlarken öğrenmesi için geliştirilmiştir. 
