@@ -3,7 +3,6 @@
 # Todoiva 
 ![Version][version-image]
 [![Türkçe readme.md][readme-image]](readme_tr.md)
-[![codecov][codecov-image]][codecov-url]
 [![CodeFactor][CodeFactor-image]][CodeFactor-url]
 [![CodeQL][codeql-image]][codeql-url]
 [![License][license-badge]][license-url]
@@ -51,9 +50,6 @@ Contributors Image created by [contributors-img](https://contrib.rocks)
 
 [github-tag-image]: https://img.shields.io/github/tag/merchizm/todoiva.svg
 [github-tag-url]: https://github.com/merchizm/todoiva/releases/latest
-
-[codecov-image]: https://codecov.io/gh/merchizm/todoiva/branch/new-version/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/merchizm/todoiva
 
 [CodeFactor-image]: https://www.codefactor.io/repository/github/merchizm/todoiva/badge
 [CodeFactor-url]: https://www.codefactor.io/repository/github/merchizm/todoiva
