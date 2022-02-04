@@ -1,11 +1,22 @@
 const { ipcRenderer } = require("electron");
 const Event = new (require("./events"))();
+const remote = require("@electron/remote");
+const win = remote.getCurrentWindow();
+
+window.onbeforeunload = () => {
+  /* If window is reloaded, remove win event listeners
+  (DOM element listeners get auto garbage collected but not
+  Electron win listeners as the win is not dereferenced unless closed) */
+  win.removeAllListeners();
+};
+
 window.events = function () {
   // macOS Events
   if (process.platform === "darwin") {
-    const { ipcRenderer } = require("electron");
-    let titleBarMacOS = document.getElementById("macos-titlebar");
+    let titleBarMacOS = document.getElementById("title").children[0];
     let titleBarContent = document.getElementById("button-container");
+
+    document.getElementById("title").children[1].remove(); // windows title bar removed.
 
     ipcRenderer.on("mac-efull", () => {
       titleBarMacOS.style.paddingLeft = "5px";
@@ -19,15 +30,7 @@ window.events = function () {
   }
   // windows Events
   else if (process.platform === "win32") {
-    const remote = require("@electron/remote");
-    const win = remote.getCurrentWindow();
-
-    window.onbeforeunload = () => {
-      /* If window is reloaded, remove win event listeners
-      (DOM element listeners get auto garbage collected but not
-      Electron win listeners as the win is not dereferenced unless closed) */
-      win.removeAllListeners();
-    };
+    document.getElementById("title").children[0].remove(); // macOS title bar removed.
 
     document.getElementById("min-button").addEventListener("click", () => {
       win.minimize();
@@ -44,6 +47,18 @@ window.events = function () {
     document.getElementById("close-button").addEventListener("click", () => {
       win.close();
     });
+
+    let toggleMaxRestoreButtons = function () {
+      if (win.isMaximized()) {
+        document.body.classList.add("maximized");
+      } else {
+        document.body.classList.remove("maximized");
+      }
+    };
+
+    toggleMaxRestoreButtons();
+    win.on("maximize", toggleMaxRestoreButtons);
+    win.on("unmaximize", toggleMaxRestoreButtons);
   }
 };
 // Localization
@@ -149,6 +164,17 @@ window.localization = window.localization || {};
         document.getElementById("info-box").children[1].innerText =
           window.i18n.__("language-info");
       },
+      preferencesImageAlts: function () {
+        let locales = [
+          window.i18n.__("light"),
+          window.i18n.__("dark"),
+          window.i18n.__("system-choice"),
+        ];
+        for (let i = 0; i <= 2; i++) {
+          document.getElementsByTagName("figure")[i].children[0].alt =
+            locales[i];
+        }
+      },
       init: function () {
         this.preferencesLanguage();
         this.preferencesAppearance();
@@ -161,6 +187,7 @@ window.localization = window.localization || {};
         this.preferencesAppearanceDark();
         this.preferencesAppearanceSC();
         this.preferencesLanguageInfoBox();
+        this.preferencesImageAlts();
       },
     };
   }
@@ -169,6 +196,7 @@ window.localization = window.localization || {};
 })();
 
 (function () {
+  // Appearance setting
   if (
     window.location.pathname
       .split("/")
@@ -191,7 +219,11 @@ window.localization = window.localization || {};
   } else {
     Event.loadLists(document.getElementById("todolists"));
   }
+
+  // window initializer/preparer
   window.events();
+
+  // resizer
   const resizer = document.getElementsByClassName("resizer")[0];
   const aside = document.getElementsByTagName("aside")[0];
   function resize(e) {
@@ -205,6 +237,61 @@ window.localization = window.localization || {};
       window.removeEventListener("mousemove", resize);
     });
   });
+
+  // context menu initializer
+  document.body.oncontextmenu = function (event) {
+    let whitelist = ["todolists", "todolist"];
+    let target = event.target ? event.target : event.srcElement;
+    let tagName = target.tagName.toLowerCase();
+    let element = undefined;
+    if (
+      (whitelist.includes(target.parentElement.id) &&
+        target.parentElement.id === "todolist") ||
+      (tagName === "A" &&
+        target.parentElement.getAttribute("for") !== undefined)
+    ) {
+      if (tagName === "LABEL") {
+        element = document.getElementById(target.getAttribute("for"));
+      } else if (tagName === "A") {
+        element = document.getElementById(
+          target.parentElement.getAttribute("for")
+        );
+      } else {
+        element = target;
+      }
+
+      let data = {
+        list_id: element.dataset.listid,
+        item_id: element.dataset.itemid,
+      };
+      console.log(data); // TODO: Add context menu constructor
+    } else if (
+      (whitelist.includes(target.parentElement.id) &&
+        target.parentElement.id === "todolists") ||
+      (tagName === "span" && target.className.includes("color-")) ||
+      (tagName === "svg" &&
+        target.parentElement.className.includes("color-")) ||
+      (tagName === "path" &&
+        target.parentElement.parentElement.className.includes("color-"))
+    ) {
+      if (tagName === "span") {
+        element = target.parentElement;
+      } else if (tagName === "svg") {
+        element = target.parentElement.parentElement;
+      } else if (tagName === "path") {
+        element = target.parentElement.parentElement.parentElement;
+      } else {
+        element = target;
+      }
+
+      let data = {
+        list_id: element.dataset.listid,
+      };
+      console.log(data); // TODO: Add context menu constructor
+    } else {
+      // TODO: empty data equals to developer context menu (if running development mode)
+    }
+  };
 })();
 
 window.onload = function () {

@@ -31,7 +31,7 @@ events.prototype.loadLists = function (element, jsonData = null) {
       li.onclick = function () {
         events.prototype.loadList(list.listID);
       };
-      svg.setAttribute("id", list.listID);
+      li.dataset.listid = list.listID;
       svg.setAttribute("viewBox", "0 0 200 200");
       svgPath.setAttribute(
         "d",
