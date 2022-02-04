@@ -90,7 +90,7 @@ li {
     flex: 1;
     order: 2;
     overflow: hidden;
-	  padding: 0 30px 50px 30px;
+    padding: 0 30px 50px;
     position: relative;
 
     header {
@@ -334,8 +334,7 @@ li {
     }
 
     .completed-items{
-      padding: 0 30px;
-      padding-right: 50px;
+      padding: 0 50px 0 30px;
       width: 100%;
       border-top-width: 1px;
       border-top-style: solid;
@@ -422,15 +421,14 @@ li {
       header {
         margin-bottom: 10px;
         h1 {
-          font-size: 1.5rem;
+          font-size: 1rem;
           z-index: 1;
           color: rgba(255, 255, 255, 0.9);
           border-bottom-width: 1px;
           border-bottom-style: solid; 
           border-bottom-color: rgba(255, 255, 255, 0.07);
           margin-bottom: 16px; 
-          padding-bottom: 12px; 
-          font-size: 16px; 
+          padding-bottom: 12px;
           font-weight: 500; 
           width: 100%;
         }
@@ -555,8 +553,7 @@ li {
 
       .selectCustom-option {
         position: relative;
-        padding: .8rem;
-        padding-left: 1.5rem;
+        padding: .8rem .8rem .8rem 1.5rem;
         border-radius: 0.4rem;
       }
 
@@ -906,7 +903,6 @@ li {
     display: flex;
     align-items: center;
     font-size: 14px;
-    width: 100%;
     animation: menuItemAnimation 0.2s 0s both;
     font-family: "Inter", sans-serif;
     cursor: pointer;
