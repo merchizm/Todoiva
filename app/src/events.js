@@ -157,13 +157,13 @@ events.prototype.linkify = function (inputText) {
 
   //URLs starting with http://, https://, or ftp://
   replacePattern1 =
-    /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
+    /\b(?:https?|ftp):\/\/[a-z0-9-+&@#/%?=~_|!:,.;]*[a-z0-9-+&@#/%=~_|]/gim;
   replacedText = inputText.replace(
     replacePattern1,
     '<a href="$&" target="_blank">$&</a>'
   );
   //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
-  replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+  replacePattern2 = /(^|[^/])(www\.[\S]+(\b|$))/gim;
   replacedText = replacedText.replace(
     replacePattern2,
     '<a href="http://$&" target="_blank">$&</a>'

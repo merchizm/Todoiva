@@ -16,11 +16,10 @@ const elSelectCustomBox = elSelectCustom.children[0];
 const elSelectCustomOpts = elSelectCustom.children[1];
 const customOptsList = Array.from(elSelectCustomOpts.children);
 const optionsCount = customOptsList.length;
-const defaultLabel = elSelectCustomBox.getAttribute("data-value");
 let optionChecked = "";
 let optionHoveredIndex = -1; // Toggle custom select visibility when clicking the box
 
-elSelectCustomBox.addEventListener("click", (e) => {
+elSelectCustomBox.addEventListener("click", () => {
   const isClosed = !elSelectCustom.classList.contains("isActive");
 
   if (isClosed) {
@@ -92,7 +91,7 @@ function updateCustomSelectChecked(value, text) {
   optionChecked = value;
 }
 
-function watchClickOutside(e) {
+function watchClickOutside() {
   const didClickedOutside = !elSelectCustom.contains(event.target);
 
   if (didClickedOutside) {
@@ -103,7 +102,6 @@ function watchClickOutside(e) {
 function supportKeyboardNavigation(e) {
   // press down -> go next
   if (event.keyCode === 40 && optionHoveredIndex < optionsCount - 1) {
-    let index = optionHoveredIndex;
     e.preventDefault(); // prevent page scrolling
 
     updateCustomSelectHovered(optionHoveredIndex + 1);
@@ -149,7 +147,7 @@ customOptsList.forEach(function (elOption, index) {
     updateCustomSelectChecked(value, e.target.textContent);
     closeSelectCustom();
   });
-  elOption.addEventListener("mouseenter", (e) => {
+  elOption.addEventListener("mouseenter", () => {
     updateCustomSelectHovered(index);
   }); // TODO: Toggle these event listeners based on selectCustom visibility
 });

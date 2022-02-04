@@ -97,7 +97,7 @@ function createToDo(itemName, listID) {
     .push({
       itemID: db.get("lists").get(listID).get("listItems").value().length + 1,
       itemName: he.encode(itemName),
-      checked: false
+      checked: false,
     });
   db.save();
 }

@@ -1,4 +1,3 @@
-const { getLanguage } = require("../database/storm");
 const { ipcRenderer } = require("electron");
 const Event = new (require("./events"))();
 window.events = function () {
@@ -48,7 +47,9 @@ window.events = function () {
   }
 };
 // Localization
-window.i18n = new (require("../localization/i18n"))(getLanguage());
+window.i18n = new (require("../localization/i18n"))(
+  require("../database/storm").getLanguage()
+);
 window.localization = window.localization || {};
 (function () {
   if (

@@ -17,7 +17,6 @@ function goBack() {
   body.classList.add("navigating");
 }
 
-
 // eslint-disable-next-line no-unused-vars
 function scrollToDiv(id) {
   document.getElementById("sections").scrollTop =
@@ -32,7 +31,7 @@ function languageSelectPrep() {
     let option = document.createElement("option");
     option.text = languages.languages[element];
     option.value = element;
-    if (getLanguage().split("-")[0] === element)
+    if (require("../database/storm").getLanguage().split("-")[0] === element)
       document.getElementById("language_trigger").innerText =
         languages.languages[element];
     select.add(option);

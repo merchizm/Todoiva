@@ -1,5 +1,6 @@
 const { Application } = require("spectron");
 const assert = require("assert");
+const { describe, beforeEach, afterEach, it } = require("mocha");
 const electronPath = require("electron"); // Require Electron from the binaries included in node_modules.
 const path = require("path");
 
