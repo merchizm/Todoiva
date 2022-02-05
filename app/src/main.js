@@ -1,11 +1,12 @@
 const { app, BrowserWindow, ipcMain, nativeTheme } = require("electron");
 const path = require("path");
-const { getAppearance, changeAppearance } = require("../database/storm");
+const { getAppearance, changeAppearance, getWindowStatus } = require("../database/storm");
 const url = require("url");
 const remote = require("@electron/remote/main");
 remote.initialize();
 
 function createWindow() {
+  const prevSessionWindowStatus = getWindowStatus();
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 700,

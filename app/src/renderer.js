@@ -226,33 +226,52 @@ window.localization = window.localization || {};
   // resizer
   const resizer = document.getElementsByClassName("resizer")[0];
   const aside = document.getElementsByTagName("aside")[0];
+  let original_width, original_mouse_x;
   function resize(e) {
-    aside.style.width = e.pageX - resizer.getBoundingClientRect().left + "px";
+    aside.style.width = original_width + (e.pageX - original_mouse_x) + "px";
   }
   resizer.addEventListener("mousedown", function (e) {
+    original_width = parseFloat(
+      getComputedStyle(aside, null).getPropertyValue("width").replace("px", "")
+    );
+    original_mouse_x = e.pageX;
     e.preventDefault();
     window.addEventListener("mousemove", resize);
 
     window.addEventListener("mouseup", function () {
       window.removeEventListener("mousemove", resize);
+      require("../database/storm").setMenuWidth(
+        getComputedStyle(aside, null)
+          .getPropertyValue("width")
+          .replace("px", "")
+      );
     });
   });
+  // load menu Width
+  aside.style.width =
+    require("../database/storm").getMenuWidth() === 0
+      ? aside.style.width
+      : require("../database/storm").getMenuWidth() + "px";
 
   // context menu initializer
-  document.body.oncontextmenu = function (event) {
+  function context_menu_intializer(event) {
+    // whitelisted div id's
     let whitelist = ["todolists", "todolist"];
+    // get target element and the element's tag name
     let target = event.target ? event.target : event.srcElement;
     let tagName = target.tagName.toLowerCase();
+
     let element = undefined;
+
     if (
       (whitelist.includes(target.parentElement.id) &&
         target.parentElement.id === "todolist") ||
-      (tagName === "A" &&
+      (tagName === "a" &&
         target.parentElement.getAttribute("for") !== undefined)
     ) {
-      if (tagName === "LABEL") {
+      if (tagName === "label") {
         element = document.getElementById(target.getAttribute("for"));
-      } else if (tagName === "A") {
+      } else if (tagName === "a") {
         element = document.getElementById(
           target.parentElement.getAttribute("for")
         );
@@ -291,7 +310,8 @@ window.localization = window.localization || {};
     } else {
       // TODO: empty data equals to developer context menu (if running development mode)
     }
-  };
+  }
+  document.body.oncontextmenu = context_menu_intializer;
 })();
 
 window.onload = function () {

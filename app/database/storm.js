@@ -60,6 +60,13 @@ db.default({
     language: app.getLocale(),
     lastList: 0,
     showCompletedItems: true,
+    menu_width: 0, // 0 === default
+  },
+  windowStatus: {
+    width: 700,
+    height: 600,
+    x: 0,
+    y: 0,
   },
 });
 
@@ -73,6 +80,25 @@ function getLastListID() {
 
 function setLastListID(listID) {
   return db.get("settings").get("lastList").set(listID).save();
+}
+
+function getMenuWidth() {
+  return db.get("settings").get("menu_width").value();
+}
+
+function setMenuWidth(width) {
+  return db.get("settings").get("menu_width").set(width).save();
+}
+
+function getWindowStatus() {
+  return db.get("windowStatus").value();
+}
+
+function setWindowStatus() {
+  return db
+    .get("windowStatus")
+    .set(remote.getCurrentWindow().getBounds())
+    .save();
 }
 
 // list actions
@@ -210,4 +236,8 @@ module.exports = {
   getLastListID,
   setLastListID,
   getShowCompletedItems,
+  getMenuWidth,
+  setMenuWidth,
+  getWindowStatus,
+  setWindowStatus,
 };
