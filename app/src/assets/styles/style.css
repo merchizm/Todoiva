@@ -1,6 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url("https://rsms.me/inter/inter.css");
+html {
+  font-family: "Inter", sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", sans-serif;
+  }
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("Inter-ExtraBold.woff2?v=3.19") format("woff2"), url("Inter-ExtraBold.woff?v=3.19") format("woff");
+}
 * {
   box-sizing: border-box;
 }
@@ -287,7 +304,7 @@ li {
   }
   100% {
     opacity: 0;
-    box-shadow: 0 -15px 0 0px #404040, 14px -8px 0 0px #404040, 14px 8px 0 0px #404040, 0 15px 0 0px #404040, -14px 8px 0 0px #404040, -14px -8px 0 0px #404040;
+    box-shadow: 0 -15px 0 #404040, 14px -8px 0 0 #404040, 14px 8px 0 0 #404040, 0 15px 0 0 #404040, -14px 8px 0 0 #404040, -14px -8px 0 0 #404040;
   }
 }
 .wrapper .main .completed-items {
@@ -538,8 +555,9 @@ li {
   top: 0;
 }
 .wrapper .preferences-menu {
-  padding: 25px 30px;
+  padding: 25px 10px;
   text-align: start;
+  position: relative;
 }
 .wrapper .preferences-menu .menu-section {
   margin-bottom: 35px;
@@ -548,27 +566,30 @@ li {
   padding-top: 40px;
 }
 .wrapper .preferences-menu .menu-section .title {
-  font-size: 0.8rem;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter";
+  font-size: 0.75rem;
+  font-weight: 500;
   margin: 0;
+  margin-bottom: 5px;
   padding-left: 10px;
   text-transform: uppercase;
 }
 .wrapper .preferences-menu .menu-section .menu-item {
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 20px;
   width: 100%;
   text-decoration: none;
+  border-radius: 7px;
 }
 .wrapper .preferences-menu .menu-section .menu-item svg {
   width: 20px;
-  margin-right: 7px;
+  margin-right: 10px;
   cursor: pointer;
   margin-bottom: -5px;
 }
 .wrapper .preferences-menu .menu-section .menu-item p {
   display: inline;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 .wrapper .default-menu {
   overflow: hidden;
@@ -918,12 +939,11 @@ li {
     background-color: #191919;
   }
   .wrapper .preferences-menu .menu-section .title {
-    color: #b3b7b9;
+    color: #e7e7e7;
   }
   .wrapper .preferences-menu .menu-item:hover {
-    background-color: #111111;
+    background-color: #141414;
     color: #fff;
-    border-radius: 15px;
   }
   .wrapper .preferences-menu .menu-item svg {
     fill: #fff;
@@ -997,6 +1017,7 @@ li {
   .wrapper .main #language-section .selectCustom-option.isHover,
 .wrapper .main #language-section .selectCustom-option:hover {
     background-color: #191919;
+    color: #e7e7e7;
   }
   .wrapper .main #language-section .selectNative,
 .wrapper .main #language-section .selectCustom-trigger {
@@ -1126,12 +1147,11 @@ li {
     background-color: #f7f7f7;
   }
   .wrapper .preferences-menu .menu-section .title {
-    color: #d1d7dc;
+    color: #686868;
   }
   .wrapper .preferences-menu .menu-item:hover {
-    background-color: #efefef;
+    background-color: #f2f2f2;
     color: #000;
-    border-radius: 15px;
   }
   .wrapper .preferences-menu .menu-item svg {
     fill: #000;
@@ -1205,6 +1225,7 @@ li {
   .wrapper .main #language-section .selectCustom-option.isHover,
 .wrapper .main #language-section .selectCustom-option:hover {
     background-color: #f7f7f7;
+    color: #404040;
   }
   .wrapper .main #language-section .selectNative,
 .wrapper .main #language-section .selectCustom-trigger {

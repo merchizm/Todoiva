@@ -3,6 +3,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("Inter-ExtraBold.woff2?v=3.19") format("woff2"),
+       url("Inter-ExtraBold.woff?v=3.19") format("woff");
+}
+
 $menu-text: #686868;
 $text: #9195a1;
 $check: #404040;
@@ -34,7 +50,6 @@ li {
   align-items: $align-items;
   justify-content: $justify-content;
 }
-
 
 .wrapper {
   display: flex;
@@ -326,9 +341,9 @@ li {
         }
         100% {
           opacity: 0;
-          box-shadow: 0 -15px 0 0px $check, 14px -8px 0 0px $check,
-          14px 8px 0 0px $check, 0 15px 0 0px $check, -14px 8px 0 0px $check,
-          -14px -8px 0 0px $check;
+          box-shadow: 0 -15px 0 $check, 14px -8px 0 0 $check,
+          14px 8px 0 0 $check, 0 15px 0 0 $check, -14px 8px 0 0 $check,
+          -14px -8px 0 0 $check;
         }
       }
     }
@@ -629,39 +644,43 @@ li {
 
 
   .preferences-menu {
-    padding: 25px 30px;
+    padding: 25px 10px;
     text-align: start;
+    position: relative;
 
     .menu-section{
       margin-bottom:35px;
+
       &:not(:first-of-type){
         padding-top: 40px;
       }
 
       .title{
-        font-size: .8rem;
-        font-family: 'Poppins', sans-serif;    
+        font-family: 'Inter';
+        font-size: .75rem;
+        font-weight: 500;
         margin: 0;
+        margin-bottom: 5px;
         padding-left: 10px;
         text-transform: uppercase;
-
       }
       .menu-item {
         cursor: pointer;
-        padding: 10px;
+        padding: 10px 20px;
         width: 100%;
         text-decoration: none;
-  
+        border-radius: 7px;
+
         svg {
           width: 20px;
-          margin-right: 7px;
+          margin-right: 10px;
           cursor: pointer;
           margin-bottom: -5px;
         }
   
         p {
           display: inline;
-          font-size: 1.1rem;
+          font-size: .9rem;
         }
       }
     }
@@ -1058,15 +1077,14 @@ li {
 
       .menu-section{
         .title{
-          color: map.get($ui-colors, "circle-color");
+          color: map.get($ui-colors, "menu-text");
         }
       }
 
       .menu-item {
         &:hover {
-          background-color: darken(map.get($ui-colors, "menu-bg"), 3%);
+          background-color: darken(map.get($ui-colors, "menu-bg"), 2%);
           color: map.get($ui-colors, "icon");
-          border-radius: 15px;
         }
 
         svg {
@@ -1160,6 +1178,7 @@ li {
         .selectCustom-option.isHover,
         .selectCustom-option:hover{
           background-color: map.get($ui-colors, "menu-bg");
+          color: map.get($ui-colors, "check");
         }
 
         .selectNative,
