@@ -1,4 +1,4 @@
-@use "sass:map";
+@use "mixins";
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap");
@@ -424,13 +424,10 @@ li {
             opacity: 0;
           }
         }
-        
       }
-   
     }
 
     .content {
-      flex-direction: column;
       height: 100vh;
 
       header {
@@ -527,7 +524,6 @@ li {
         position: relative;
         width: 100%;
         height: 100%;
-        background-color: #fff;
         padding: .5rem .8rem;
         cursor: pointer;
       }
@@ -537,7 +533,6 @@ li {
         width: 6px;
         height: 6px;
         border: 2px solid;
-        border-color: transparent rgba(73, 54, 54, 0.4) rgba(73, 54, 54, 0.4) transparent;
         position: absolute;
         right: 10px;
         top: 10px;
@@ -619,6 +614,52 @@ li {
             figcaption{
               text-align: center;
             }
+          }
+        }
+      }
+    }
+
+    #functionality-section{
+      .functionality-selection{
+        @include flex-display(flex, center, space-between);
+
+        .switch {
+          width: 0;
+          height: 0;
+          visibility: hidden;
+
+          &:checked{
+            + label:after {
+              left: calc(100% - 4px);
+              transform: translateX(-100%);
+            }
+
+            + label {
+              background-color: #2e464b;
+            }
+          } 
+        }  
+        label {
+          display: block;
+          width: 45px;
+          height: 22px;
+          background-color: #477a85;
+          border-radius: 100px;
+          position: relative;
+          cursor: pointer;
+          transition: .4s;
+          box-shadow: 0 0 3px #477a8550;
+
+          &::after {
+            content: "";
+            width: 15px;
+            height: 15px;
+            background-color: #e8f5f7;
+            position: absolute;
+            border-radius: 50%;
+            top: 4px;
+            left: 3px;
+            transition: .4s;
           }
         }
       }
@@ -953,349 +994,3 @@ li {
   }
 }
 
-
-
-@mixin createScrollBar($track, $thumb-bg, $thumb-hover) {
-  &::-webkit-scrollbar-track {
-    background-color: $track;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: $thumb-bg;
-    border-radius: 1rem;
-
-    &:hover {
-      background-color: $thumb-hover;
-    }
-  }
-}
-
-@mixin createPrefersColorScheme($ui-colors, $colors, $scrollbar) {
-
-  .pre-loader{
-    background-color: map.get($ui-colors, "main-bg");
-
-    .loader {
-      border: 4px solid map.get($ui-colors, "loader-border");
-      border-top: 4px solid map.get($ui-colors, "loader-border-active");
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  }
-
-  .contextMenu{
-    background: map.get($ui-colors, "click-menu-bg");
-    box-shadow: 0 0 0 1px map.get($ui-colors, "menu-border"), 0 2px 2px rgb(0 0 0 / 3%),
-    0 4px 4px rgb(0 0 0 / 4%), 0 5px 3px rgb(0 0 0 / 5%),
-    0 15px 15px rgb(0 0 0 / 6%), 0 3px 3px rgb(0 0 0 / 7%),
-    0 70px 65px rgb(0 0 0 / 9%);
-
-    &-item[data-divider] {
-      border-color: map.get($ui-colors, "item-border");
-    }
-
-    &-button {
-      color: map.get($ui-colors, "item-color");
-
-      &:hover {
-        background-color: map.get($ui-colors, "item-bg-hover");
-      }
-    }
-  }
-
-  .wrapper {
-
-    aside{
-      .resizer{
-        background-color: map.get($ui-colors, "menu-bg");
-      }
-    }
-
-    .default-menu {
-      background-color: map.get($ui-colors, "menu-bg");
-
-      .menu-content{
-        .search {
-          input {
-            background-color: map.get($ui-colors, "input-bg");
-            color: map.get($ui-colors, "menu-text");
-            border: 1px solid map.get($ui-colors, "border-color");
-    
-            &:focus {
-              box-shadow: 0 0 0 1px map.get($ui-colors, "shadow-color");
-            }
-          }
-          .submit {
-            svg {
-              fill: map.get($ui-colors, "icon");
-            }
-          }
-  
-          button[type="reset"] {
-            svg {
-              fill: map.get($ui-colors, "icon");
-            }
-          }
-        }
-  
-        .my-lists {
-          ul {
-            li {
-              color: map.get($ui-colors, "menu-text");
-              @each $color-name, $color in $colors {
-                .color-#{$color-name} {
-                  background-color: $color;
-                }
-              }
-            }
-  
-            @each $color-name, $color in $colors {
-              .color-#{$color-name} {
-                background-color: rgba($color, 0.4);
-              }
-            }
-  
-            @include createScrollBar(map.get($scrollbar, "track"), map.get($scrollbar, "thumb-bg"), map.get($scrollbar, "thumb-hover"));
-          }
-        }
-      }
-      
-      .deleted-items{
-        color: map.get($ui-colors, "menu-text");
-
-        &:hover{
-          color: map.get($ui-colors, "disabled");
-        }
-      }
-    }
-
-    .preferences-menu {
-      background-color: map.get($ui-colors, "menu-bg");
-
-      .menu-section{
-        .title{
-          color: map.get($ui-colors, "menu-text");
-        }
-      }
-
-      .menu-item {
-        &:hover {
-          background-color: darken(map.get($ui-colors, "menu-bg"), 2%);
-          color: map.get($ui-colors, "icon");
-        }
-
-        svg {
-          fill: map.get($ui-colors, "icon");
-        }
-
-        p{
-          color: map.get($ui-colors, "menu-text");
-          &:hover {
-            color: map.get($ui-colors, "disabled");
-          }
-        }
-      }
-    }
-
-    .main {
-      background-color: map.get($ui-colors, "main-bg");
-      color: map.get($ui-colors, "icon");
-
-      header {
-        button {
-          color: map.get($ui-colors, "icon");
-
-          &:focus{
-            border-color: map.get($ui-colors, "border-color")
-          }
-        }
-      }
-
-      .task-add {
-        span {
-          background-color: map.get($ui-colors, "disabled");
-        }
-
-        input {
-          color: map.get($ui-colors, "icon");
-        }
-      }
-
-      .container {
-        #checklist {
-          label {
-            color: map.get($ui-colors, "text");
-            &::before {
-              background: map.get($ui-colors, "check");
-            }
-          }
-        }
-
-        @include createScrollBar(map.get($scrollbar, "track"), map.get($scrollbar, "thumb-bg"), map.get($scrollbar, "thumb-hover"));
-      }
-
-      .completed-items{
-        color: map.get($ui-colors, "title");
-        background-color: map.get($ui-colors, "main-bg");
-        border-top-color: map.get($ui-colors, "border-color");
-      }
-
-      .content {
-        header {
-          h1{
-            color: map.get($ui-colors, "title");
-            border-bottom-color: map.get($ui-colors, "line");
-          }
-        }
-      }
-
-      #language-section{
-        .info-box{
-          background-color: map.get($ui-colors, "info-box-color");
-          color: map.get($ui-colors, "info-box-bold-color") !important;
-          border: 1px solid map.get($ui-colors, "info-box-bold-color");
-          
-          svg{
-            fill: map.get($ui-colors, "info-box-bold-color");
-          }
-          a{
-            color: map.get($ui-colors, "info-box-bold-color");
-            &:hover{
-              color: map.get($ui-colors, "info-box-a-hover-color");
-            }
-          }
-        }
-
-        .selectCustom-options {
-          color: map.get($ui-colors, "text");
-          background-color: map.get($ui-colors, "input-bg");
-          border-color: map.get($ui-colors, "border-color");
-        }
-
-        .selectCustom-option.isHover,
-        .selectCustom-option:hover{
-          background-color: map.get($ui-colors, "menu-bg");
-          color: map.get($ui-colors, "check");
-        }
-
-        .selectNative,
-        .selectCustom-trigger {
-          background-color: map.get($ui-colors, "input-bg");
-          border: 1px solid map.get($ui-colors, "border-color");
-        }
-
-        .selectCustom-trigger::after{
-          border-color: transparent map.get($ui-colors, "circle-color") map.get($ui-colors, "circle-color") transparent;
-        }
-
-        .selectCustom-trigger:hover {
-          border-color: map.get($ui-colors, "circle-color");
-        }
-      }
-
-      #appearance-section{
-        label{
-          input:hover + figure{
-            img{
-              border-color: map.get($ui-colors, "border-color");
-            }
-          }
-          input:checked + figure{
-            img{
-              border-color: map.get($ui-colors, "circle-color");
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  $ui-colors: (
-    "menu-bg" : #191919,
-    "main-bg": #202020,
-    "input-bg": #333333,
-    "border-color": #3d3d3d,
-    "shadow-color": rgba(224, 224, 224, 0.295),
-    "menu-text": #e7e7e7,
-    "circle-color": #b3b7b9,
-    "icon": #fff,
-    "text": #eeeeee,
-    "check": #e7e7e7,
-    "disabled": #a8a8a8,
-    "line": #2a2a2a,
-    "settings-color": #e5e5e5,
-    "title": #eeeeee,
-    "info-box-color": rgba(#5fa4ff, .7),
-    "info-box-bold-color": #173864,
-    "info-box-a-hover-color": #11243b,
-    "loader-border":  #f3f3f3,
-    "loader-border-active": #3498db,
-    "menu-border": rgba(255, 255, 255, 0.08),
-    "click-menu-bg": linear-gradient(
-      45deg,
-      rgba(10, 20, 28, .7) 50%,
-      rgba(10, 20, 28, .9) 100%
-    ),
-    "item-border": rgba(255, 255, 255, 0.1),
-    "item-color": #fff,
-    "item-bg-hover": rgba(255, 255, 255, 0.1)
-  );
-
-  $colors: "red" #e25757, "blue" #5fa4ff, "green" #2fc43e, "purple" #a766d3, "orange" #fc9b2d, "pink" #ff5df1;
-
-  $scrollbar: (
-          "track": rgba(#000000, 0.1),
-          "thumb-bg": rgb(17, 16, 16),
-          "thumb-hover": rgba(rgb(13, 12, 12), 0.4)
-  );
-
-  @include createPrefersColorScheme($ui-colors, $colors, $scrollbar);
-}
-
-@media (prefers-color-scheme: light) {
-  $ui-colors: (
-    "menu-bg" : #f7f7f7,
-    "main-bg": #fdfdfd,
-    "input-bg": #fff,
-    "border-color": #ebebeb,
-    "shadow-color": rgba(0, 0, 0, 0.03),
-    "menu-text": #686868,
-    "circle-color": #d1d7dc,
-    "icon": #000,
-    "text": #9195a1,
-    "check": #404040,
-    "disabled": #404040,
-    "line": #e3e0e0,
-    "settings-color": #343333,
-    "title": #494A4E,
-    "info-box-color": #8cbeff,
-    "info-box-bold-color": #3880d7,
-    "info-box-a-hover-color": #224e83,
-    "loader-border": #8e9098,
-    "loader-border-active": #3498db,
-    "click-menu-bg": linear-gradient(
-      45deg,
-      rgba(255, 255, 255, .7) 50%,
-      rgba(255, 255, 255, .9) 100%
-    ),
-    "menu-border": rgba(0, 0, 0, 0.08),
-    "item-border": rgba(0, 0, 0, 0.1),
-    "item-color": rgb(10, 20, 28),
-    "item-bg-hover": rgba(10, 20, 28, 0.09)
-  );
-
-  $colors: "purple" #a872ff, "red" #ff9797, "blue" #75b1ff, "green" #49d657, "orange" #ffaf53, "pink" #f781ed;
-
-  $scrollbar: (
-          "track": rgba(#000000, 0.1),
-          "thumb-bg": rgba(rgb(17, 16, 16), 0.7),
-          "thumb-hover": rgba(rgb(13, 12, 12), 0.6)
-  );
-
-  @include createPrefersColorScheme($ui-colors, $colors, $scrollbar);
-}

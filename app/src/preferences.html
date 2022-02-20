@@ -6,8 +6,8 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Todoiva - Preferences</title>
-  <link rel="stylesheet" href="assets/styles/style.min.css">
-  <link rel="stylesheet" href="assets/styles/animations.css">
+  <link rel="stylesheet" href="assets/styles/css/style.min.css">
+  <link rel="stylesheet" href="assets/styles/css/animations.css">
 </head>
 <body>
 <div class="wrapper">
@@ -72,6 +72,16 @@
   
         <p id="preferences-appearance"> - </p>
       </div>
+    </div>
+
+    <div class="menu-section">
+      <p class="title">Başlık</p>
+      <div class="menu-item" onclick="scrollToDiv('functionality-section');">
+      
+        <p id="functionality-appearance"> functionality </p>
+
+      </div>
+
     </div>
 
     <div class="resizer"></div>
@@ -143,6 +153,18 @@
         </label>
       </div>
     </div>
+
+    <div class="content" id="functionality-section">
+      <header>
+        <h1 id="functionality-appearance-h"> Functionality </h1>
+      </header>
+
+      <div class="functionality-selection">
+        <p>Silinen Öğeleri Göster</p>
+        <input type="checkbox" id="switch" class="switch">
+        <label for="switch"></label>
+      </div>
+    </div>    
   </main>
 </div>
 
