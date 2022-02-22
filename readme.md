@@ -1,3 +1,5 @@
+# The project will no longer be developed this way. It will continue to be developed with Vue.js.
+
 <img src="github_resources/todoiva-logo.png" align="right" />
 
 # Todoiva 
