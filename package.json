@@ -104,7 +104,7 @@
     "devDependencies": {
         "@electron/remote": "^2.0.1",
         "cross-env": "^7.0.3",
-        "electron": "^15.0.0",
+        "electron": "^15.5.5",
         "electron-builder": "^22.11.7",
         "electron-updater": "^4.3.9",
         "eslint": "^8.2.0",
