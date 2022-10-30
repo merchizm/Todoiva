@@ -13,31 +13,7 @@ Todoiva is a stylish non-competitive electron app. Todoiva developing for develo
 
 ---
 
-## Screenshoots
-
-![Dark Screenshot](github_resources/dark-ss.png "Dark Screenshot")
-![Light Screenshot](github_resources/light-ss.png "Light Screenshot")
-
-## Roadmap
-
-- [x] Improved new design.
-
-- [x] New database system integrated.
-
-- [x] Language system integrated.
-
-- [ ] Animations added.
-
-- [ ] To-Do Lists can be created.
-
-- [ ] To-Do items will be completed instead of being completely deleted, and the desired deletion will be deleted.
-
-- [ ] Minor features have been added to make the interface easier to use.
-
-## Contributors
-[![Contributors](https://contrib.rocks/image?repo=merchizm/Todoiva)](https://github.com/merchizm/Todoiva/graphs/contributors)
-
-Contributors Image created by [contributors-img](https://contrib.rocks)
+## Hey there! Todoiva will be rewritten with VueJS! Sorry for making you wait so long.. 🤒
 
 [readme-image]: https://img.shields.io/badge/Türkçe%20için%20Tıkla-red
 [version-image]: https://badgen.net/badge/version/v1.3/green?icon=github

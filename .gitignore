@@ -1,6 +1,0 @@
-node_modules/
-.DS_Store
-out/
-.idea/
-.vscode/
-app/database/dev_db.json
